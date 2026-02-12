@@ -97,3 +97,7 @@ body {
   box-shadow: none;
   border-color: var(--tiktok-red);
 }
+.faq-accordion .accordion-body {
+  color: #2b2f38;
+  background: #ffffff;
+}

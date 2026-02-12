@@ -35,7 +35,35 @@ export function Home() {
     downloads: { text: string; url: string }[];
   } | null>(null);
 
-  const apiBase = (import.meta.env.VITE_API_BASE_URL || '').replace(/\/$/, '');
+  const rawApiBase = (
+    import.meta.env.VITE_API_BASE_URL ||
+    'https://tiktokvideo-downloader-backend.vercel.app'
+  ).replace(/\/$/, '');
+  const apiBase = rawApiBase.endsWith('/api/tiktok')
+    ? rawApiBase
+    : `${rawApiBase}/api/tiktok`;
+  const apiDownloadFileBase = rawApiBase.endsWith('/api/tiktok')
+    ? `${rawApiBase}/download-file`
+    : `${rawApiBase}/api/tiktok/download-file`;
+
+  const buildDownloadUrls = (targetUrl: string) => {
+    const encodedUrl = encodeURIComponent(targetUrl);
+    return {
+      primary: `${apiBase}?url=${encodedUrl}`,
+      legacy: `${apiBase}/download?url=${encodedUrl}`,
+    };
+  };
+
+  const downloadDirectly = (fileUrl: string, filename: string) => {
+    const anchor = document.createElement('a');
+    anchor.href = fileUrl;
+    anchor.download = filename;
+    anchor.rel = 'noopener noreferrer';
+    anchor.target = '_blank';
+    document.body.appendChild(anchor);
+    anchor.click();
+    anchor.remove();
+  };
 
   const downloadOptions = useMemo(() => {
     if (!downloadData?.downloads?.length) {
@@ -91,16 +119,31 @@ export function Home() {
     setDownloadData(null);
 
     try {
-      const requestUrl = `${apiBase}/api/tiktok/download?url=${encodeURIComponent(url)}`;
-      const response = await fetch(requestUrl);
-      const payload = await response.json();
+      const { primary, legacy } = buildDownloadUrls(url);
+      const request = async (requestUrl: string) => {
+        const response = await fetch(requestUrl);
+        let payload: any = null;
+        try {
+          payload = await response.json();
+        } catch {
+          payload = null;
+        }
+        return { response, payload };
+      };
 
-      if (!response.ok || !payload?.success) {
-        throw new Error(payload?.error || 'Failed to fetch TikTok download links.');
+      let result = await request(primary);
+      if (!result.response.ok || !result.payload?.success) {
+        result = await request(legacy);
       }
 
-      setDownloadData(payload.data);
-      if (!payload.data?.downloads?.length) {
+      if (!result.response.ok || !result.payload?.success) {
+        throw new Error(
+          result.payload?.error || 'Failed to fetch TikTok download links.'
+        );
+      }
+
+      setDownloadData(result.payload.data);
+      if (!result.payload.data?.downloads?.length) {
         setMessage('No download links were found. Try a different TikTok URL.');
       } else {
         setMessage('Download links are ready.');
@@ -131,13 +174,17 @@ export function Home() {
         typeOverride ||
         (/mp3|audio/i.test(label) ? "audio" : "video");
       const baseName = downloadData?.title || "tiktok-download";
-      const requestUrl = `${apiBase}/api/tiktok/download-file?url=${encodeURIComponent(
+      const requestUrl = `${apiDownloadFileBase}?url=${encodeURIComponent(
         fileUrl
       )}&type=${encodeURIComponent(type)}&filename=${encodeURIComponent(baseName)}`;
 
       const response = await fetch(requestUrl);
       if (!response.ok) {
-        let errorMessage = "Failed to download file.";
+        if (response.status === 404 || response.status === 405) {
+          downloadDirectly(fileUrl, baseName);
+          return;
+        }
+        let errorMessage = 'Failed to download file.';
         try {
           const payload = await response.json();
           errorMessage = payload?.error || errorMessage;
@@ -148,14 +195,14 @@ export function Home() {
       }
 
       const blob = await response.blob();
-      const url = window.URL.createObjectURL(blob);
-      const anchor = document.createElement("a");
-      anchor.href = url;
+      const blobUrl = window.URL.createObjectURL(blob);
+      const anchor = document.createElement('a');
+      anchor.href = blobUrl;
       anchor.download = baseName;
       document.body.appendChild(anchor);
       anchor.click();
       anchor.remove();
-      window.URL.revokeObjectURL(url);
+      window.URL.revokeObjectURL(blobUrl);
     } catch (error) {
       const messageText =
         error instanceof Error ? error.message : "Unable to download the file.";
