@@ -6,6 +6,6 @@ import { App } from "./App";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <App lang="en" />
+    <App lang="en" page="mp3" />
   </StrictMode>
 );

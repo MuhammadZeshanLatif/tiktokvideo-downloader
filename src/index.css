@@ -55,6 +55,52 @@ body {
   background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
 }
 
+.download-results-section {
+  background: linear-gradient(180deg, #f0f2f5 0%, #ffffff 100%);
+  border-top: 1px solid #e9ecef;
+}
+
+.download-results-card {
+  border: 1px solid #eef0f3;
+}
+
+.video-preview-wrap {
+  max-width: 420px;
+}
+
+.audio-cover-img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+}
+
+.audio-player-wrapper {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 1rem;
+  padding: 1.5rem 1.25rem;
+  border: 1px solid #dee2e6;
+}
+
+.audio-player-icon {
+  font-size: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.audio-player-large {
+  height: 54px;
+}
+
+.nav-pill-link.active {
+  background: linear-gradient(135deg, var(--tiktok-red) 0%, #ff5a79 100%);
+  border-radius: 0.5rem;
+  color: white !important;
+  font-weight: 600;
+}
+
+.nav-pill-link:not(.active):hover {
+  color: var(--tiktok-cyan) !important;
+}
+
 .navbar-brand-custom {
   font-weight: 700;
   font-size: 1.5rem;
