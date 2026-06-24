@@ -2,32 +2,12 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMusic, faGlobe, faVideo } from '@fortawesome/free-solid-svg-icons';
 import type { Lang, Page, Section } from '../App';
+import { buildLocalizedPath } from '../seo';
 
-const LANGUAGES: { code: Lang; label: string; home: string; mp3: string }[] = [
-  { code: 'en', label: 'EN', home: '/', mp3: '/mp3/' },
-  { code: 'id', label: 'ID', home: '/id/', mp3: '/id/mp3/' },
+const LANGUAGES: { code: Lang; label: string }[] = [
+  { code: 'en', label: 'EN' },
+  { code: 'id', label: 'ID' },
 ];
-
-function buildLocalizedPath(lang: Lang, section: Section) {
-  const prefix = lang === 'id' ? '/id' : '';
-
-  switch (section) {
-    case 'home':
-      return prefix || '/';
-    case 'mp3':
-      return `${prefix}/mp3`;
-    case 'faq':
-      return `${prefix}/faq`;
-    case 'contact':
-      return `${prefix}/contact`;
-    case 'privacy-policy':
-      return `${prefix}/privacy-policy`;
-    case 'terms-conditions':
-      return `${prefix}/terms-conditions`;
-    default:
-      return prefix || '/';
-  }
-}
 
 export function Navigator({ lang, section = 'home' }: { lang: Lang; section?: Section }) {
   const page: Page = section === 'mp3' ? 'mp3' : 'home';
