@@ -44,14 +44,14 @@ export function getSeoMeta(lang: Lang, section: Section) {
       mp3:
         lang === 'id'
           ? {
-              title: 'Download TikTok MP3 Gratis Tanpa Aplikasi',
+              title: 'TikTok MP3 Downloader – Download MP3 TikTok Gratis & Cepat',
               description:
-                'Pernah menemukan lagu atau sound TikTok yang ingin disimpan, tetapi tidak tahu cara mengunduhnya sebagai file MP3? Dengan TikTok MP3 Downloader, Anda dapat mengubah video TikTok menjadi file MP3 hanya dalam beberapa detik.',
+                'Download MP3 TikTok gratis tanpa aplikasi atau login. Tempel link TikTok, unduh audio, lagu, dan sound berkualitas tinggi dengan cepat di Android, iPhone, PC, dan Mac.',
             }
           : {
-              title: 'TikTok MP3 Downloader – Free TikTok Audio & Sound Download Online',
+              title: 'TikTok MP3 Downloader – Download TikTok Audio for Free',
               description:
-                'Download TikTok audio as high-quality MP3 in just a few clicks. Our TikTok MP3 Downloader lets you convert public TikTok videos into MP3 files online without installing software, creating an account, or downloading the entire video.',
+                'Free TikTok MP3 Downloader to convert TikTok videos into MP3. Download TikTok audio online in seconds without apps or sign-up.',
             },
     faq:
       lang === 'id'
