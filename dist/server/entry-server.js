@@ -3565,10 +3565,20 @@ var faPlay = {
   iconName: "play",
   icon: [448, 512, [9654], "f04b", "M91.2 36.9c-12.4-6.8-27.4-6.5-39.6 .7S32 57.9 32 72l0 368c0 14.1 7.5 27.2 19.6 34.4s27.2 7.5 39.6 .7l336-184c12.8-7 20.8-20.5 20.8-35.1s-8-28.1-20.8-35.1l-336-184z"]
 };
+var faCheck = {
+  prefix: "fas",
+  iconName: "check",
+  icon: [448, 512, [10003, 10004], "f00c", "M434.8 70.1c14.3 10.4 17.5 30.4 7.1 44.7l-256 352c-5.5 7.6-14 12.3-23.4 13.1s-18.5-2.7-25.1-9.3l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l101.5 101.5 234-321.7c10.4-14.3 30.4-17.5 44.7-7.1z"]
+};
 var faUser = {
   prefix: "fas",
   iconName: "user",
   icon: [448, 512, [128100, 62144, 62470, "user-alt", "user-large"], "f007", "M224 248a120 120 0 1 0 0-240 120 120 0 1 0 0 240zm-29.7 56C95.8 304 16 383.8 16 482.3 16 498.7 29.3 512 45.7 512l356.6 0c16.4 0 29.7-13.3 29.7-29.7 0-98.5-79.8-178.3-178.3-178.3l-59.4 0z"]
+};
+var faXmark = {
+  prefix: "fas",
+  iconName: "xmark",
+  icon: [384, 512, [128473, 10005, 10006, 10060, 215, "close", "multiply", "remove", "times"], "f00d", "M55.1 73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L147.2 256 9.9 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192.5 301.3 329.9 438.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.8 256 375.1 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192.5 210.7 55.1 73.4z"]
 };
 var faCircleCheck = {
   prefix: "fas",
@@ -3606,6 +3616,11 @@ var faPause = {
   prefix: "fas",
   iconName: "pause",
   icon: [384, 512, [9208], "f04c", "M48 32C21.5 32 0 53.5 0 80L0 432c0 26.5 21.5 48 48 48l64 0c26.5 0 48-21.5 48-48l0-352c0-26.5-21.5-48-48-48L48 32zm224 0c-26.5 0-48 21.5-48 48l0 352c0 26.5 21.5 48 48 48l64 0c26.5 0 48-21.5 48-48l0-352c0-26.5-21.5-48-48-48l-64 0z"]
+};
+var faArrowDown = {
+  prefix: "fas",
+  iconName: "arrow-down",
+  icon: [384, 512, [8595], "f063", "M169.4 502.6c12.5 12.5 32.8 12.5 45.3 0l160-160c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L224 402.7 224 32c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 370.7-105.4-105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l160 160z"]
 };
 function useDownloaderLogic(t2) {
   const [url, setUrl] = useState("");
@@ -4852,6 +4867,36 @@ function HomeId() {
     ] }) })
   ] }) });
 }
+function YesMark({ label }) {
+  return /* @__PURE__ */ jsxs("span", { className: "status-icon status-icon-yes", children: [
+    /* @__PURE__ */ jsx(FontAwesomeIcon, { icon: faCheck }),
+    label ? /* @__PURE__ */ jsx("span", { className: "ms-1", children: label }) : null
+  ] });
+}
+function NoMark({ label }) {
+  return /* @__PURE__ */ jsxs("span", { className: "status-icon status-icon-no", children: [
+    /* @__PURE__ */ jsx(FontAwesomeIcon, { icon: faXmark }),
+    label ? /* @__PURE__ */ jsx("span", { className: "ms-1", children: label }) : null
+  ] });
+}
+function CheckListItem({
+  children,
+  className = "mb-2"
+}) {
+  return /* @__PURE__ */ jsxs("li", { className: `d-flex align-items-start gap-2 ${className}`, children: [
+    /* @__PURE__ */ jsx(FontAwesomeIcon, { icon: faCheckCircle, className: "text-success mt-1 flex-shrink-0" }),
+    /* @__PURE__ */ jsx("span", { children })
+  ] });
+}
+function StepFlow({ steps }) {
+  return /* @__PURE__ */ jsx("div", { className: "step-flow bg-light rounded-4 p-4", children: steps.map((step, index) => /* @__PURE__ */ jsxs("div", { className: "step-flow-block", children: [
+    /* @__PURE__ */ jsxs("div", { className: "step-flow-item", children: [
+      /* @__PURE__ */ jsx("span", { className: "step-flow-number", children: index + 1 }),
+      /* @__PURE__ */ jsx("span", { children: step })
+    ] }),
+    index < steps.length - 1 ? /* @__PURE__ */ jsx("div", { className: "step-flow-arrow text-muted", children: /* @__PURE__ */ jsx(FontAwesomeIcon, { icon: faArrowDown }) }) : null
+  ] }, step)) });
+}
 const t$1 = {
   cardTitle: "",
   cardSubtitle: "",
@@ -4876,24 +4921,103 @@ const t$1 = {
 };
 const faqs$1 = [
   {
-    q: "Can I convert TikTok videos to MP3?",
-    a: "Yes, if MP3 is supported, you can extract audio from a TikTok video and save it as an MP3 file."
+    q: "Is this TikTok MP3 Downloader free?",
+    a: "Yes. You can use our TikTok MP3 Downloader to convert audio from supported public TikTok videos without paying subscription fees. There are no sign-up requirements, making it easy to start downloading immediately."
   },
   {
-    q: "Can I download TikTok sound, audio, or music?",
-    a: "Yes, the MP3 or audio feature can help you save TikTok sounds, music, voiceovers, or original audio from public videos when available."
+    q: "Do I need to install an app or browser extension?",
+    a: "No. Everything works directly in your web browser. Simply paste the TikTok video URL into the downloader, convert the audio, and save the MP3 file."
+  },
+  {
+    q: "Can I download TikTok audio without downloading the video?",
+    a: "Yes. This tool is designed to extract the audio track from supported public TikTok videos, allowing you to download only the MP3 file instead of the entire video."
+  },
+  {
+    q: "Does this work on Android and iPhone?",
+    a: "Yes. Our TikTok Audio Downloader works on Android phones, iPhones, iPads, Windows PCs, Macs, Linux devices, Chromebooks, and tablets using supported web browsers."
+  },
+  {
+    q: "Which browsers are supported?",
+    a: "The downloader is compatible with Google Chrome, Safari, Mozilla Firefox, Microsoft Edge, Opera, Brave, Samsung Internet, and most modern browsers."
+  },
+  {
+    q: "Can I convert TikTok videos into MP3 on my computer?",
+    a: "Yes. Whether you're using Windows, macOS, Linux, or ChromeOS, you can convert supported public TikTok videos directly from your browser."
+  },
+  {
+    q: "Why isn't my TikTok link working?",
+    a: /* @__PURE__ */ jsxs(Fragment, { children: [
+      /* @__PURE__ */ jsx("p", { className: "mb-2", children: "The most common reasons include:" }),
+      /* @__PURE__ */ jsxs("ul", { className: "mb-0", children: [
+        /* @__PURE__ */ jsx("li", { children: "The video is private." }),
+        /* @__PURE__ */ jsx("li", { children: "The video has been deleted." }),
+        /* @__PURE__ */ jsx("li", { children: "The URL wasn't copied correctly." }),
+        /* @__PURE__ */ jsx("li", { children: "The content isn't publicly accessible." }),
+        /* @__PURE__ */ jsx("li", { children: "There is a temporary network issue." })
+      ] }),
+      /* @__PURE__ */ jsx("p", { className: "mb-0 mt-2", children: "Try copying the original TikTok link again and make sure it points to a public video." })
+    ] })
+  },
+  {
+    q: "Can I download private TikTok videos?",
+    a: "No. The downloader only works with publicly available TikTok videos. Private or restricted content cannot be processed."
+  },
+  {
+    q: "Does the downloader support original TikTok sounds?",
+    a: "Yes. If the original sound is part of a publicly accessible TikTok video and can be processed, you can download it as an MP3 file."
+  },
+  {
+    q: "What audio quality will I receive?",
+    a: "The downloaded MP3 reflects the quality of the original TikTok audio. Converting a file cannot improve audio that was already compressed or recorded at a lower quality."
+  },
+  {
+    q: "Is there a daily download limit?",
+    a: "For normal personal use, there are no fixed daily download limits. You can convert multiple supported public TikTok videos whenever needed."
+  },
+  {
+    q: "Can I save TikTok audio for offline listening?",
+    a: "Yes. After downloading the MP3, you can play it offline using your preferred music player without needing an internet connection."
+  },
+  {
+    q: "Can I use downloaded TikTok audio as a ringtone?",
+    a: "If you have the necessary rights or permission to use the audio, you can convert the downloaded MP3 into a ringtone supported by your device."
+  },
+  {
+    q: "How long does the conversion process take?",
+    a: "Most conversions only take a few moments. Processing time depends on factors such as your internet connection, server load, and the availability of the public TikTok video."
+  },
+  {
+    q: "Is my personal information required?",
+    a: "No. You don't need to create an account or provide unnecessary personal information to use the downloader."
+  },
+  {
+    q: "Is the TikTok MP3 Downloader safe?",
+    a: "The tool is browser-based and doesn't require software installation. For complete information about data handling, please review our Privacy Policy and Terms of Service."
+  },
+  {
+    q: "Can I download my own TikTok audio?",
+    a: "Yes. Many creators use the downloader to save backups of their own public voiceovers, music, interviews, podcasts, and original recordings."
+  },
+  {
+    q: "Why is the MP3 unavailable for some videos?",
+    a: "Some TikTok videos may have restricted audio, unavailable media, regional limitations, or privacy settings that prevent audio extraction."
+  },
+  {
+    q: "Can I use this downloader on a tablet?",
+    a: "Yes. Android tablets, iPads, and other tablet devices are fully supported through compatible web browsers."
+  },
+  {
+    q: "Will this tool always work with future TikTok updates?",
+    a: "We regularly improve the downloader to maintain compatibility with changes to publicly accessible TikTok content. If TikTok updates its platform, the tool may also require updates to continue providing reliable service."
   }
 ];
 function Mp3En() {
   return /* @__PURE__ */ jsx(Downloader, { t: t$1, lockFormat: "mp3", children: ({ Form, Results }) => /* @__PURE__ */ jsxs(Fragment, { children: [
     /* @__PURE__ */ jsx("section", { id: "download-section", className: "hero-gradient text-white py-5", children: /* @__PURE__ */ jsx("div", { className: "container py-5", children: /* @__PURE__ */ jsxs("div", { className: "row align-items-center", children: [
       /* @__PURE__ */ jsxs("div", { className: "col-lg-6 mb-5 mb-lg-0", children: [
-        /* @__PURE__ */ jsxs("h1", { className: "display-5 fw-bold mb-4", children: [
-          "Download TikTok ",
-          /* @__PURE__ */ jsx("span", { className: "tiktok-text", children: "MP3, Sound, Audio, and Music" })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "lead mb-3 text-white-50", children: "TikTok is full of trending sounds, voiceovers, background music, and short audio clips. If you only need the sound, choose the MP3 or audio option when it is available." }),
-        /* @__PURE__ */ jsx("p", { className: "mb-0 text-white-50", children: "This feature can help you extract audio from a public TikTok video and save it as an MP3 file if supported. It is useful for saving a favorite sound, music clip, voiceover, or audio reference without downloading the full video." })
+        /* @__PURE__ */ jsx("h1", { className: "display-5 fw-bold mb-4", children: "TikTok MP3 Downloader – Free TikTok Audio & Sound Download Online" }),
+        /* @__PURE__ */ jsx("p", { className: "lead mb-3 text-white-50", children: "Download TikTok audio as high-quality MP3 in just a few clicks. Our TikTok MP3 Downloader lets you convert public TikTok videos into MP3 files online without installing software, creating an account, or downloading the entire video." }),
+        /* @__PURE__ */ jsx("p", { className: "mb-0 text-white-50", children: "Whether you want to save a trending TikTok sound, music clip, voiceover, podcast, or your own original recording, simply copy the TikTok link, paste the URL into the downloader, and download the audio directly from your browser. The tool works on Android, iPhone, Windows, macOS, Linux, tablets, and all major browsers, making it easy to enjoy TikTok audio offline whenever you need it." })
       ] }),
       /* @__PURE__ */ jsxs("div", { className: "col-lg-6", children: [
         Form,
@@ -4902,13 +5026,412 @@ function Mp3En() {
     ] }) }) }),
     Results,
     /* @__PURE__ */ jsx("section", { className: "py-5 bg-white", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
-      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Download TikTok MP3, Sound, Audio, and Music" }),
-      /* @__PURE__ */ jsx("p", { className: "text-muted", children: "TikTok is full of trending sounds, voiceovers, background music, and short audio clips. If you only need the sound, choose the MP3 or audio option when it is available." }),
-      /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "This feature can help you extract audio from a public TikTok video and save it as an MP3 file if supported. It is useful for saving a favorite sound, music clip, voiceover, or audio reference without downloading the full video." })
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "How to Download TikTok MP3" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "Downloading audio from a public TikTok video only takes a few moments. Follow these simple steps to convert TikTok videos into MP3 files without installing additional software." }),
+      /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold mb-2", children: "Step 1: Copy the TikTok Video Link" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "Open the TikTok app or website and find the video that contains the audio you want to save. Tap the Share button, then choose Copy Link. This copies the video's URL to your clipboard, ready to paste into the downloader." }),
+      /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold mb-2", children: "Step 2: Paste the URL into the Downloader" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-2", children: "Return to this page and paste the copied TikTok link into the input field. If your browser supports clipboard access, you can also use the Paste TikTok Link button to save time." }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "Our TikTok Sound Downloader is browser-based, so it works without requiring software installation or browser extensions." }),
+      /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold mb-2", children: "Step 3: Download Your MP3 File" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-2", children: "Click Download to begin processing the public TikTok video. After the audio is extracted, your MP3 file will be ready to save to your device. You can then listen offline whenever you like using your preferred music player." }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "The downloaded audio quality depends on the quality of the original TikTok source, ensuring an accurate conversion rather than artificially altering the recording." })
     ] }) }),
     /* @__PURE__ */ jsx("section", { className: "py-5 bg-light", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
-      /* @__PURE__ */ jsx("div", { className: "text-center mb-5", children: /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Frequently Asked Questions" }) }),
-      /* @__PURE__ */ jsx("div", { className: "row justify-content-center", children: /* @__PURE__ */ jsx("div", { className: "col-lg-9", children: /* @__PURE__ */ jsx("div", { className: "accordion faq-accordion", id: "faqAccordionMp3En", children: faqs$1.map((faq, index) => /* @__PURE__ */ jsxs(
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Why Choose Our TikTok MP3 Downloader?" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-3", children: "There are many websites that let you convert TikTok videos into MP3 files, but most follow the same formula without explaining how they help users. Our goal is simple: provide a clean, fast, and reliable experience that works across modern devices while keeping the download process easy to understand." }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "Whether you're saving your own original audio, a trending TikTok sound, or a public music clip for personal listening, you can complete the entire process directly from your browser." }),
+      /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold mb-2", children: "Simple Copy-and-Paste Workflow" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "You don't need technical knowledge to use the downloader. Copy the TikTok link, paste it into the tool, and let the converter handle the rest. The streamlined process reduces unnecessary steps while making audio downloads accessible to everyone." }),
+      /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold mb-2", children: "No Software or Extensions Required" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "Everything runs online through your browser. There's no need to install third-party applications, plugins, or browser extensions, helping keep your device uncluttered while making the tool available on multiple platforms." }),
+      /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold mb-2", children: "Works Across Multiple Devices" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "Whether you're using an Android phone, iPhone, Windows PC, Mac, Linux computer, tablet, or Chromebook, the downloader is designed to work wherever you have a modern web browser and an internet connection." }),
+      /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold mb-2", children: "Designed for Everyday Use" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Some users save trending sounds to enjoy offline, while others archive their own voiceovers or original recordings. Whatever your reason, the downloader is built to provide a straightforward experience without unnecessary distractions." })
+    ] }) }),
+    /* @__PURE__ */ jsx("section", { className: "py-5 bg-white", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "What Can You Download as MP3?" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "TikTok is home to millions of creative audio clips. This tool allows you to extract audio from supported public TikTok videos, making it easier to save the sounds you enjoy most for personal, lawful use." }),
+      /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold mb-2", children: "Trending TikTok Sounds" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "Keep popular sounds and viral audio clips available for offline listening without searching for the same video again." }),
+      /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold mb-2", children: "Original Creator Audio" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "Creators often upload unique voice recordings and original sounds. If the video is publicly accessible, you can save the audio as an MP3 for your own reference or archive." }),
+      /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold mb-2", children: "Voiceovers and Narration" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "Educational videos, storytelling clips, motivational speeches, and spoken commentary can all include valuable audio worth saving for later listening." }),
+      /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold mb-2", children: "Music Clips and Background Audio" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "Many TikTok videos feature music or background soundtracks. When available through a supported public video, the audio can be extracted into an MP3 file for convenient offline playback." }),
+      /* @__PURE__ */ jsxs("p", { className: "text-muted mb-0", children: [
+        /* @__PURE__ */ jsx("strong", { children: "Important:" }),
+        " This tool is intended for downloading audio from publicly accessible TikTok videos. Always respect copyright, creator rights, and TikTok's terms when using downloaded content."
+      ] })
+    ] }) }),
+    /* @__PURE__ */ jsx("section", { className: "py-5 bg-light", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Key Features" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "Our TikTok MP3 Downloader is built to make saving audio from public TikTok videos simple, fast, and accessible across different devices. Instead of adding unnecessary steps, the tool focuses on providing a smooth experience from the moment you paste a TikTok link until your MP3 file is ready." }),
+      /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold mb-2", children: "High-Quality MP3 Audio" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "The downloader extracts the available audio from supported public TikTok videos while preserving the best quality provided by the original source. Whether you're downloading music, a voiceover, a podcast-style clip, or an original sound, the output reflects the quality of the source audio." }),
+      /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold mb-2", children: "Browser-Based Conversion" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "Everything happens directly in your browser. You don't need to install software, browser extensions, or mobile apps to convert TikTok to MP3. Simply paste the URL and start the conversion process." }),
+      /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold mb-2", children: "Fast Audio Processing" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "After you submit a valid TikTok link, the downloader immediately begins processing the audio. The streamlined workflow helps reduce waiting time so you can save your MP3 quickly." }),
+      /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold mb-2", children: "Compatible with Multiple Platforms" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "Use the tool on Android phones, iPhones, Windows PCs, macOS, Linux computers, Chromebooks, and tablets. As long as your device has a modern browser and internet access, you can convert TikTok audio online." }),
+      /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold mb-2", children: "Unlimited Personal Downloads" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "Download audio from multiple supported public TikTok videos whenever you need it. Whether you're saving your own original recordings or keeping a copy of a favorite sound for personal listening, the process remains simple and consistent." }),
+      /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold mb-2", children: "No Registration Required" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "You can start converting TikTok audio immediately without creating an account or sharing unnecessary personal information." })
+    ] }) }),
+    /* @__PURE__ */ jsx("section", { className: "py-5 bg-white", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Why These Features Matter" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "Many TikTok downloaders list features without explaining how they benefit users. Here's why each capability improves your experience." }),
+      /* @__PURE__ */ jsx("div", { className: "table-responsive", children: /* @__PURE__ */ jsxs("table", { className: "table table-bordered bg-white align-middle", children: [
+        /* @__PURE__ */ jsx("thead", { className: "table-dark", children: /* @__PURE__ */ jsxs("tr", { children: [
+          /* @__PURE__ */ jsx("th", { children: "Feature" }),
+          /* @__PURE__ */ jsx("th", { children: "Why It Matters" })
+        ] }) }),
+        /* @__PURE__ */ jsxs("tbody", { children: [
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "Browser-Based Tool" }),
+            /* @__PURE__ */ jsx("td", { children: "No software installation, works on almost any device." })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "MP3 Output" }),
+            /* @__PURE__ */ jsx("td", { children: "Compatible with nearly all music players and mobile devices." })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "Fast Processing" }),
+            /* @__PURE__ */ jsx("td", { children: "Spend less time waiting between copying the link and downloading the file." })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "Cross-Platform Support" }),
+            /* @__PURE__ */ jsx("td", { children: "Switch between phone, tablet, laptop, or desktop without changing tools." })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "No Registration" }),
+            /* @__PURE__ */ jsx("td", { children: "Start downloading immediately without creating another online account." })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "Unlimited Downloads" }),
+            /* @__PURE__ */ jsx("td", { children: "Save multiple public TikTok audio files whenever needed for personal use." })
+          ] })
+        ] })
+      ] }) })
+    ] }) }),
+    /* @__PURE__ */ jsx("section", { className: "py-5 bg-light", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Audio Quality Explained" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "One of the most common questions users ask is whether converting a TikTok video into MP3 reduces sound quality. The answer depends on the original audio uploaded to TikTok." }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "Our TikTok Audio Downloader preserves the available audio during conversion, but it cannot create quality that wasn't present in the original recording. If a creator uploads clear, high-quality audio, your downloaded MP3 will closely reflect that source. Likewise, if the original video contains compressed or lower-quality sound, those characteristics will remain after conversion." }),
+      /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold mb-2", children: "Original Source Quality Matters" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "Every MP3 begins with the audio already available in the TikTok video. The downloader extracts that audio—it doesn't remix, enhance, or artificially increase the bitrate. This means the final file is an accurate representation of the original source." }),
+      /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold mb-2", children: "Understanding MP3 Compression" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "MP3 is one of the world's most widely supported audio formats because it balances file size with listening quality. It works well on smartphones, tablets, laptops, desktop computers, smart speakers, car entertainment systems, and portable music players." }),
+      /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold mb-2", children: "Can You Convert TikTok Audio to 320 kbps?" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "Some online tools advertise 320 kbps downloads for every file, but it's important to understand that a converter cannot improve the quality of the original source. If the original TikTok audio wasn't uploaded at that quality, converting it to a higher bitrate won't add missing detail. The best practice is to preserve the original audio as accurately as possible." }),
+      /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold mb-2", children: "Best Results for Music and Voice Recordings" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Music, voiceovers, interviews, podcasts, educational clips, and original creator recordings generally produce the best listening experience when the source audio is clear and publicly available." })
+    ] }) }),
+    /* @__PURE__ */ jsx("section", { className: "py-5 bg-white", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Best Ways to Use Downloaded TikTok Audio" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "People download TikTok MP3 files for many different reasons. While every use should respect copyright and creator rights, there are several practical situations where saving audio can be helpful." }),
+      /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold mb-2", children: "Listen Offline" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "If you travel frequently or have limited internet access, downloading your favorite TikTok sounds lets you enjoy them without relying on a constant connection." }),
+      /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold mb-2", children: "Archive Your Own Original Audio" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "Many creators use TikTok to publish original voiceovers, commentary, music, or educational content. Saving a personal backup of your own public recordings can help with future projects and content organization." }),
+      /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold mb-2", children: "Save Educational Voiceovers" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "Tutorials, language lessons, motivational talks, interviews, and informational recordings often contain valuable insights. Downloading audio for personal reference makes it easier to revisit important content." }),
+      /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold mb-2", children: "Create Personal Ringtones" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "Some users like to turn their favorite original sounds or legally permitted audio clips into personal ringtones. Before doing so, make sure you have the necessary rights to use the audio." }),
+      /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold mb-2", children: "Organize Creative Inspiration" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "Writers, musicians, video editors, podcasters, and content creators often collect interesting sounds and voice recordings for inspiration. Keeping your favorite clips organized offline makes them easier to revisit later." }),
+      /* @__PURE__ */ jsxs("p", { className: "text-muted mb-0", children: [
+        /* @__PURE__ */ jsx("strong", { children: "Good Practice:" }),
+        " Download audio only from publicly accessible TikTok videos, and always respect copyright laws, creator permissions, and TikTok's Terms of Service when using or sharing downloaded content."
+      ] })
+    ] }) }),
+    /* @__PURE__ */ jsx("section", { className: "py-5 bg-light", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Supported Devices" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "Our TikTok MP3 Downloader is designed to work on almost any device with a modern web browser and internet connection. Whether you're using a smartphone, tablet, or computer, you can convert TikTok audio into MP3 without installing additional software." }),
+      /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold mb-2", children: "Android Phones & Tablets" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "Android users can download TikTok audio directly through browsers like Google Chrome, Samsung Internet, Firefox, Opera, or Brave. Simply copy the TikTok link, paste it into the downloader, and save the MP3 file." }),
+      /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold mb-2", children: "iPhone & iPad" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "The tool works on iPhones and iPads using Safari, Google Chrome, Microsoft Edge, and other supported browsers. There's no need to install an additional app to convert public TikTok videos into MP3." }),
+      /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold mb-2", children: "Windows PCs" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "Whether you're using Windows 10 or Windows 11, you can access the downloader from your preferred browser and convert TikTok videos into MP3 files in just a few clicks." }),
+      /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold mb-2", children: "Mac Computers" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "Mac users can use Safari, Chrome, Firefox, or Microsoft Edge to download TikTok audio online without additional software." }),
+      /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold mb-2", children: "Linux & Chromebook" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Linux distributions and Chromebooks with modern browsers are fully supported, making the downloader accessible across a wide range of operating systems." })
+    ] }) }),
+    /* @__PURE__ */ jsx("section", { className: "py-5 bg-white", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-4", children: "Device Compatibility Table" }),
+      /* @__PURE__ */ jsx("div", { className: "table-responsive", children: /* @__PURE__ */ jsxs("table", { className: "table table-bordered bg-white align-middle", children: [
+        /* @__PURE__ */ jsx("thead", { className: "table-dark", children: /* @__PURE__ */ jsxs("tr", { children: [
+          /* @__PURE__ */ jsx("th", { children: "Device" }),
+          /* @__PURE__ */ jsx("th", { children: "Supported" }),
+          /* @__PURE__ */ jsx("th", { children: "Browser Required" }),
+          /* @__PURE__ */ jsx("th", { children: "Software Installation" })
+        ] }) }),
+        /* @__PURE__ */ jsxs("tbody", { children: [
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "Android" }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(YesMark, { label: "Yes" }) }),
+            /* @__PURE__ */ jsx("td", { children: "Chrome, Firefox, Samsung Internet, Opera, Brave" }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(NoMark, { label: "No" }) })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "iPhone" }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(YesMark, { label: "Yes" }) }),
+            /* @__PURE__ */ jsx("td", { children: "Safari, Chrome, Edge" }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(NoMark, { label: "No" }) })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "iPad" }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(YesMark, { label: "Yes" }) }),
+            /* @__PURE__ */ jsx("td", { children: "Safari, Chrome" }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(NoMark, { label: "No" }) })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "Windows PC" }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(YesMark, { label: "Yes" }) }),
+            /* @__PURE__ */ jsx("td", { children: "Chrome, Edge, Firefox" }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(NoMark, { label: "No" }) })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "macOS" }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(YesMark, { label: "Yes" }) }),
+            /* @__PURE__ */ jsx("td", { children: "Safari, Chrome, Firefox" }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(NoMark, { label: "No" }) })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "Linux" }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(YesMark, { label: "Yes" }) }),
+            /* @__PURE__ */ jsx("td", { children: "Chrome, Firefox" }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(NoMark, { label: "No" }) })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "Chromebook" }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(YesMark, { label: "Yes" }) }),
+            /* @__PURE__ */ jsx("td", { children: "Chrome" }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(NoMark, { label: "No" }) })
+          ] })
+        ] })
+      ] }) })
+    ] }) }),
+    /* @__PURE__ */ jsx("section", { className: "py-5 bg-light", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Supported Browsers" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "Because the converter runs entirely online, you can use it with most modern browsers without downloading extensions or plugins." }),
+      /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold mb-2", children: "Google Chrome" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "Google Chrome offers one of the best experiences thanks to clipboard support and excellent compatibility with modern web technologies." }),
+      /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold mb-2", children: "Safari" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "Safari users on macOS and iOS can quickly convert TikTok videos into MP3 while staying within Apple's browser ecosystem." }),
+      /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold mb-2", children: "Mozilla Firefox" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "Firefox provides reliable performance for users who prefer privacy-focused browsing." }),
+      /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold mb-2", children: "Microsoft Edge" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "Edge offers fast performance and full compatibility with the downloader on Windows and macOS." }),
+      /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold mb-2", children: "Opera & Brave" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "Both Opera and Brave are fully compatible with the downloader, providing another option for users who prefer alternative browsers." }),
+      /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold mb-2", children: "Samsung Internet" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Samsung Internet users on Android devices can also convert TikTok audio without downloading a separate application." })
+    ] }) }),
+    /* @__PURE__ */ jsx("section", { className: "py-5 bg-white", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-4", children: "Browser Compatibility Table" }),
+      /* @__PURE__ */ jsx("div", { className: "table-responsive", children: /* @__PURE__ */ jsxs("table", { className: "table table-bordered bg-white align-middle text-center", children: [
+        /* @__PURE__ */ jsx("thead", { className: "table-dark", children: /* @__PURE__ */ jsxs("tr", { children: [
+          /* @__PURE__ */ jsx("th", { children: "Browser" }),
+          /* @__PURE__ */ jsx("th", { children: "Android" }),
+          /* @__PURE__ */ jsx("th", { children: "iPhone" }),
+          /* @__PURE__ */ jsx("th", { children: "Windows" }),
+          /* @__PURE__ */ jsx("th", { children: "macOS" }),
+          /* @__PURE__ */ jsx("th", { children: "Linux" })
+        ] }) }),
+        /* @__PURE__ */ jsxs("tbody", { children: [
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "Google Chrome" }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(YesMark, {}) }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(YesMark, {}) }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(YesMark, {}) }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(YesMark, {}) }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(YesMark, {}) })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "Safari" }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(NoMark, {}) }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(YesMark, {}) }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(NoMark, {}) }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(YesMark, {}) }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(NoMark, {}) })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "Mozilla Firefox" }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(YesMark, {}) }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(YesMark, {}) }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(YesMark, {}) }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(YesMark, {}) }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(YesMark, {}) })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "Microsoft Edge" }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(YesMark, {}) }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(YesMark, {}) }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(YesMark, {}) }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(YesMark, {}) }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(NoMark, {}) })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "Opera" }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(YesMark, {}) }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(NoMark, {}) }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(YesMark, {}) }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(YesMark, {}) }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(YesMark, {}) })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "Brave" }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(YesMark, {}) }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(NoMark, {}) }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(YesMark, {}) }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(YesMark, {}) }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(YesMark, {}) })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "Samsung Internet" }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(YesMark, {}) }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(NoMark, {}) }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(NoMark, {}) }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(NoMark, {}) }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(NoMark, {}) })
+          ] })
+        ] })
+      ] }) })
+    ] }) }),
+    /* @__PURE__ */ jsx("section", { className: "py-5 bg-light", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Tips for Better MP3 Downloads" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "Following a few simple practices can help you avoid common issues and ensure a smoother download experience." }),
+      /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold mb-2", children: "Copy the Complete TikTok URL" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "Always copy the full TikTok video link directly from the Share menu. Incomplete or modified URLs may prevent the downloader from processing the request." }),
+      /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold mb-2", children: "Download Public TikTok Videos" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "The downloader can only access publicly available TikTok content. Private, deleted, or restricted videos cannot be converted." }),
+      /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold mb-2", children: "Wait for the Process to Finish" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "After clicking Download, allow the conversion to complete before refreshing the page or closing your browser tab." }),
+      /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold mb-2", children: "Use a Stable Internet Connection" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "A reliable connection helps reduce interruptions during the conversion process and speeds up file generation." }),
+      /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold mb-2", children: "Keep Your Browser Updated" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Using the latest version of your browser improves compatibility, security, and overall performance." })
+    ] }) }),
+    /* @__PURE__ */ jsx("section", { className: "py-5 bg-white", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Common Download Errors & Solutions" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "Most download problems are easy to solve. Here are the most common issues users encounter and how to fix them." }),
+      /* @__PURE__ */ jsx("div", { className: "table-responsive", children: /* @__PURE__ */ jsxs("table", { className: "table table-bordered bg-white align-middle", children: [
+        /* @__PURE__ */ jsx("thead", { className: "table-dark", children: /* @__PURE__ */ jsxs("tr", { children: [
+          /* @__PURE__ */ jsx("th", { children: "Problem" }),
+          /* @__PURE__ */ jsx("th", { children: "Possible Cause" }),
+          /* @__PURE__ */ jsx("th", { children: "Solution" })
+        ] }) }),
+        /* @__PURE__ */ jsxs("tbody", { children: [
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "Invalid TikTok Link" }),
+            /* @__PURE__ */ jsx("td", { children: "Incomplete or incorrect URL" }),
+            /* @__PURE__ */ jsx("td", { children: "Copy the full public TikTok link again." })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "Private Video" }),
+            /* @__PURE__ */ jsx("td", { children: "Video isn't publicly accessible" }),
+            /* @__PURE__ */ jsx("td", { children: "Use only public TikTok videos." })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "Download Doesn't Start" }),
+            /* @__PURE__ */ jsx("td", { children: "Temporary browser or network issue" }),
+            /* @__PURE__ */ jsx("td", { children: "Refresh the page and try again." })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "Audio Not Available" }),
+            /* @__PURE__ */ jsx("td", { children: "Source video has unavailable or restricted audio" }),
+            /* @__PURE__ */ jsx("td", { children: "Try another supported public video." })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "Slow Processing" }),
+            /* @__PURE__ */ jsx("td", { children: "Network congestion or temporary server load" }),
+            /* @__PURE__ */ jsx("td", { children: "Wait a few moments and avoid refreshing the page." })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "Paste Button Doesn't Work" }),
+            /* @__PURE__ */ jsx("td", { children: "Browser blocks clipboard access" }),
+            /* @__PURE__ */ jsx("td", { children: "Paste the URL manually using your keyboard." })
+          ] })
+        ] })
+      ] }) })
+    ] }) }),
+    /* @__PURE__ */ jsx("section", { className: "py-5 bg-light", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Is It Safe to Use Our TikTok MP3 Downloader?" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "Security and privacy are important whenever you use an online tool. Our downloader is designed to work directly in your browser without requiring unnecessary downloads or software installation." }),
+      /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold mb-2", children: "No Software Installation" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "Because everything runs online, you don't have to install third-party programs that could consume storage or introduce unnecessary security risks." }),
+      /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold mb-2", children: "Browser-Based Experience" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "Using a browser-based tool means you can access the downloader from different devices without configuring additional applications." }),
+      /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold mb-2", children: "Privacy Matters" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "Only publicly accessible TikTok links should be submitted for processing. For complete information about data handling, users should review your website's Privacy Policy and Terms of Service." }),
+      /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold mb-2", children: "Respect Copyright and Creator Rights" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Downloaded audio should only be used in ways that comply with copyright laws, platform policies, and the permissions granted by the original creator. Responsible use helps support the creative community while ensuring content is used appropriately." })
+    ] }) }),
+    /* @__PURE__ */ jsx("section", { className: "py-5 bg-white", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "TikTok MP3 vs TikTok MP4" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "Sometimes users aren't sure whether they should download only the audio or the complete video. The table below highlights the differences." }),
+      /* @__PURE__ */ jsx("div", { className: "table-responsive mb-4", children: /* @__PURE__ */ jsxs("table", { className: "table table-bordered bg-white align-middle", children: [
+        /* @__PURE__ */ jsx("thead", { className: "table-dark", children: /* @__PURE__ */ jsxs("tr", { children: [
+          /* @__PURE__ */ jsx("th", { children: "Feature" }),
+          /* @__PURE__ */ jsx("th", { children: "MP3 Audio" }),
+          /* @__PURE__ */ jsx("th", { children: "MP4 Video" })
+        ] }) }),
+        /* @__PURE__ */ jsxs("tbody", { children: [
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "Audio Only" }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(YesMark, {}) }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(NoMark, {}) })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "Includes Video" }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(NoMark, {}) }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(YesMark, {}) })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "Smaller File Size" }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(YesMark, {}) }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(NoMark, {}) })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "Ideal for Offline Listening" }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(YesMark, {}) }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(YesMark, {}) })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "Suitable for Music Players" }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(YesMark, {}) }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(NoMark, {}) })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "Preserves Visual Content" }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(NoMark, {}) }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(YesMark, {}) })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "Faster to Transfer" }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(YesMark, {}) }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(NoMark, {}) })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "Lower Storage Usage" }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(YesMark, {}) }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(NoMark, {}) })
+          ] })
+        ] })
+      ] }) }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Choosing MP3 is usually the better option if your goal is to save music, voiceovers, interviews, or original sounds without keeping the entire video. If you want both the visuals and the audio, downloading the MP4 version is the better choice." })
+    ] }) }),
+    /* @__PURE__ */ jsx("section", { className: "py-5 bg-light", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Frequently Asked Questions" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-5", children: "Below are answers to the questions users ask most often when searching for a TikTok MP3 Downloader, TikTok Audio Downloader, or TikTok to MP3 Converter." }),
+      /* @__PURE__ */ jsx("div", { className: "row justify-content-center", children: /* @__PURE__ */ jsx("div", { className: "col-lg-10", children: /* @__PURE__ */ jsx("div", { className: "accordion faq-accordion", id: "faqAccordionMp3En", children: faqs$1.map((faq, index) => /* @__PURE__ */ jsxs(
         "div",
         {
           className: "accordion-item border-0 mb-3 rounded-3 overflow-hidden shadow-sm",
@@ -4929,7 +5452,7 @@ function Mp3En() {
                 id: `faqMp3En${index}`,
                 className: `accordion-collapse collapse ${index === 0 ? "show" : ""}`,
                 "data-bs-parent": "#faqAccordionMp3En",
-                children: /* @__PURE__ */ jsx("div", { className: "accordion-body", children: faq.a })
+                children: /* @__PURE__ */ jsx("div", { className: "accordion-body", children: typeof faq.a === "string" ? faq.a : faq.a })
               }
             )
           ]
@@ -4937,9 +5460,69 @@ function Mp3En() {
         faq.q
       )) }) }) })
     ] }) }),
-    /* @__PURE__ */ jsx("section", { className: "py-4 bg-white", children: /* @__PURE__ */ jsxs("div", { className: "container", children: [
-      /* @__PURE__ */ jsx("h2", { className: "h5 fw-bold mb-2", children: "Disclaimer" }),
-      /* @__PURE__ */ jsx("p", { className: "text-muted small mb-0", children: "This tool is not affiliated with TikTok. Please respect creator rights and use downloaded content responsibly." })
+    /* @__PURE__ */ jsx("section", { className: "py-5 bg-white", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Explore More TikTok Tools" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "Looking for more ways to manage TikTok content? Explore our collection of free online TikTok tools designed to make downloading and managing content easier." }),
+      /* @__PURE__ */ jsx("div", { className: "table-responsive", children: /* @__PURE__ */ jsxs("table", { className: "table table-bordered bg-white align-middle", children: [
+        /* @__PURE__ */ jsx("thead", { className: "table-dark", children: /* @__PURE__ */ jsxs("tr", { children: [
+          /* @__PURE__ */ jsx("th", { children: "Tool" }),
+          /* @__PURE__ */ jsx("th", { children: "Description" })
+        ] }) }),
+        /* @__PURE__ */ jsxs("tbody", { children: [
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: /* @__PURE__ */ jsx(Link, { to: "/", children: "TikTok Video Downloader" }) }),
+            /* @__PURE__ */ jsx("td", { children: "Download public TikTok videos while preserving the original video format." })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "TikTok Story Downloader" }),
+            /* @__PURE__ */ jsx("td", { children: "Save public TikTok Stories before they disappear." })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "TikTok Photo Downloader" }),
+            /* @__PURE__ */ jsx("td", { children: "Download photo posts shared on TikTok in their original quality." })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "TikTok Caption Downloader" }),
+            /* @__PURE__ */ jsx("td", { children: "Copy captions quickly without opening the TikTok app again." })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "TikTok Thumbnail Downloader" }),
+            /* @__PURE__ */ jsx("td", { children: "Save available TikTok thumbnail images for reference." })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "TikTok Profile Picture Downloader" }),
+            /* @__PURE__ */ jsx("td", { children: "View and download publicly available TikTok profile pictures." })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "TikTok Username Generator" }),
+            /* @__PURE__ */ jsx("td", { children: "Generate creative username ideas for new TikTok accounts." })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "TikTok Bio Generator" }),
+            /* @__PURE__ */ jsx("td", { children: "Create engaging profile bios for personal or business accounts." })
+          ] })
+        ] })
+      ] }) })
+    ] }) }),
+    /* @__PURE__ */ jsx("section", { className: "py-5 bg-light", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Copyright & Responsible Use" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-3", children: "Our TikTok MP3 Downloader is intended to help users convert audio from publicly accessible TikTok videos for personal and lawful use. Before downloading, sharing, or republishing any content, make sure you have permission from the original creator or that your use complies with applicable copyright laws and platform policies." }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Respecting intellectual property helps support creators and encourages responsible use of digital content. If you're downloading your own TikTok audio, the tool provides a convenient way to keep personal backups, archive original recordings, or listen offline whenever you need them." })
+    ] }) }),
+    /* @__PURE__ */ jsx("section", { className: "py-5 bg-white", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Quick Start Checklist" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "Ready to download TikTok audio? Follow these simple steps:" }),
+      /* @__PURE__ */ jsxs("ul", { className: "list-unstyled text-muted mb-4", children: [
+        /* @__PURE__ */ jsx(CheckListItem, { children: "Copy the link to a public TikTok video." }),
+        /* @__PURE__ */ jsx(CheckListItem, { children: "Paste the URL into the TikTok MP3 Downloader above." }),
+        /* @__PURE__ */ jsx(CheckListItem, { children: "Click Download to start the conversion." }),
+        /* @__PURE__ */ jsx(CheckListItem, { children: "Save the MP3 file to your device." }),
+        /* @__PURE__ */ jsx(CheckListItem, { className: "mb-2", children: "Enjoy your TikTok audio offline whenever you like." })
+      ] }),
+      /* @__PURE__ */ jsxs("p", { className: "text-muted mb-0", children: [
+        /* @__PURE__ */ jsx("strong", { children: "Reminder:" }),
+        " Download only content you have permission to use and respect the rights of content creators and applicable copyright laws."
+      ] })
     ] }) })
   ] }) });
 }
@@ -4965,41 +5548,332 @@ const t = {
   ready: "Link download sudah siap.",
   defaultTitle: "Download TikTok"
 };
+const checklist = [
+  "Download MP3 TikTok Gratis",
+  "Tanpa Login atau Registrasi",
+  "Tidak Perlu Instal Aplikasi",
+  "Mendukung Android, iPhone, iPad, Windows & Mac",
+  "Audio Berkualitas Tinggi",
+  "Proses Download Cepat",
+  "Gratis Tanpa Batas",
+  "Mudah Digunakan Langsung dari Browser"
+];
 const faqs = [
   {
-    q: "Can I convert TikTok video to MP3?",
-    a: "Ya, jika opsi MP3 tersedia, kamu bisa mengambil audio dari video TikTok dan menyimpannya sebagai file MP3."
+    q: "Apakah TikTok MP3 Downloader ini gratis?",
+    a: "Ya. Anda dapat menggunakan layanan ini secara gratis tanpa biaya berlangganan maupun biaya tersembunyi."
   },
   {
-    q: "Can I download TikTok sound, audio, or music?",
-    a: "Ya. Gunakan fitur MP3/audio untuk menyimpan sound, musik, voiceover, atau original sound dari TikTok."
+    q: "Apakah saya perlu membuat akun?",
+    a: "Tidak. Anda tidak perlu login atau membuat akun sebelum mengunduh audio TikTok."
+  },
+  {
+    q: "Apakah saya harus menginstal aplikasi?",
+    a: "Tidak. Seluruh proses dilakukan langsung melalui browser sehingga tidak memerlukan aplikasi tambahan."
+  },
+  {
+    q: "Apakah layanan ini mendukung Android?",
+    a: "Ya. TikTok MP3 Downloader dapat digunakan dengan baik pada perangkat Android menggunakan browser modern."
+  },
+  {
+    q: "Apakah layanan ini mendukung iPhone?",
+    a: "Ya. Pengguna iPhone maupun iPad juga dapat menggunakan layanan ini untuk mengunduh file MP3 dari video TikTok."
+  },
+  {
+    q: "Apakah saya bisa menggunakannya di PC atau Laptop?",
+    a: "Tentu. Anda dapat menggunakan Windows, Mac maupun Linux selama memiliki browser dan koneksi internet."
+  },
+  {
+    q: "Mengapa file MP3 tidak bisa diunduh?",
+    a: "Ada beberapa kemungkinan penyebabnya, seperti tautan video yang salah, video telah dihapus, video bersifat privat, atau audio asli sudah tidak tersedia di TikTok. Pastikan Anda menggunakan URL video yang benar dan video masih dapat diakses secara publik."
+  },
+  {
+    q: "Apakah ada batas jumlah download?",
+    a: "Tidak. Anda dapat menggunakan TikTok MP3 Downloader untuk mengunduh audio TikTok sebanyak yang Anda butuhkan selama layanan tersedia."
+  },
+  {
+    q: "Di mana file MP3 disimpan setelah diunduh?",
+    a: "Secara umum, file akan tersimpan di folder Download pada browser atau perangkat yang Anda gunakan. Jika tidak menemukannya, periksa riwayat unduhan browser Anda."
+  },
+  {
+    q: "Apakah kualitas audio tetap jernih?",
+    a: "Ya. File audio yang diunduh akan mengikuti kualitas audio yang tersedia dari sumber video TikTok. Jika audio asli memiliki kualitas yang baik, hasil unduhan juga akan tetap jernih."
+  },
+  {
+    q: "Bisakah file MP3 dijadikan nada dering?",
+    a: "Ya. Setelah file berhasil diunduh, Anda dapat menggunakannya sebagai nada dering telepon, nada dering WhatsApp, alarm, atau untuk kebutuhan pribadi lainnya."
+  },
+  {
+    q: "Apakah TikTok MP3 Downloader aman digunakan?",
+    a: "Ya. Anda tidak perlu menginstal aplikasi ataupun membuat akun. Seluruh proses dilakukan langsung melalui browser sehingga lebih praktis dan mudah digunakan. Tetap gunakan layanan ini secara bertanggung jawab dan hormati hak cipta pemilik konten."
+  },
+  {
+    q: "Apakah saya bisa mengunduh audio dari video TikTok privat?",
+    a: "Tidak. Layanan hanya dapat memproses video TikTok yang dapat diakses secara publik. Video privat tidak dapat diunduh."
+  },
+  {
+    q: "Apakah saya bisa menggunakan layanan ini di semua browser?",
+    a: "Ya. TikTok MP3 Downloader mendukung browser modern seperti Google Chrome, Safari, Mozilla Firefox, Microsoft Edge, Opera, dan browser populer lainnya."
   }
 ];
 function Mp3Id() {
   return /* @__PURE__ */ jsx(Downloader, { t, lockFormat: "mp3", children: ({ Form, Results }) => /* @__PURE__ */ jsxs(Fragment, { children: [
-    /* @__PURE__ */ jsx("section", { id: "download-section", className: "hero-gradient text-white py-5", children: /* @__PURE__ */ jsx("div", { className: "container py-5", children: /* @__PURE__ */ jsxs("div", { className: "row align-items-center", children: [
-      /* @__PURE__ */ jsxs("div", { className: "col-lg-6 mb-5 mb-lg-0", children: [
-        /* @__PURE__ */ jsxs("h1", { className: "display-5 fw-bold mb-4", children: [
-          "Download TikTok ",
-          /* @__PURE__ */ jsx("span", { className: "tiktok-text", children: "MP3, Sound, Audio, and Music" })
-        ] }),
-        /* @__PURE__ */ jsx("p", { className: "lead mb-3 text-white-50", children: "Selain video, kamu juga bisa mengambil audio dari TikTok. Pilih opsi MP3 jika kamu hanya ingin menyimpan sound, musik, voiceover, atau lagu TikTok tanpa videonya." }),
-        /* @__PURE__ */ jsx("p", { className: "mb-0 text-white-50", children: "Fitur ini cocok untuk pengguna yang suka menyimpan original sound, background music, atau audio viral dari TikTok. Cukup paste link video, lalu pilih format audio untuk mengubah video TikTok menjadi MP3 jika opsi tersedia." })
+    /* @__PURE__ */ jsx("section", { id: "download-section", className: "hero-gradient text-white py-5", children: /* @__PURE__ */ jsx("div", { className: "container py-5", children: /* @__PURE__ */ jsx("div", { className: "row justify-content-center", children: /* @__PURE__ */ jsxs("div", { className: "col-lg-10", children: [
+      /* @__PURE__ */ jsx("h1", { className: "display-5 fw-bold mb-4 text-center", children: "Download TikTok MP3 Gratis Tanpa Aplikasi" }),
+      /* @__PURE__ */ jsx("div", { className: "mb-4", children: Form }),
+      /* @__PURE__ */ jsxs("div", { className: "mb-4", children: [
+        /* @__PURE__ */ jsx("h2", { className: "h5 fw-bold mb-3", children: "Kenapa Menggunakan TikTok MP3 Downloader Ini?" }),
+        /* @__PURE__ */ jsx("ul", { className: "list-unstyled mb-0", children: checklist.map((item) => /* @__PURE__ */ jsx(CheckListItem, { className: "mb-2 text-white-50", children: item }, item)) })
       ] }),
-      /* @__PURE__ */ jsxs("div", { className: "col-lg-6", children: [
-        Form,
-        /* @__PURE__ */ jsx("p", { className: "text-center text-white-50 small mt-3 mb-0", children: "Gratis • Tanpa Login • Tanpa APK • Support Android, iPhone, dan PC" })
-      ] })
-    ] }) }) }),
+      /* @__PURE__ */ jsx("p", { className: "lead mb-3 text-white-50", children: "Pernah menemukan lagu atau sound TikTok yang ingin disimpan, tetapi tidak tahu cara mengunduhnya sebagai file MP3? Banyak pengguna ingin mendengarkan audio TikTok secara offline, menjadikannya nada dering, atau menggunakannya sebagai referensi konten, namun TikTok tidak menyediakan fitur download audio secara langsung." }),
+      /* @__PURE__ */ jsx("p", { className: "mb-3 text-white-50", children: "Dengan TikTok MP3 Downloader, Anda dapat mengubah video TikTok menjadi file MP3 hanya dalam beberapa detik. Cukup salin tautan video TikTok, tempelkan ke kolom download di atas, lalu klik tombol Download. Layanan ini gratis, tidak memerlukan login, tidak perlu menginstal aplikasi tambahan, serta dapat digunakan di Android, iPhone, iPad, Windows, Mac, maupun perangkat lain melalui browser favorit Anda." }),
+      /* @__PURE__ */ jsx("p", { className: "mb-0 text-white-50", children: "Audio diambil langsung dari sumber audio asli TikTok, bukan hasil konversi ulang dari file MP4. Dengan cara ini kualitas suara tetap jernih dan proses download menjadi lebih cepat." })
+    ] }) }) }) }),
     Results,
     /* @__PURE__ */ jsx("section", { className: "py-5 bg-white", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
-      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Download TikTok MP3, Sound, Audio, and Music" }),
-      /* @__PURE__ */ jsx("p", { className: "text-muted", children: "Selain video, kamu juga bisa mengambil audio dari TikTok. Pilih opsi MP3 jika kamu hanya ingin menyimpan sound, musik, voiceover, atau lagu TikTok tanpa videonya." }),
-      /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Fitur ini cocok untuk pengguna yang suka menyimpan original sound, background music, atau audio viral dari TikTok. Cukup paste link video, lalu pilih format audio untuk mengubah video TikTok menjadi MP3 jika opsi tersedia." })
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Cara Download MP3 TikTok" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-3", children: "Mengunduh audio TikTok sangat mudah dan hanya membutuhkan beberapa langkah sederhana." }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "Cara download lagu TikTok jadi MP3 hanya membutuhkan beberapa langkah sederhana. Proses ini dapat dilakukan melalui Android, iPhone, tablet maupun komputer tanpa menginstal aplikasi tambahan." }),
+      /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold mb-2", children: "Langkah 1 – Salin Tautan Video TikTok" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "Buka aplikasi TikTok atau situs web TikTok kemudian cari video yang ingin Anda simpan audionya. Tekan tombol Bagikan lalu pilih Salin Tautan untuk menyalin URL video ke clipboard perangkat Anda." }),
+      /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold mb-2", children: "Langkah 2 – Tempelkan Link ke Kolom Download" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "Kembali ke halaman TikTok MP3 Downloader ini lalu tempelkan URL yang sudah disalin ke dalam kolom input yang tersedia di bagian atas halaman." }),
+      /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold mb-2", children: "Langkah 3 – Klik Tombol Download MP3" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "Tekan tombol Download, tunggu beberapa saat hingga proses selesai, kemudian pilih opsi Download MP3 untuk menyimpan file audio ke perangkat Anda." }),
+      /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold mb-3", children: "Ringkasan Langkah" }),
+      /* @__PURE__ */ jsx(
+        StepFlow,
+        {
+          steps: [
+            "Salin Link TikTok",
+            "Tempel Link",
+            "Klik Download",
+            "Simpan File MP3"
+          ]
+        }
+      )
     ] }) }),
     /* @__PURE__ */ jsx("section", { className: "py-5 bg-light", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
-      /* @__PURE__ */ jsx("div", { className: "text-center mb-5", children: /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Frequently Asked Questions" }) }),
-      /* @__PURE__ */ jsx("div", { className: "row justify-content-center", children: /* @__PURE__ */ jsx("div", { className: "col-lg-9", children: /* @__PURE__ */ jsx("div", { className: "accordion faq-accordion", id: "faqAccordionMp3Id", children: faqs.map((faq, index) => /* @__PURE__ */ jsxs(
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Fitur TikTok MP3 Downloader" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-3", children: "TikTok MP3 Downloader dirancang agar proses download menjadi cepat, sederhana, dan dapat digunakan oleh siapa saja tanpa memerlukan pengetahuan teknis." }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "Berbeda dengan banyak konverter TikTok ke MP3 lainnya, tool ini dirancang agar proses download tetap sederhana tanpa mengurangi kualitas audio yang tersedia dari video TikTok." }),
+      /* @__PURE__ */ jsx("div", { className: "table-responsive mb-5", children: /* @__PURE__ */ jsxs("table", { className: "table table-bordered bg-white align-middle", children: [
+        /* @__PURE__ */ jsx("thead", { className: "table-dark", children: /* @__PURE__ */ jsxs("tr", { children: [
+          /* @__PURE__ */ jsx("th", { children: "Fitur" }),
+          /* @__PURE__ */ jsx("th", { children: "Penjelasan" })
+        ] }) }),
+        /* @__PURE__ */ jsxs("tbody", { children: [
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "Gratis Digunakan" }),
+            /* @__PURE__ */ jsx("td", { children: "Download MP3 tanpa biaya." })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "Tanpa Login" }),
+            /* @__PURE__ */ jsx("td", { children: "Tidak perlu membuat akun TikTok maupun akun baru." })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "Tanpa Aplikasi" }),
+            /* @__PURE__ */ jsx("td", { children: "Semua proses dilakukan langsung melalui browser." })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "Download Cepat" }),
+            /* @__PURE__ */ jsx("td", { children: "File diproses hanya dalam beberapa detik." })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "Audio Berkualitas Tinggi" }),
+            /* @__PURE__ */ jsx("td", { children: "Menghasilkan kualitas audio yang tetap jernih sesuai sumber." })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "Semua Perangkat" }),
+            /* @__PURE__ */ jsx("td", { children: "Mendukung Android, iPhone, iPad, Windows, Mac, dan Linux." })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "Browser Modern" }),
+            /* @__PURE__ */ jsx("td", { children: "Berfungsi di Chrome, Safari, Firefox, Edge, Opera, dan browser lainnya." })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "Unlimited Download" }),
+            /* @__PURE__ */ jsx("td", { children: "Download sebanyak yang Anda inginkan tanpa batas harian." })
+          ] })
+        ] })
+      ] }) }),
+      /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold mb-2", children: "Gratis Digunakan" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "Anda tidak perlu berpindah aplikasi atau membuat akun hanya untuk menyimpan satu lagu TikTok. Cukup salin tautan, tempelkan ke kolom download, dan file MP3 siap diunduh dalam beberapa detik." }),
+      /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold mb-2", children: "Tanpa Login atau Registrasi" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "Tidak perlu membuat akun ataupun masuk menggunakan akun TikTok. Anda hanya perlu menyalin tautan video dan memulai proses download." }),
+      /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold mb-2", children: "Tidak Perlu Instal Aplikasi" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "Seluruh proses dilakukan secara online melalui browser sehingga Anda tidak perlu menginstal software, aplikasi, ataupun ekstensi tambahan." }),
+      /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold mb-2", children: "Download Cepat" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "Server akan memproses tautan video TikTok dalam waktu singkat sehingga file MP3 dapat segera diunduh, tergantung pada kecepatan koneksi internet yang digunakan." }),
+      /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold mb-2", children: "Audio Berkualitas Tinggi" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "Berbeda dengan banyak konverter TikTok ke MP3 lainnya, tool ini dirancang agar proses download tetap sederhana tanpa mengurangi kualitas audio yang tersedia dari video TikTok." }),
+      /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold mb-2", children: "Kompatibel dengan Semua Perangkat" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Layanan ini dapat digunakan melalui smartphone, tablet, laptop, maupun komputer desktop tanpa memandang sistem operasi yang digunakan." })
+    ] }) }),
+    /* @__PURE__ */ jsx("section", { className: "py-5 bg-white", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Mengapa Memilih TikTok MP3 Downloader Kami" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-3", children: "Ada banyak layanan download TikTok MP3 yang tersedia di internet, namun tidak semuanya menawarkan pengalaman yang mudah dan nyaman. TikTok MP3 Downloader ini dibuat dengan fokus pada kecepatan, kemudahan penggunaan, dan kompatibilitas di berbagai perangkat sehingga siapa pun dapat menggunakannya tanpa kesulitan." }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-3", children: "Anda cukup membuka halaman ini melalui browser, menyalin tautan video TikTok, lalu mengunduh file MP3 hanya dalam beberapa klik. Tidak diperlukan instalasi aplikasi, tidak ada proses registrasi yang memakan waktu, dan seluruh proses dapat dilakukan langsung secara online." }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Selain itu, layanan ini dapat digunakan kapan saja selama Anda memiliki koneksi internet. Antarmuka yang sederhana membuat proses download menjadi lebih cepat baik di perangkat Android, iPhone, iPad, Windows, maupun Mac. Kami juga terus melakukan pembaruan agar layanan tetap kompatibel dengan perubahan yang dilakukan oleh TikTok sehingga pengguna mendapatkan pengalaman download yang stabil dan mudah digunakan." })
+    ] }) }),
+    /* @__PURE__ */ jsx("section", { className: "py-5 bg-light", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Perangkat yang Didukung" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "TikTok MP3 Downloader dirancang agar dapat digunakan di hampir semua perangkat modern tanpa perlu menginstal aplikasi tambahan. Selama perangkat Anda memiliki browser dan koneksi internet yang stabil, proses download dapat dilakukan dengan mudah." }),
+      /* @__PURE__ */ jsx("div", { className: "table-responsive mb-4", children: /* @__PURE__ */ jsxs("table", { className: "table table-bordered bg-white align-middle text-center", children: [
+        /* @__PURE__ */ jsx("thead", { className: "table-dark", children: /* @__PURE__ */ jsxs("tr", { children: [
+          /* @__PURE__ */ jsx("th", { children: "Perangkat / Browser" }),
+          /* @__PURE__ */ jsx("th", { children: "Didukung" })
+        ] }) }),
+        /* @__PURE__ */ jsxs("tbody", { children: [
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "Android" }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(YesMark, {}) })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "iPhone" }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(YesMark, {}) })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "iPad" }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(YesMark, {}) })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "Windows PC" }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(YesMark, {}) })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "Mac" }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(YesMark, {}) })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "Linux" }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(YesMark, {}) })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "Tablet" }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(YesMark, {}) })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "Google Chrome" }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(YesMark, {}) })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "Safari" }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(YesMark, {}) })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "Mozilla Firefox" }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(YesMark, {}) })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "Microsoft Edge" }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(YesMark, {}) })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "Opera" }),
+            /* @__PURE__ */ jsx("td", { className: "text-center", children: /* @__PURE__ */ jsx(YesMark, {}) })
+          ] })
+        ] })
+      ] }) }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "Baik menggunakan smartphone maupun komputer, seluruh proses download dilakukan langsung melalui browser sehingga Anda tidak perlu memasang aplikasi tambahan di perangkat." }),
+      /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold mb-2", children: "Android" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "Pengguna Android cukup membuka browser seperti Chrome atau Firefox, lalu gunakan TikTok MP3 Downloader untuk mengunduh audio favorit tanpa perlu memasang aplikasi tambahan." }),
+      /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold mb-2", children: "iPhone & iPad" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "Layanan ini juga dapat digunakan pada perangkat iPhone maupun iPad. Untuk pengalaman terbaik, gunakan browser yang mendukung proses penyimpanan file di perangkat iOS." }),
+      /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold mb-2", children: "Windows & Mac" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "Baik menggunakan laptop maupun komputer desktop, Anda dapat mengakses layanan ini langsung melalui browser tanpa instalasi software tambahan." }),
+      /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold mb-2", children: "Tablet & Perangkat Lain" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Selain smartphone dan komputer, layanan ini juga dapat digunakan melalui tablet maupun perangkat lain yang memiliki browser modern." })
+    ] }) }),
+    /* @__PURE__ */ jsx("section", { className: "py-5 bg-white", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Format Link TikTok yang Didukung" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-3", children: "TikTok MP3 Downloader mendukung berbagai format URL resmi TikTok sehingga Anda dapat menyalin tautan dari aplikasi maupun browser." }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-2", children: "Contoh format link yang didukung:" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-3", children: "Tool ini mendukung berbagai jenis URL resmi TikTok, baik yang berasal dari aplikasi maupun browser desktop. Pastikan Anda menyalin tautan video secara lengkap agar proses download berjalan dengan lancar." }),
+      /* @__PURE__ */ jsxs("ul", { className: "text-muted mb-4", children: [
+        /* @__PURE__ */ jsx("li", { children: "https://www.tiktok.com/@username/video/123456789" }),
+        /* @__PURE__ */ jsx("li", { children: "https://vm.tiktok.com/XXXXXXXX/" }),
+        /* @__PURE__ */ jsx("li", { children: "https://vt.tiktok.com/XXXXXXXX/" }),
+        /* @__PURE__ */ jsx("li", { children: "https://m.tiktok.com/v/123456789.html" })
+      ] }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Pastikan Anda menyalin URL asli dari video TikTok agar proses download berjalan dengan baik." })
+    ] }) }),
+    /* @__PURE__ */ jsx("section", { className: "py-5 bg-light", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Mengapa Download MP3 TikTok Bisa Gagal?" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-3", children: "Dalam beberapa kondisi tertentu, proses download mungkin tidak berhasil. Hal tersebut biasanya bukan disebabkan oleh layanan, melainkan karena kondisi video atau tautan yang digunakan." }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-2", children: "Beberapa penyebab umum antara lain:" }),
+      /* @__PURE__ */ jsxs("ul", { className: "text-muted mb-4", children: [
+        /* @__PURE__ */ jsx("li", { children: "Link TikTok tidak valid." }),
+        /* @__PURE__ */ jsx("li", { children: "Video sudah dihapus oleh pemiliknya." }),
+        /* @__PURE__ */ jsx("li", { children: "Video bersifat privat." }),
+        /* @__PURE__ */ jsx("li", { children: "Audio asli sudah tidak tersedia." }),
+        /* @__PURE__ */ jsx("li", { children: "Gangguan koneksi internet." }),
+        /* @__PURE__ */ jsx("li", { children: "TikTok sedang melakukan pembaruan sistem." })
+      ] }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Apabila proses download gagal, coba salin kembali tautan video dan ulangi proses beberapa saat kemudian." })
+    ] }) }),
+    /* @__PURE__ */ jsx("section", { className: "py-5 bg-white", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Kapan Sebaiknya Menggunakan TikTok MP3 Downloader?" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-3", children: "TikTok MP3 Downloader dapat digunakan dalam berbagai situasi." }),
+      /* @__PURE__ */ jsxs("ul", { className: "text-muted mb-4", children: [
+        /* @__PURE__ */ jsx("li", { children: "Menyimpan lagu TikTok favorit." }),
+        /* @__PURE__ */ jsx("li", { children: "Download sound viral." }),
+        /* @__PURE__ */ jsx("li", { children: "Mendengarkan musik secara offline." }),
+        /* @__PURE__ */ jsx("li", { children: "Menggunakan audio sebagai nada dering." }),
+        /* @__PURE__ */ jsx("li", { children: "Menyimpan referensi audio untuk proses editing video." }),
+        /* @__PURE__ */ jsx("li", { children: "Mengoleksi musik TikTok favorit." })
+      ] }),
+      /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold mb-3", children: "Solusi Masalah Umum" }),
+      /* @__PURE__ */ jsx("div", { className: "table-responsive", children: /* @__PURE__ */ jsxs("table", { className: "table table-bordered bg-white align-middle", children: [
+        /* @__PURE__ */ jsx("thead", { className: "table-dark", children: /* @__PURE__ */ jsxs("tr", { children: [
+          /* @__PURE__ */ jsx("th", { children: "Masalah" }),
+          /* @__PURE__ */ jsx("th", { children: "Solusi" })
+        ] }) }),
+        /* @__PURE__ */ jsxs("tbody", { children: [
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "Link tidak valid" }),
+            /* @__PURE__ */ jsx("td", { children: "Salin kembali URL video dari TikTok." })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "Video privat" }),
+            /* @__PURE__ */ jsx("td", { children: "Gunakan video yang dapat diakses publik." })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "Audio tidak tersedia" }),
+            /* @__PURE__ */ jsx("td", { children: "Coba gunakan video lain yang memiliki audio asli." })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "Download gagal" }),
+            /* @__PURE__ */ jsx("td", { children: "Muat ulang halaman lalu coba kembali." })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "Proses terlalu lama" }),
+            /* @__PURE__ */ jsx("td", { children: "Periksa koneksi internet Anda." })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "File tidak tersimpan" }),
+            /* @__PURE__ */ jsx("td", { children: "Periksa folder Download pada perangkat Anda." })
+          ] })
+        ] })
+      ] }) })
+    ] }) }),
+    /* @__PURE__ */ jsx("section", { className: "py-5 bg-light", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Privasi dan Keamanan" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-3", children: "Privasi pengguna merupakan salah satu prioritas utama. Oleh karena itu, Anda tidak perlu membuat akun ataupun memberikan informasi pribadi untuk menggunakan layanan ini." }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-3", children: "Seluruh proses dilakukan secara online melalui browser sehingga Anda dapat mengakses layanan dengan lebih praktis tanpa instalasi aplikasi tambahan." }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "Kami juga menyarankan agar layanan ini digunakan secara bertanggung jawab serta menghormati hak cipta dan ketentuan penggunaan yang berlaku pada platform TikTok." }),
+      /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold mb-3", children: "Ringkasan Privasi" }),
+      /* @__PURE__ */ jsxs("ul", { className: "list-unstyled text-muted mb-0", children: [
+        /* @__PURE__ */ jsx(CheckListItem, { children: "Tidak perlu login" }),
+        /* @__PURE__ */ jsx(CheckListItem, { children: "Tidak meminta data pribadi" }),
+        /* @__PURE__ */ jsx(CheckListItem, { children: "Tidak perlu instal aplikasi" }),
+        /* @__PURE__ */ jsx(CheckListItem, { children: "Mudah digunakan melalui browser" }),
+        /* @__PURE__ */ jsx(CheckListItem, { className: "mb-0", children: "Gunakan hanya untuk konten yang memiliki izin untuk diunduh" })
+      ] })
+    ] }) }),
+    /* @__PURE__ */ jsx("section", { className: "py-5 bg-white", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-5", children: "Pertanyaan yang Sering Diajukan (FAQ)" }),
+      /* @__PURE__ */ jsx("div", { className: "row justify-content-center", children: /* @__PURE__ */ jsx("div", { className: "col-lg-10", children: /* @__PURE__ */ jsx("div", { className: "accordion faq-accordion", id: "faqAccordionMp3Id", children: faqs.map((faq, index) => /* @__PURE__ */ jsxs(
         "div",
         {
           className: "accordion-item border-0 mb-3 rounded-3 overflow-hidden shadow-sm",
@@ -5028,9 +5902,67 @@ function Mp3Id() {
         faq.q
       )) }) }) })
     ] }) }),
-    /* @__PURE__ */ jsx("section", { className: "py-4 bg-white", children: /* @__PURE__ */ jsxs("div", { className: "container", children: [
-      /* @__PURE__ */ jsx("h2", { className: "h5 fw-bold mb-2", children: "Disclaimer" }),
-      /* @__PURE__ */ jsx("p", { className: "text-muted small mb-0", children: "This tool is not affiliated with TikTok. Please respect creator rights and use downloaded content responsibly." })
+    /* @__PURE__ */ jsx("section", { className: "py-5 bg-light", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Kualitas Audio MP3" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "Kualitas file MP3 mengikuti kualitas audio yang tersedia pada video TikTok. Apabila video menggunakan audio berkualitas tinggi, hasil download juga akan tetap jernih. Tool ini memproses audio secara efisien sehingga Anda dapat menikmati file MP3 dengan kualitas terbaik yang tersedia." }),
+      /* @__PURE__ */ jsx("div", { className: "table-responsive mb-4", children: /* @__PURE__ */ jsxs("table", { className: "table table-bordered bg-white align-middle", children: [
+        /* @__PURE__ */ jsx("thead", { className: "table-dark", children: /* @__PURE__ */ jsxs("tr", { children: [
+          /* @__PURE__ */ jsx("th", { children: "MP3" }),
+          /* @__PURE__ */ jsx("th", { children: "MP4" })
+        ] }) }),
+        /* @__PURE__ */ jsxs("tbody", { children: [
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "Hanya berisi audio" }),
+            /* @__PURE__ */ jsx("td", { children: "Berisi video dan audio" })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "Ukuran file lebih kecil" }),
+            /* @__PURE__ */ jsx("td", { children: "Ukuran file lebih besar" })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "Cocok untuk musik, podcast, dan nada dering" }),
+            /* @__PURE__ */ jsx("td", { children: "Cocok untuk menonton video" })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "Lebih hemat ruang penyimpanan" }),
+            /* @__PURE__ */ jsx("td", { children: "Membutuhkan ruang penyimpanan lebih besar" })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "Mudah diputar di hampir semua perangkat" }),
+            /* @__PURE__ */ jsx("td", { children: "Mendukung tampilan video" })
+          ] })
+        ] })
+      ] }) }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Jika tujuan Anda hanya ingin menyimpan lagu, musik, atau sound TikTok, maka format MP3 merupakan pilihan yang paling praktis." })
+    ] }) }),
+    /* @__PURE__ */ jsx("section", { className: "py-5 bg-white", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Alat TikTok Lainnya" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "Selain mengunduh audio TikTok dalam format MP3, Anda juga dapat menggunakan berbagai alat lain untuk memenuhi kebutuhan download konten TikTok." }),
+      /* @__PURE__ */ jsxs("ul", { className: "text-muted mb-4", children: [
+        /* @__PURE__ */ jsx("li", { children: /* @__PURE__ */ jsx(Link, { to: "/id", children: "TikTok Video Downloader" }) }),
+        /* @__PURE__ */ jsx("li", { children: "TikTok Downloader Tanpa Watermark" }),
+        /* @__PURE__ */ jsx("li", { children: "TikTok Story Downloader" }),
+        /* @__PURE__ */ jsx("li", { children: "TikTok Slide Photo Downloader" }),
+        /* @__PURE__ */ jsx("li", { children: "TikTok Photo Downloader" }),
+        /* @__PURE__ */ jsx("li", { children: "TikTok Profile Picture Downloader" }),
+        /* @__PURE__ */ jsx("li", { children: "TikTok Thumbnail Downloader" }),
+        /* @__PURE__ */ jsx("li", { children: "TikTok Caption Downloader" })
+      ] }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Seluruh alat tersebut dirancang untuk mempermudah proses download konten TikTok secara cepat melalui browser tanpa perlu menginstal aplikasi tambahan." })
+    ] }) }),
+    /* @__PURE__ */ jsx("section", { className: "py-5 bg-light", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Catatan Penting" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-3", children: "TikTok MP3 Downloader merupakan alat yang membantu pengguna mengunduh audio dari video TikTok yang dapat diakses secara publik. Layanan ini tidak berafiliasi dengan TikTok maupun ByteDance Ltd." }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Kami mendorong setiap pengguna untuk menghormati hak cipta, hak kekayaan intelektual, serta ketentuan penggunaan TikTok. Pastikan Anda hanya mengunduh dan menggunakan konten yang memang memiliki izin atau diperbolehkan oleh pemiliknya." })
+    ] }) }),
+    /* @__PURE__ */ jsx("section", { className: "py-5 bg-white", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Mengapa Menggunakan TikTok MP3 Downloader Ini?" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-3", children: "Jika Anda mencari cara yang cepat, mudah, dan gratis untuk mengunduh lagu, musik, atau sound TikTok ke format MP3, layanan ini dapat menjadi solusi yang praktis. Anda tidak perlu membuat akun, tidak perlu menginstal aplikasi, dan seluruh proses dapat dilakukan langsung melalui browser dalam beberapa langkah sederhana." }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Dengan dukungan untuk Android, iPhone, iPad, Windows, Mac, Linux, serta berbagai browser modern, TikTok MP3 Downloader membantu Anda menyimpan audio favorit dengan lebih mudah kapan pun dibutuhkan." })
+    ] }) }),
+    /* @__PURE__ */ jsx("section", { className: "py-5 bg-light", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Kesimpulan" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Menyimpan audio TikTok kini tidak lagi rumit. Cukup salin tautan video, tempelkan ke kolom download di atas, lalu unduh file MP3 hanya dalam beberapa detik. Baik untuk mendengarkan musik secara offline, mengumpulkan sound favorit, atau menjadikannya nada dering, layanan ini memberikan cara yang cepat dan praktis tanpa perlu instalasi aplikasi ataupun proses registrasi." })
     ] }) })
   ] }) });
 }
@@ -5476,11 +6408,11 @@ function getSeoMeta(lang, section) {
       description: "Use a free TikTok Downloader to save TikTok videos without watermark on iPhone, Android, or PC."
     },
     mp3: lang === "id" ? {
-      title: "Download TikTok MP3, Sound, Audio, and Music",
-      description: "Selain video, kamu juga bisa mengambil audio dari TikTok untuk menyimpan sound, musik, voiceover, atau lagu TikTok tanpa videonya."
+      title: "Download TikTok MP3 Gratis Tanpa Aplikasi",
+      description: "Pernah menemukan lagu atau sound TikTok yang ingin disimpan, tetapi tidak tahu cara mengunduhnya sebagai file MP3? Dengan TikTok MP3 Downloader, Anda dapat mengubah video TikTok menjadi file MP3 hanya dalam beberapa detik."
     } : {
-      title: "Download TikTok MP3, Sound, Audio, and Music",
-      description: "Extract and download MP3 audio, sound, and music from public TikTok videos."
+      title: "TikTok MP3 Downloader – Free TikTok Audio & Sound Download Online",
+      description: "Download TikTok audio as high-quality MP3 in just a few clicks. Our TikTok MP3 Downloader lets you convert public TikTok videos into MP3 files online without installing software, creating an account, or downloading the entire video."
     },
     faq: lang === "id" ? {
       title: "FAQ TikTok Downloader",
@@ -5675,10 +6607,10 @@ function Footer() {
       /* @__PURE__ */ jsxs("div", { className: "col-lg-4 col-md-4", children: [
         /* @__PURE__ */ jsx("h5", { className: "mb-3 fw-bold", children: "Features" }),
         /* @__PURE__ */ jsxs("ul", { className: "list-unstyled text-white-50", children: [
-          /* @__PURE__ */ jsx("li", { className: "mb-2", children: "✓ Download TikTok Videos Without Watermark" }),
-          /* @__PURE__ */ jsx("li", { className: "mb-2", children: "✓ High-Quality MP4 & MP3 Downloads" }),
-          /* @__PURE__ */ jsx("li", { className: "mb-2", children: "✓ Free & Unlimited Downloads" }),
-          /* @__PURE__ */ jsx("li", { className: "mb-2", children: "✓ Works on All Devices" })
+          /* @__PURE__ */ jsx(CheckListItem, { className: "mb-2 text-white-50", children: "Download TikTok Videos Without Watermark" }),
+          /* @__PURE__ */ jsx(CheckListItem, { className: "mb-2 text-white-50", children: "High-Quality MP4 & MP3 Downloads" }),
+          /* @__PURE__ */ jsx(CheckListItem, { className: "mb-2 text-white-50", children: "Free & Unlimited Downloads" }),
+          /* @__PURE__ */ jsx(CheckListItem, { className: "mb-2 text-white-50", children: "Works on All Devices" })
         ] })
       ] })
     ] }),

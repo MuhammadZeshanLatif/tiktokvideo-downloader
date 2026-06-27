@@ -159,3 +159,57 @@ body {
   color: #2b2f38;
   background: #ffffff;
 }
+
+.status-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.status-icon-yes {
+  color: #198754;
+}
+
+.status-icon-no {
+  color: #adb5bd;
+}
+
+.step-flow {
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+.step-flow-block {
+  text-align: center;
+}
+
+.step-flow-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  font-weight: 500;
+  color: #495057;
+}
+
+.step-flow-number {
+  display: inline-flex;
+  width: 2rem;
+  height: 2rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--tiktok-cyan) 0%, #00bcd4 100%);
+  color: var(--tiktok-dark);
+  font-weight: 700;
+  font-size: 0.875rem;
+  flex-shrink: 0;
+}
+
+.step-flow-arrow {
+  padding: 0.5rem 0;
+  font-size: 0.875rem;
+}

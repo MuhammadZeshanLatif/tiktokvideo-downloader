@@ -41,18 +41,18 @@ export function getSeoMeta(lang: Lang, section: Section) {
             description:
               'Use a free TikTok Downloader to save TikTok videos without watermark on iPhone, Android, or PC.',
           },
-    mp3:
-      lang === 'id'
-        ? {
-            title: 'Download TikTok MP3, Sound, Audio, and Music',
-            description:
-              'Selain video, kamu juga bisa mengambil audio dari TikTok untuk menyimpan sound, musik, voiceover, atau lagu TikTok tanpa videonya.',
-          }
-        : {
-            title: 'Download TikTok MP3, Sound, Audio, and Music',
-            description:
-              'Extract and download MP3 audio, sound, and music from public TikTok videos.',
-          },
+      mp3:
+        lang === 'id'
+          ? {
+              title: 'Download TikTok MP3 Gratis Tanpa Aplikasi',
+              description:
+                'Pernah menemukan lagu atau sound TikTok yang ingin disimpan, tetapi tidak tahu cara mengunduhnya sebagai file MP3? Dengan TikTok MP3 Downloader, Anda dapat mengubah video TikTok menjadi file MP3 hanya dalam beberapa detik.',
+            }
+          : {
+              title: 'TikTok MP3 Downloader – Free TikTok Audio & Sound Download Online',
+              description:
+                'Download TikTok audio as high-quality MP3 in just a few clicks. Our TikTok MP3 Downloader lets you convert public TikTok videos into MP3 files online without installing software, creating an account, or downloading the entire video.',
+            },
     faq:
       lang === 'id'
         ? {

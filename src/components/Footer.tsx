@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTiktok, faInstagram, faFacebook, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { faMusic } from '@fortawesome/free-solid-svg-icons';
+import { CheckListItem } from './ui/StatusIcons';
 
 export function Footer() {
   return (
@@ -67,10 +68,16 @@ export function Footer() {
           <div className="col-lg-4 col-md-4">
             <h5 className="mb-3 fw-bold">Features</h5>
             <ul className="list-unstyled text-white-50">
-              <li className="mb-2">✓ Download TikTok Videos Without Watermark</li>
-              <li className="mb-2">✓ High-Quality MP4 & MP3 Downloads</li>
-              <li className="mb-2">✓ Free & Unlimited Downloads</li>
-              <li className="mb-2">✓ Works on All Devices</li>
+              <CheckListItem className="mb-2 text-white-50">
+                Download TikTok Videos Without Watermark
+              </CheckListItem>
+              <CheckListItem className="mb-2 text-white-50">
+                High-Quality MP4 &amp; MP3 Downloads
+              </CheckListItem>
+              <CheckListItem className="mb-2 text-white-50">
+                Free &amp; Unlimited Downloads
+              </CheckListItem>
+              <CheckListItem className="mb-2 text-white-50">Works on All Devices</CheckListItem>
             </ul>
           </div>
         </div>
