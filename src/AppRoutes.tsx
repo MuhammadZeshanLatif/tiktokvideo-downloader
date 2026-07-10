@@ -3,6 +3,10 @@ import { HomeEn } from './pages/HomeEn';
 import { HomeId } from './pages/HomeId';
 import { Mp3En } from './pages/Mp3En';
 import { Mp3Id } from './pages/Mp3Id';
+import { ThumbEn } from './pages/ThumbEn';
+import { ThumbId } from './pages/ThumbId';
+import { ProfileEn } from './pages/ProfileEn';
+import { ProfileId } from './pages/ProfileId';
 import { FAQ } from './pages/FAQ';
 import { Contact } from './pages/Contact';
 import { PrivacyPolicy } from './pages/PrivacyPolicy';
@@ -25,6 +29,22 @@ export function AppRoutes() {
         element={
           <AppShell lang="en" section="mp3">
             <Mp3En />
+          </AppShell>
+        }
+      />
+      <Route
+        path="/thumbnail"
+        element={
+          <AppShell lang="en" section="thumbnail">
+            <ThumbEn />
+          </AppShell>
+        }
+      />
+      <Route
+        path="/profile"
+        element={
+          <AppShell lang="en" section="profile">
+            <ProfileEn />
           </AppShell>
         }
       />
@@ -73,6 +93,22 @@ export function AppRoutes() {
         element={
           <AppShell lang="id" section="mp3">
             <Mp3Id />
+          </AppShell>
+        }
+      />
+      <Route
+        path="/id/thumbnail"
+        element={
+          <AppShell lang="id" section="thumbnail">
+            <ThumbId />
+          </AppShell>
+        }
+      />
+      <Route
+        path="/id/profile"
+        element={
+          <AppShell lang="id" section="profile">
+            <ProfileId />
           </AppShell>
         }
       />

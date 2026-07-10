@@ -10,6 +10,10 @@ export function buildLocalizedPath(lang: Lang, section: Section) {
       return prefix || '/';
     case 'mp3':
       return `${prefix}/mp3`;
+    case 'thumbnail':
+      return `${prefix}/thumbnail`;
+    case 'profile':
+      return `${prefix}/profile`;
     case 'faq':
       return `${prefix}/faq`;
     case 'contact':
@@ -53,6 +57,30 @@ export function getSeoMeta(lang: Lang, section: Section) {
               description:
                 'Free TikTok MP3 Downloader to convert TikTok videos into MP3. Download TikTok audio online in seconds without apps or sign-up.',
             },
+    thumbnail:
+      lang === 'id'
+        ? {
+            title: 'TikTok Thumbnail Downloader – Download Cover Video TikTok',
+            description:
+              'Download thumbnail atau cover image video TikTok dalam kualitas HD. Tempel link video TikTok, lalu simpan gambar cover-nya secara gratis tanpa aplikasi atau login.',
+          }
+        : {
+            title: 'TikTok Thumbnail Downloader – Download TikTok Video Cover Image',
+            description:
+              'Download the TikTok thumbnail or cover image of any public video in HD. Paste the TikTok video link and save the cover image for free without apps or sign-up.',
+          },
+    profile:
+      lang === 'id'
+        ? {
+            title: 'TikTok Profile Picture Downloader – Simpan Foto Profil TikTok HD',
+            description:
+              'Download profile picture atau foto profil TikTok dalam ukuran penuh. Masukkan username atau link profil TikTok, lalu simpan avatar HD secara gratis tanpa aplikasi atau login.',
+          }
+        : {
+            title: 'TikTok Profile Picture Downloader – Save TikTok Avatar in HD',
+            description:
+              'Download a TikTok profile picture in full size. Enter a TikTok username or profile link and save the HD avatar for free without apps or sign-up.',
+          },
     faq:
       lang === 'id'
         ? {

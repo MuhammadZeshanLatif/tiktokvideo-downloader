@@ -31,7 +31,22 @@ export type DownloaderText = {
   noLinksFound: string;
   ready: string;
   defaultTitle: string;
+  // Optional — only used on the thumbnail page.
+  downloadThumbnail?: string;
+  noThumbnail?: string;
 };
+
+export type Format = 'mp4' | 'mp3' | 'thumbnail';
+
+function safeFileName(name: string) {
+  return (
+    (name || 'tiktok-thumbnail')
+      .replace(/[\\/:*?"<>|]+/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim()
+      .slice(0, 80) || 'tiktok-thumbnail'
+  );
+}
 
 type DownloadData = {
   status: string;
@@ -194,6 +209,42 @@ function useDownloaderLogic(t: DownloaderText) {
     }
   };
 
+  // Thumbnail/cover is an image on the TikTok CDN (which sends
+  // Access-Control-Allow-Origin: *), so we fetch it client-side as a blob and
+  // save it as a real .jpg. The backend download proxy is video-only and would
+  // mislabel images as .mp4, so it is intentionally not used here.
+  const downloadImage = async (imageUrl: string, label: string) => {
+    if (!imageUrl) {
+      return;
+    }
+
+    setIsDownloading(true);
+    setDownloadLabel(label);
+    const baseName = safeFileName(downloadData?.title || 'tiktok-thumbnail');
+
+    try {
+      const response = await fetch(imageUrl);
+      if (!response.ok) {
+        throw new Error('image fetch failed');
+      }
+      const blob = await response.blob();
+      const blobUrl = window.URL.createObjectURL(blob);
+      const anchor = document.createElement('a');
+      anchor.href = blobUrl;
+      anchor.download = `${baseName}.jpg`;
+      document.body.appendChild(anchor);
+      anchor.click();
+      anchor.remove();
+      window.URL.revokeObjectURL(blobUrl);
+    } catch {
+      // Fallback: open the image so the user can save it manually.
+      window.open(imageUrl, '_blank', 'noopener,noreferrer');
+    } finally {
+      setIsDownloading(false);
+      setDownloadLabel('');
+    }
+  };
+
   return {
     url,
     setUrl,
@@ -205,6 +256,7 @@ function useDownloaderLogic(t: DownloaderText) {
     handlePaste,
     handleDownload,
     handleFileDownload,
+    downloadImage,
   };
 }
 
@@ -216,8 +268,8 @@ function DownloaderForm({
   logic,
 }: {
   t: DownloaderText;
-  lockFormat?: 'mp4' | 'mp3';
-  format: 'mp4' | 'mp3';
+  lockFormat?: Format;
+  format: Format;
   setFormat: (f: 'mp4' | 'mp3') => void;
   logic: ReturnType<typeof useDownloaderLogic>;
 }) {
@@ -311,10 +363,11 @@ function DownloadResults({
   logic,
 }: {
   t: DownloaderText;
-  format: 'mp4' | 'mp3';
+  format: Format;
   logic: ReturnType<typeof useDownloaderLogic>;
 }) {
-  const { message, downloadData, isDownloading, downloadLabel, handleFileDownload } = logic;
+  const { message, downloadData, isDownloading, downloadLabel, handleFileDownload, downloadImage } =
+    logic;
   const resultsRef = useRef<HTMLElement | null>(null);
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
@@ -322,6 +375,7 @@ function DownloadResults({
   const videoControlTimer = useRef<number | null>(null);
 
   const isMp3Mode = format === 'mp3';
+  const isThumbMode = format === 'thumbnail';
 
   const downloadOptions = useMemo(() => {
     if (!downloadData?.downloads?.length) {
@@ -439,7 +493,38 @@ function DownloadResults({
                 </h3>
                 <p className="text-muted small mb-4">{t.previewNote}</p>
 
-                {isMp3Mode ? (
+                {isThumbMode ? (
+                  downloadData.thumbnail ? (
+                    <>
+                      <div className="mb-4 d-flex justify-content-center">
+                        <img
+                          src={downloadData.thumbnail}
+                          alt={downloadData.title || t.defaultTitle}
+                          className="rounded-3 shadow-sm"
+                          style={{ maxHeight: '460px', maxWidth: '100%', objectFit: 'contain' }}
+                        />
+                      </div>
+                      <button
+                        type="button"
+                        className="btn btn-tiktok btn-lg px-5"
+                        onClick={() =>
+                          downloadImage(
+                            downloadData.thumbnail as string,
+                            t.downloadThumbnail ?? 'Image'
+                          )
+                        }
+                        disabled={isDownloading}
+                      >
+                        <FontAwesomeIcon icon={faDownload} className="me-2" />
+                        {t.downloadThumbnail ?? 'Download Image'}
+                      </button>
+                    </>
+                  ) : (
+                    <div className="alert alert-warning mb-0" role="alert">
+                      {t.noThumbnail ?? t.noLinksForFormat('Thumbnail')}
+                    </div>
+                  )
+                ) : isMp3Mode ? (
                   <>
                     {downloadData.thumbnail && (
                       <div className="mb-4 d-flex justify-content-center">
@@ -580,14 +665,14 @@ export function Downloader({
   children,
 }: {
   t: DownloaderText;
-  lockFormat?: 'mp4' | 'mp3';
+  lockFormat?: Format;
   children: (parts: {
     Form: React.ReactNode;
     Results: React.ReactNode;
     hasResults: boolean;
   }) => React.ReactNode;
 }) {
-  const [format, setFormat] = useState<'mp4' | 'mp3'>(lockFormat ?? 'mp4');
+  const [format, setFormat] = useState<Format>(lockFormat ?? 'mp4');
   const logic = useDownloaderLogic(t);
 
   const effectiveFormat = lockFormat ?? format;

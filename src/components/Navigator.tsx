@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMusic, faGlobe, faVideo } from '@fortawesome/free-solid-svg-icons';
+import { faMusic, faGlobe, faVideo, faImage, faUser } from '@fortawesome/free-solid-svg-icons';
 import type { Lang, Page, Section } from '../App';
 import { buildLocalizedPath } from '../seo';
 
@@ -10,9 +10,18 @@ const LANGUAGES: { code: Lang; label: string }[] = [
 ];
 
 export function Navigator({ lang, section = 'home' }: { lang: Lang; section?: Section }) {
-  const page: Page = section === 'mp3' ? 'mp3' : 'home';
+  const page: Page =
+    section === 'mp3'
+      ? 'mp3'
+      : section === 'thumbnail'
+        ? 'thumbnail'
+        : section === 'profile'
+          ? 'profile'
+          : 'home';
   const homeHref = buildLocalizedPath(lang, 'home');
   const mp3Href = buildLocalizedPath(lang, 'mp3');
+  const thumbnailHref = buildLocalizedPath(lang, 'thumbnail');
+  const profileHref = buildLocalizedPath(lang, 'profile');
   const current = LANGUAGES.find((l) => l.code === lang) ?? LANGUAGES[0];
   const pageLinks = (
     <>
@@ -33,6 +42,24 @@ export function Navigator({ lang, section = 'home' }: { lang: Lang; section?: Se
       >
         <FontAwesomeIcon icon={faMusic} className="small" />
         TikTok MP3 Downloader
+      </Link>
+      <Link
+        className={`nav-link nav-pill-link d-inline-flex align-items-center gap-2 ${
+          page === 'thumbnail' ? 'active' : ''
+        }`}
+        to={thumbnailHref}
+      >
+        <FontAwesomeIcon icon={faImage} className="small" />
+        TikTok Thumbnail Downloader
+      </Link>
+      <Link
+        className={`nav-link nav-pill-link d-inline-flex align-items-center gap-2 ${
+          page === 'profile' ? 'active' : ''
+        }`}
+        to={profileHref}
+      >
+        <FontAwesomeIcon icon={faUser} className="small" />
+        TikTok Profile Picture Downloader
       </Link>
     </>
   );
