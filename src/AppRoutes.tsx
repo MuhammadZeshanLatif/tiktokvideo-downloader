@@ -52,7 +52,7 @@ export function AppRoutes() {
         path="/faq"
         element={
           <AppShell lang="en" section="faq">
-            <FAQ />
+            <FAQ lang="en" />
           </AppShell>
         }
       />
@@ -60,7 +60,7 @@ export function AppRoutes() {
         path="/contact"
         element={
           <AppShell lang="en" section="contact">
-            <Contact />
+            <Contact lang="en" />
           </AppShell>
         }
       />
@@ -68,7 +68,7 @@ export function AppRoutes() {
         path="/privacy-policy"
         element={
           <AppShell lang="en" section="privacy-policy">
-            <PrivacyPolicy />
+            <PrivacyPolicy lang="en" />
           </AppShell>
         }
       />
@@ -76,7 +76,7 @@ export function AppRoutes() {
         path="/terms-conditions"
         element={
           <AppShell lang="en" section="terms-conditions">
-            <TermsConditions />
+            <TermsConditions lang="en" />
           </AppShell>
         }
       />
@@ -116,7 +116,7 @@ export function AppRoutes() {
         path="/id/faq"
         element={
           <AppShell lang="id" section="faq">
-            <FAQ />
+            <FAQ lang="id" />
           </AppShell>
         }
       />
@@ -124,7 +124,7 @@ export function AppRoutes() {
         path="/id/contact"
         element={
           <AppShell lang="id" section="contact">
-            <Contact />
+            <Contact lang="id" />
           </AppShell>
         }
       />
@@ -132,7 +132,7 @@ export function AppRoutes() {
         path="/id/privacy-policy"
         element={
           <AppShell lang="id" section="privacy-policy">
-            <PrivacyPolicy />
+            <PrivacyPolicy lang="id" />
           </AppShell>
         }
       />
@@ -140,7 +140,7 @@ export function AppRoutes() {
         path="/id/terms-conditions"
         element={
           <AppShell lang="id" section="terms-conditions">
-            <TermsConditions />
+            <TermsConditions lang="id" />
           </AppShell>
         }
       />

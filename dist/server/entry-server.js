@@ -4140,43 +4140,7 @@ function Downloader({
   const Results = /* @__PURE__ */ jsx(DownloadResults, { t: t2, format: effectiveFormat, logic });
   return /* @__PURE__ */ jsx(Fragment, { children: children({ Form, Results, hasResults }) });
 }
-const t$7 = {
-  cardTitle: "",
-  cardSubtitle: "",
-  placeholder: "https://www.tiktok.com/@user/video/...",
-  pasteButton: "Paste TikTok Link",
-  mp4Label: "MP4 (Video)",
-  mp3Label: "MP3 (Audio)",
-  downloadButton: "Download",
-  processing: "Processing...",
-  resultsTitle: "Download Results",
-  resultsSubtitle: "Preview your video and use the download button below.",
-  previewNote: "Preview and download your video.",
-  downloadVideo: "Download Video",
-  downloadAudio: "Download Audio",
-  downloadingPrefix: "Downloading",
-  noLinksForFormat: (format) => `No ${format} links found. Try a different TikTok URL.`,
-  invalidUrl: "Please enter a valid TikTok URL",
-  fetchFailed: "Failed to fetch TikTok download links.",
-  noLinksFound: "No download links were found. Try a different TikTok URL.",
-  ready: "Download links are ready.",
-  defaultTitle: "TikTok Download"
-};
-const features$1 = [
-  "Download TikTok videos without watermark",
-  "Download TikTok videos with watermark",
-  "Save TikTok videos as MP4",
-  "Download TikTok MP3 audio if supported",
-  "Save TikTok sound, audio, and music if available",
-  "Download TikTok photos or slideshows if supported",
-  "Download public TikTok stories when available",
-  "Save TikTok profile pictures if supported",
-  "Download TikTok thumbnails or cover images if available",
-  "Works on iPhone, Android, iPad, PC, and Mac",
-  "No app install required",
-  "No TikTok login required"
-];
-const faqs$7 = [
+const homeFaqsEn = [
   {
     q: "What is a TikTok Downloader?",
     a: "A TikTok Downloader is an online tool that helps you save TikTok videos, audio, photos, stories, profile pictures, or thumbnails from public TikTok links."
@@ -4250,17 +4214,227 @@ const faqs$7 = [
     a: "Download content only for personal use, study, backup, or reference. If you want to repost, edit, share, or use someone else’s content commercially, get permission from the creator and respect copyright rules."
   }
 ];
+const homeFaqsId = [
+  {
+    q: "Apa itu TikTok Downloader?",
+    a: "TikTok Downloader adalah tool online untuk menyimpan video, audio, foto, story, profile picture, atau thumbnail dari TikTok menggunakan link publik."
+  },
+  {
+    q: "Bisakah download video TikTok tanpa watermark?",
+    a: "Ya, kamu bisa memilih opsi download video TikTok tanpa watermark jika tersedia. Hasilnya berupa video bersih tanpa logo TikTok yang bergerak."
+  },
+  {
+    q: "Bisakah download video TikTok dengan watermark?",
+    a: "Ya, gunakan opsi with watermark jika kamu ingin video tetap menampilkan logo TikTok dan username kreator."
+  },
+  {
+    q: "Apakah TikTok downloader ini mendukung kualitas HD?",
+    a: "Tool akan mencoba mengambil kualitas terbaik yang tersedia dari link video. Hasil akhir tergantung kualitas video asli di TikTok."
+  },
+  {
+    q: "Apakah TikTok downloader ini gratis?",
+    a: "Ya, tool ini gratis digunakan. Tidak perlu membayar, daftar, atau login untuk download video TikTok."
+  },
+  {
+    q: "Apakah perlu install APK TikTok Downloader?",
+    a: "Tidak. Kamu bisa menggunakan downloader ini langsung dari browser tanpa APK, tanpa app, dan tanpa software tambahan."
+  },
+  {
+    q: "Apakah ini aplikasi download video TikTok?",
+    a: "Ini adalah online web tool, bukan aplikasi yang harus diinstall. Kamu bisa membukanya lewat browser di Android, iPhone, iPad, atau PC."
+  },
+  {
+    q: "Bisakah download video TikTok di PC?",
+    a: "Ya. Buka downloader ini di browser PC atau laptop, paste link TikTok, lalu pilih format download."
+  },
+  {
+    q: "Bisakah download video TikTok di iPhone?",
+    a: "Ya. Gunakan Safari atau browser lain di iPhone. File biasanya tersimpan di aplikasi Files, lalu bisa kamu pindahkan jika diperlukan."
+  },
+  {
+    q: "Bisakah mengubah video TikTok jadi MP3?",
+    a: "Ya, jika opsi MP3 tersedia, kamu bisa mengambil audio dari video TikTok dan menyimpannya sebagai file MP3."
+  },
+  {
+    q: "Bisakah download sound, audio, atau musik TikTok?",
+    a: "Ya. Gunakan fitur MP3/audio untuk menyimpan sound, musik, voiceover, atau original sound dari TikTok."
+  },
+  {
+    q: "Bisakah dipakai untuk download foto TikTok?",
+    a: "Ya, jika konten TikTok berupa foto atau slideshow, kamu bisa menggunakan fitur photo downloader untuk menyimpan gambar."
+  },
+  {
+    q: "Bisakah download story TikTok?",
+    a: "Ya, story publik yang masih aktif bisa diproses jika link tersedia dan dapat diakses."
+  },
+  {
+    q: "Bisakah download foto profil TikTok?",
+    a: "Ya, gunakan username atau link profil jika fitur profile picture downloader tersedia di tool."
+  },
+  {
+    q: "Bisakah download video TikTok lewat username?",
+    a: "Untuk download video tertentu, link video langsung lebih akurat daripada username. Username lebih cocok untuk fitur profil, seperti profile picture."
+  },
+  {
+    q: "Di mana video TikTok yang sudah didownload tersimpan?",
+    a: "Di Android dan PC, file biasanya masuk ke folder Downloads. Di iPhone, file biasanya tersimpan di Files atau Photos, tergantung browser."
+  },
+  {
+    q: "Bisakah download video TikTok yang privat?",
+    a: "Tidak. Tool ini hanya bekerja untuk konten publik yang bisa diakses melalui link. Private videos tidak dapat diproses."
+  },
+  {
+    q: "Apakah download video TikTok itu legal?",
+    a: "Gunakan file yang kamu download untuk kebutuhan pribadi, referensi, atau belajar. Jika ingin repost, membagikan ulang, atau memakai konten untuk bisnis, pastikan kamu punya izin dari kreator dan tetap menghormati hak cipta."
+  }
+];
+const faqPageEn = [
+  {
+    q: "How to download TikTok videos?",
+    a: "Downloading TikTok videos is simple: 1) Open TikTok and find the video you want to download. 2) Tap the Share button and copy the link. 3) Paste the URL into our TikTok downloader. 4) Select MP4 or MP3 format. 5) Click Download and save your video!"
+  },
+  {
+    q: "Can I download TikTok videos in HD?",
+    a: "Yes! Our TikTok video downloader supports HD quality downloads. We save videos in the highest available quality, typically 1080p or 720p depending on the original video quality uploaded to TikTok."
+  },
+  {
+    q: "Are there any limitations to downloads?",
+    a: "No, there are no limitations! Our TikTok downloader offers unlimited free downloads. You can download as many TikTok videos as you want, whenever you want, without any daily or monthly limits."
+  },
+  {
+    q: "Is the TikTok downloader service free?",
+    a: "Yes, our TikTok video downloader is 100% free to use. There are no hidden fees, no premium plans, and no registration required. Just paste the URL and download immediately."
+  },
+  {
+    q: "Can I download TikTok videos without watermark?",
+    a: "Absolutely! Our tool specifically removes the TikTok watermark from videos. You get clean, watermark-free videos that you can use for personal projects, compilations, or sharing."
+  },
+  {
+    q: "Does this work on mobile devices?",
+    a: "Yes! Our TikTok downloader is fully responsive and works on all devices including Android phones, iPhones, iPads, and desktop computers. No app installation is required."
+  },
+  {
+    q: "Can I convert TikTok videos to MP3?",
+    a: "Yes, you can easily convert TikTok videos to MP3 audio format. Simply paste the video URL, select MP3 as your download format, and get the audio file. Perfect for saving TikTok sounds and music!"
+  },
+  {
+    q: "Is it safe to use this TikTok downloader?",
+    a: "Yes, our service is completely safe. We don't store any personal information, don't require login, and don't install any software on your device. Your privacy is our priority."
+  },
+  {
+    q: "Why isn't my download working?",
+    a: "If your download isn't working, check these: 1) Make sure the URL is correct and complete. 2) The video might be private or deleted. 3) Try refreshing the page and pasting the URL again. 4) Contact us if the issue persists."
+  },
+  {
+    q: "Can I download private TikTok videos?",
+    a: "No, our downloader can only download public TikTok videos. Private videos require the owner's permission and cannot be accessed by third-party tools."
+  },
+  {
+    q: "How long does it take to download a video?",
+    a: "Downloads are typically instant! Most TikTok videos are downloaded within 5-10 seconds, depending on your internet connection speed and the video length."
+  },
+  {
+    q: "Is downloading TikTok videos legal?",
+    a: "Downloading TikTok videos for personal use is generally acceptable. However, you should respect copyright and not redistribute or use content commercially without the creator's permission."
+  }
+];
+const faqPageId = [
+  {
+    q: "Bagaimana cara download video TikTok?",
+    a: "Caranya mudah: 1) Buka TikTok dan cari video yang ingin kamu simpan. 2) Ketuk tombol Share lalu salin linknya. 3) Tempel link tersebut ke kotak downloader di halaman ini. 4) Pilih format MP4 atau MP3. 5) Ketuk Download dan simpan filenya."
+  },
+  {
+    q: "Bisakah download video TikTok kualitas HD?",
+    a: "Bisa. Downloader ini mengambil kualitas terbaik yang tersedia dari link video, biasanya 1080p atau 720p tergantung kualitas asli video yang diunggah ke TikTok."
+  },
+  {
+    q: "Apakah ada batasan jumlah download?",
+    a: "Tidak ada batasan. Kamu bisa download video TikTok sebanyak yang kamu mau, kapan saja, tanpa limit harian maupun bulanan."
+  },
+  {
+    q: "Apakah layanan TikTok downloader ini gratis?",
+    a: "Ya, tool ini 100% gratis. Tidak ada biaya tersembunyi, tidak ada paket premium, dan tidak perlu registrasi. Cukup tempel link lalu download."
+  },
+  {
+    q: "Bisakah download video TikTok tanpa watermark?",
+    a: "Bisa. Pilih opsi tanpa watermark jika tersedia, dan kamu akan mendapat video bersih tanpa logo TikTok yang bergerak."
+  },
+  {
+    q: "Apakah bisa dipakai di HP?",
+    a: "Bisa. Downloader ini responsif dan bekerja di semua perangkat termasuk Android, iPhone, iPad, dan komputer desktop. Tidak perlu install aplikasi."
+  },
+  {
+    q: "Bisakah mengubah video TikTok jadi MP3?",
+    a: "Bisa. Tempel link video, pilih MP3 sebagai format download, lalu simpan file audionya. Cocok untuk menyimpan sound dan musik TikTok."
+  },
+  {
+    q: "Apakah aman menggunakan TikTok downloader ini?",
+    a: "Aman. Kami tidak menyimpan data pribadi, tidak meminta login, dan tidak memasang software apa pun di perangkat kamu."
+  },
+  {
+    q: "Kenapa download saya gagal?",
+    a: "Jika download tidak berjalan, periksa hal berikut: 1) Pastikan link sudah benar dan lengkap. 2) Video mungkin privat atau sudah dihapus. 3) Coba refresh halaman lalu tempel ulang linknya. 4) Hubungi kami jika masalah berlanjut."
+  },
+  {
+    q: "Bisakah download video TikTok yang privat?",
+    a: "Tidak bisa. Downloader ini hanya bisa memproses video TikTok yang bersifat publik. Video privat memerlukan izin pemiliknya dan tidak dapat diakses tool pihak ketiga."
+  },
+  {
+    q: "Berapa lama proses downloadnya?",
+    a: "Umumnya langsung selesai. Sebagian besar video TikTok terunduh dalam 5-10 detik, tergantung kecepatan internet dan durasi videonya."
+  },
+  {
+    q: "Apakah download video TikTok itu legal?",
+    a: "Download untuk keperluan pribadi umumnya tidak masalah. Namun kamu tetap harus menghormati hak cipta dan tidak menyebarkan ulang atau memakai konten secara komersial tanpa izin kreatornya."
+  }
+];
+const t$7 = {
+  cardTitle: "",
+  cardSubtitle: "",
+  placeholder: "https://www.tiktok.com/@user/video/...",
+  pasteButton: "Paste TikTok Link",
+  mp4Label: "MP4 (Video)",
+  mp3Label: "MP3 (Audio)",
+  downloadButton: "Download",
+  processing: "Processing...",
+  resultsTitle: "Download Results",
+  resultsSubtitle: "Preview your video and use the download button below.",
+  previewNote: "Preview and download your video.",
+  downloadVideo: "Download Video",
+  downloadAudio: "Download Audio",
+  downloadingPrefix: "Downloading",
+  noLinksForFormat: (format) => `No ${format} links found. Try a different TikTok URL.`,
+  invalidUrl: "Please enter a valid TikTok URL",
+  fetchFailed: "Failed to fetch TikTok download links.",
+  noLinksFound: "No download links were found. Try a different TikTok URL.",
+  ready: "Download links are ready.",
+  defaultTitle: "TikTok Download"
+};
+const features$1 = [
+  "Download TikTok videos without watermark",
+  "Download TikTok videos with watermark",
+  "Save TikTok videos as MP4",
+  "Download TikTok MP3 audio if supported",
+  "Save TikTok sound, audio, and music if available",
+  "Download TikTok photos or slideshows if supported",
+  "Download public TikTok stories when available",
+  "Save TikTok profile pictures if supported",
+  "Download TikTok thumbnails or cover images if available",
+  "Works on iPhone, Android, iPad, PC, and Mac",
+  "No app install required",
+  "No TikTok login required"
+];
 function HomeEn() {
   return /* @__PURE__ */ jsx(Downloader, { t: t$7, lockFormat: "mp4", children: ({ Form, Results }) => /* @__PURE__ */ jsxs(Fragment, { children: [
     /* @__PURE__ */ jsx("section", { id: "download-section", className: "hero-gradient text-white py-5", children: /* @__PURE__ */ jsx("div", { className: "container py-5", children: /* @__PURE__ */ jsxs("div", { className: "row align-items-center", children: [
       /* @__PURE__ */ jsxs("div", { className: "col-lg-6 mb-5 mb-lg-0", children: [
         /* @__PURE__ */ jsxs("h1", { className: "display-5 fw-bold mb-4", children: [
-          "TikTok Downloader — Download TikTok Videos",
+          "TikTok Downloader — TikTok to MP4 Video Download",
           " ",
           /* @__PURE__ */ jsx("span", { className: "tiktok-text", children: "Without Watermark" })
         ] }),
-        /* @__PURE__ */ jsx("p", { className: "lead mb-3 text-white-50", children: "Save TikTok videos without watermark in a fast and simple way. Copy the TikTok video link, paste it into the downloader, then download the MP4 video you need, such as a no-watermark video, with-watermark video, photo, story, profile picture, or thumbnail if the feature is available." }),
-        /* @__PURE__ */ jsx("p", { className: "mb-0 text-white-50", children: "Many people just want to save a funny clip, a tutorial, or a photo slideshow without installing another app or logging in. This TikTok Downloader is built for users on iPhone, Android, iPad, PC, and Mac who want a clean browser-based tool that works with public TikTok links." })
+        /* @__PURE__ */ jsx("p", { className: "lead mb-3 text-white-50", children: "Save TikTok videos without watermark in a fast and simple way. Copy the TikTok video link, paste it into the TikTok downloader, then convert TikTok to MP4 and download the video you need, such as a no-watermark video, with-watermark video, photo, story, profile picture, or thumbnail if the feature is available." }),
+        /* @__PURE__ */ jsx("p", { className: "mb-0 text-white-50", children: "Many people search for terms like tikdownloader, TikTok video downloader, download video TikTok, Snaptik, SSSTikTok, or TikTok to MP4 when they only want to save a funny clip, a tutorial, or a photo slideshow without installing another app. This browser-based tool works with public TikTok links on iPhone, Android, iPad, PC, and Mac." })
       ] }),
       /* @__PURE__ */ jsxs("div", { className: "col-lg-6", children: [
         Form,
@@ -4313,8 +4487,13 @@ function HomeEn() {
     ] }) }),
     /* @__PURE__ */ jsx("section", { className: "py-5 bg-white", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
       /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Download TikTok MP4 Videos in the Best Available Quality" }),
-      /* @__PURE__ */ jsx("p", { className: "text-muted", children: "If you want to save a TikTok as a regular video file, choose MP4. MP4 works on most devices, including iPhone, Android, Windows, Mac, tablets, and smart TVs." }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted", children: "If you want to save a TikTok as a regular video file, choose MP4. MP4 works on most devices, including iPhone, Android, Windows, Mac, tablets, and smart TVs. This is the option most people mean when they search for TikTok to MP4, TikTok video download, or download TikTok video." }),
       /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "The tool will try to download the best available quality from the original TikTok link. The final result depends on the quality of the video that was uploaded to TikTok." })
+    ] }) }),
+    /* @__PURE__ */ jsx("section", { className: "py-5 bg-light", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "TikTok to MP4 Converter Online" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted", children: "A TikTok to MP4 converter helps you save a public TikTok video as a standard video file. You do not need to rename files, install software, or use a separate video converter. Paste the TikTok URL, let the downloader process it, then save the MP4 option when it is available." }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "MP4 is usually the best format for offline viewing because it opens easily on phones, laptops, tablets, and most media players. Use it when you want a simple TikTok video download that is easy to store, replay, or move between devices." })
     ] }) }),
     /* @__PURE__ */ jsx("section", { className: "py-5 bg-light", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
       /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Download TikTok MP3, Sound, Audio, and Music" }),
@@ -4391,6 +4570,49 @@ function HomeEn() {
       /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "TikTok Video Download With Username" }),
       /* @__PURE__ */ jsx("p", { className: "text-muted", children: "Some users search for a way to download TikTok videos with a username. For a specific video, a direct TikTok video link is usually more accurate than a username." }),
       /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "A username may help with profile-related features, such as profile picture download, if supported. For video downloads, copy the video link from TikTok and paste it into the downloader." })
+    ] }) }),
+    /* @__PURE__ */ jsx("section", { className: "py-5 bg-light", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Popular TikTok Downloader Searches" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "People use different search terms for the same task: saving public TikTok videos, photos, sounds, and covers. This page focuses on the main TikTok downloader intent while also covering related searches such as tikdownloader, TikTok to MP4, Snaptik, SSSTikTok, TikTokio, and descargar videos de TikTok." }),
+      /* @__PURE__ */ jsx("div", { className: "table-responsive", children: /* @__PURE__ */ jsxs("table", { className: "table table-bordered bg-white align-middle", children: [
+        /* @__PURE__ */ jsx("thead", { className: "table-dark", children: /* @__PURE__ */ jsxs("tr", { children: [
+          /* @__PURE__ */ jsx("th", { children: "Search Term" }),
+          /* @__PURE__ */ jsx("th", { children: "User Intent" }),
+          /* @__PURE__ */ jsx("th", { children: "Best Matching Feature" })
+        ] }) }),
+        /* @__PURE__ */ jsxs("tbody", { children: [
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "tiktok to mp4" }),
+            /* @__PURE__ */ jsx("td", { children: "Convert a TikTok link into a playable MP4 video file" }),
+            /* @__PURE__ */ jsx("td", { children: "MP4 video download" })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "tikdownloader" }),
+            /* @__PURE__ */ jsx("td", { children: "Find a quick TikTok downloader tool" }),
+            /* @__PURE__ */ jsx("td", { children: "Paste link and download" })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "download video tiktok" }),
+            /* @__PURE__ */ jsx("td", { children: "Save a TikTok video from a copied link" }),
+            /* @__PURE__ */ jsx("td", { children: "Video downloader" })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "snaptik / ssstiktok" }),
+            /* @__PURE__ */ jsx("td", { children: "Download TikTok content without extra app steps" }),
+            /* @__PURE__ */ jsx("td", { children: "No-login browser downloader" })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "tiktokio / tiktok download" }),
+            /* @__PURE__ */ jsx("td", { children: "Use an online TikTok download page" }),
+            /* @__PURE__ */ jsx("td", { children: "Online TikTok downloader" })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { children: "descargar videos de tiktok" }),
+            /* @__PURE__ */ jsx("td", { children: "Spanish search intent for downloading TikTok videos" }),
+            /* @__PURE__ */ jsx("td", { children: "Download TikTok video" })
+          ] })
+        ] })
+      ] }) })
     ] }) }),
     /* @__PURE__ */ jsx("section", { className: "py-5 bg-light", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
       /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3 text-center", children: "How to Download TikTok Videos Online" }),
@@ -4493,7 +4715,7 @@ function HomeEn() {
     ] }) }),
     /* @__PURE__ */ jsx("section", { className: "py-5 bg-white", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
       /* @__PURE__ */ jsx("div", { className: "text-center mb-5", children: /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Frequently Asked Questions" }) }),
-      /* @__PURE__ */ jsx("div", { className: "row justify-content-center", children: /* @__PURE__ */ jsx("div", { className: "col-lg-9", children: /* @__PURE__ */ jsx("div", { className: "accordion faq-accordion", id: "faqAccordionEn", children: faqs$7.map((faq, index) => /* @__PURE__ */ jsxs(
+      /* @__PURE__ */ jsx("div", { className: "row justify-content-center", children: /* @__PURE__ */ jsx("div", { className: "col-lg-9", children: /* @__PURE__ */ jsx("div", { className: "accordion faq-accordion", id: "faqAccordionEn", children: homeFaqsEn.map((faq, index) => /* @__PURE__ */ jsxs(
         "div",
         {
           className: "accordion-item border-0 mb-3 rounded-3 overflow-hidden shadow-sm",
@@ -4568,80 +4790,6 @@ const features = [
   "Tidak perlu APK",
   "Tidak perlu login TikTok"
 ];
-const faqs$6 = [
-  {
-    q: "What is a TikTok Downloader?",
-    a: "TikTok Downloader adalah tool online untuk menyimpan video, audio, foto, story, profile picture, atau thumbnail dari TikTok menggunakan link publik."
-  },
-  {
-    q: "Can I download TikTok videos without watermark?",
-    a: "Ya, kamu bisa memilih opsi download video TikTok tanpa watermark jika tersedia. Hasilnya berupa video bersih tanpa logo TikTok yang bergerak."
-  },
-  {
-    q: "Can I download TikTok videos with watermark?",
-    a: "Ya, gunakan opsi with watermark jika kamu ingin video tetap menampilkan logo TikTok dan username kreator."
-  },
-  {
-    q: "Does this TikTok downloader support HD quality?",
-    a: "Tool akan mencoba mengambil kualitas terbaik yang tersedia dari link video. Hasil akhir tergantung kualitas video asli di TikTok."
-  },
-  {
-    q: "Is this TikTok downloader free?",
-    a: "Ya, tool ini gratis digunakan. Tidak perlu membayar, daftar, atau login untuk download video TikTok."
-  },
-  {
-    q: "Do I need to install a TikTok Downloader APK?",
-    a: "Tidak. Kamu bisa menggunakan downloader ini langsung dari browser tanpa APK, tanpa app, dan tanpa software tambahan."
-  },
-  {
-    q: "Is this a TikTok video download app?",
-    a: "Ini adalah online web tool, bukan aplikasi yang harus diinstall. Kamu bisa membukanya lewat browser di Android, iPhone, iPad, atau PC."
-  },
-  {
-    q: "Can I download TikTok videos on PC?",
-    a: "Ya. Buka downloader ini di browser PC atau laptop, paste link TikTok, lalu pilih format download."
-  },
-  {
-    q: "Can I download TikTok videos on iPhone?",
-    a: "Ya. Gunakan Safari atau browser lain di iPhone. File biasanya tersimpan di aplikasi Files, lalu bisa kamu pindahkan jika diperlukan."
-  },
-  {
-    q: "Can I convert TikTok video to MP3?",
-    a: "Ya, jika opsi MP3 tersedia, kamu bisa mengambil audio dari video TikTok dan menyimpannya sebagai file MP3."
-  },
-  {
-    q: "Can I download TikTok sound, audio, or music?",
-    a: "Ya. Gunakan fitur MP3/audio untuk menyimpan sound, musik, voiceover, atau original sound dari TikTok."
-  },
-  {
-    q: "Can I use this as a TikTok photo downloader?",
-    a: "Ya, jika konten TikTok berupa foto atau slideshow, kamu bisa menggunakan fitur photo downloader untuk menyimpan gambar."
-  },
-  {
-    q: "Can I download TikTok stories?",
-    a: "Ya, story publik yang masih aktif bisa diproses jika link tersedia dan dapat diakses."
-  },
-  {
-    q: "Can I download TikTok profile picture?",
-    a: "Ya, gunakan username atau link profil jika fitur profile picture downloader tersedia di tool."
-  },
-  {
-    q: "Can I download TikTok video with username?",
-    a: "Untuk download video tertentu, link video langsung lebih akurat daripada username. Username lebih cocok untuk fitur profil, seperti profile picture."
-  },
-  {
-    q: "Where are downloaded TikTok videos saved?",
-    a: "Di Android dan PC, file biasanya masuk ke folder Downloads. Di iPhone, file biasanya tersimpan di Files atau Photos, tergantung browser."
-  },
-  {
-    q: "Can I download private TikTok videos?",
-    a: "Tidak. Tool ini hanya bekerja untuk konten publik yang bisa diakses melalui link. Private videos tidak dapat diproses."
-  },
-  {
-    q: "Is it legal to download TikTok videos?",
-    a: "Gunakan file yang kamu download untuk kebutuhan pribadi, referensi, atau belajar. Jika ingin repost, membagikan ulang, atau memakai konten untuk bisnis, pastikan kamu punya izin dari kreator dan tetap menghormati hak cipta."
-  }
-];
 function HomeId() {
   return /* @__PURE__ */ jsx(Downloader, { t: t$6, lockFormat: "mp4", children: ({ Form, Results }) => /* @__PURE__ */ jsxs(Fragment, { children: [
     /* @__PURE__ */ jsx("section", { id: "download-section", className: "hero-gradient text-white py-5", children: /* @__PURE__ */ jsx("div", { className: "container py-5", children: /* @__PURE__ */ jsxs("div", { className: "row align-items-center", children: [
@@ -4668,17 +4816,17 @@ function HomeId() {
       ] }) }, feature)) })
     ] }) }),
     /* @__PURE__ */ jsx("section", { className: "py-5 bg-light", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
-      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Download TikTok Video Without Watermark in HD" }),
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Download Video TikTok Tanpa Watermark Kualitas HD" }),
       /* @__PURE__ */ jsx("p", { className: "text-muted", children: "Dengan TikTok Downloader ini, kamu bisa menyimpan video TikTok tanpa watermark atau tanpa tanda air. Video yang diunduh terlihat lebih bersih karena logo TikTok dan username yang bergerak tidak muncul di atas video." }),
       /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Fitur ini cocok untuk menyimpan video pribadi, referensi editing, materi belajar, atau konten yang ingin kamu tonton lagi secara offline. Setelah link diproses, pilih opsi download without watermark untuk menyimpan video dalam format MP4 dengan kualitas terbaik yang tersedia." })
     ] }) }),
     /* @__PURE__ */ jsx("section", { className: "py-5 bg-white", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
-      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Download TikTok Video With Watermark" }),
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Download Video TikTok Dengan Watermark" }),
       /* @__PURE__ */ jsx("p", { className: "text-muted", children: "Tidak semua pengguna ingin menghapus watermark. Beberapa orang tetap ingin menyimpan video dengan watermark karena ingin mempertahankan logo TikTok dan username kreator asli." }),
       /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Gunakan opsi download with watermark jika kamu ingin video tetap menampilkan identitas kreator. Ini berguna saat kamu ingin menyimpan video sebagai referensi, membagikan ulang dengan kredit yang jelas, atau tetap menjaga tanda asli dari konten TikTok tersebut." })
     ] }) }),
     /* @__PURE__ */ jsx("section", { className: "py-5 bg-light", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
-      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Without Watermark vs With Watermark" }),
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Tanpa Watermark vs Dengan Watermark" }),
       /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "Pilih download tanpa watermark jika kamu ingin video bersih tanpa logo TikTok. Pilih download dengan watermark jika kamu ingin tetap menyimpan logo TikTok dan username kreator." }),
       /* @__PURE__ */ jsx("div", { className: "table-responsive", children: /* @__PURE__ */ jsxs("table", { className: "table table-bordered bg-white align-middle", children: [
         /* @__PURE__ */ jsx("thead", { className: "table-dark", children: /* @__PURE__ */ jsxs("tr", { children: [
@@ -4711,12 +4859,12 @@ function HomeId() {
       ] }) })
     ] }) }),
     /* @__PURE__ */ jsx("section", { className: "py-5 bg-white", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
-      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "TikTok Downloader HD for MP4 Videos" }),
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Download Video TikTok HD Format MP4" }),
       /* @__PURE__ */ jsx("p", { className: "text-muted", children: "Jika kamu ingin menyimpan video TikTok sebagai file video biasa, pilih format MP4. Format ini mudah diputar di hampir semua perangkat, termasuk Android, iPhone, Windows, Mac, dan tablet." }),
       /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Tool ini akan mencoba mengambil kualitas terbaik yang tersedia dari link video TikTok tersebut. Hasil akhir tetap tergantung pada kualitas video asli yang diunggah di TikTok." })
     ] }) }),
     /* @__PURE__ */ jsx("section", { className: "py-5 bg-light", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
-      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Download TikTok MP3, Sound, Audio, and Music" }),
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Download MP3 TikTok, Sound, Audio, dan Musik" }),
       /* @__PURE__ */ jsx("p", { className: "text-muted", children: "Selain video, kamu juga bisa mengambil audio dari TikTok. Pilih opsi MP3 jika kamu hanya ingin menyimpan sound, musik, voiceover, atau lagu TikTok tanpa videonya." }),
       /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Fitur ini cocok untuk pengguna yang suka menyimpan original sound, background music, atau audio viral dari TikTok. Cukup paste link video, lalu pilih format audio untuk mengubah video TikTok menjadi MP3 jika opsi tersedia." })
     ] }) }),
@@ -4771,66 +4919,66 @@ function HomeId() {
       ] }) })
     ] }) }),
     /* @__PURE__ */ jsx("section", { className: "py-5 bg-light", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
-      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "TikTok Photo Downloader" }),
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Download Foto TikTok" }),
       /* @__PURE__ */ jsx("p", { className: "text-muted", children: "TikTok sekarang bukan hanya video. Banyak pengguna juga membagikan foto, slide, dan slideshow. Dengan TikTok Photo Downloader, kamu bisa menyimpan foto TikTok dari postingan slide dengan lebih mudah jika fitur tersedia." }),
       /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Jika postingan berisi beberapa foto, kamu bisa memilih file yang ingin disimpan. Ini cocok untuk menyimpan gambar inspirasi, foto edukasi, meme, atau slideshow yang ingin dilihat lagi tanpa membuka aplikasi TikTok." })
     ] }) }),
     /* @__PURE__ */ jsx("section", { className: "py-5 bg-white", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
-      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Download TikTok Story" }),
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Download Story TikTok" }),
       /* @__PURE__ */ jsx("p", { className: "text-muted", children: "TikTok Story biasanya hanya tampil dalam waktu terbatas, jadi banyak pengguna ingin menyimpannya sebelum hilang." }),
       /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Jika story masih aktif dan link publiknya tersedia, fitur story downloader dapat membantu kamu menyimpan story TikTok ke perangkat." })
     ] }) }),
     /* @__PURE__ */ jsx("section", { className: "py-5 bg-light", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
-      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Download TikTok Profile Picture and Thumbnail" }),
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Download Foto Profil dan Thumbnail TikTok" }),
       /* @__PURE__ */ jsx("p", { className: "text-muted", children: "Jika fitur tersedia, kamu bisa menyimpan profile picture TikTok atau thumbnail video dari link publik." }),
       /* @__PURE__ */ jsx("p", { className: "text-muted", children: "Profile picture biasanya dipakai untuk melihat foto profil dalam ukuran lebih jelas, sedangkan thumbnail berguna untuk menyimpan cover atau preview dari video TikTok." }),
       /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Untuk profile picture, gunakan username atau link profil jika tool mendukungnya. Untuk thumbnail, gunakan link video TikTok agar tool bisa mengambil cover image dari video tersebut." })
     ] }) }),
     /* @__PURE__ */ jsx("section", { className: "py-5 bg-white", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
-      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "TikTok Video Download With Username" }),
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Download Video TikTok Lewat Username" }),
       /* @__PURE__ */ jsx("p", { className: "text-muted", children: "Sebagian pengguna mencari cara download video TikTok dengan username. Namun, untuk hasil paling akurat, video biasanya lebih mudah diproses menggunakan link video langsung, bukan hanya username." }),
       /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Username bisa berguna untuk fitur seperti profile picture atau pencarian profil. Tapi untuk download video tertentu, salin link video dari tombol share di TikTok, lalu paste link tersebut ke downloader." })
     ] }) }),
     /* @__PURE__ */ jsx("section", { className: "py-5 bg-light", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
-      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3 text-center", children: "How to Download TikTok Videos" }),
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3 text-center", children: "Cara Download Video TikTok" }),
       /* @__PURE__ */ jsx("p", { className: "text-muted text-center mb-5", children: "Menggunakan TikTok Downloader ini sangat mudah. Kamu tidak perlu membuat akun, login, atau install aplikasi tambahan." }),
       /* @__PURE__ */ jsxs("div", { className: "row g-4", children: [
         /* @__PURE__ */ jsx("div", { className: "col-md-6 col-lg-3", children: /* @__PURE__ */ jsxs("div", { className: "bg-white rounded-4 p-4 h-100 shadow-sm", children: [
           /* @__PURE__ */ jsx("div", { className: "step-number mb-3", children: "1" }),
-          /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold", children: "Step 1: Copy the TikTok Video Link" }),
+          /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold", children: "Langkah 1: Salin Link Video TikTok" }),
           /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Buka aplikasi TikTok atau website TikTok. Pilih video, story, foto, atau konten yang ingin kamu simpan. Tekan tombol Share, lalu pilih Copy Link." })
         ] }) }),
         /* @__PURE__ */ jsx("div", { className: "col-md-6 col-lg-3", children: /* @__PURE__ */ jsxs("div", { className: "bg-white rounded-4 p-4 h-100 shadow-sm", children: [
           /* @__PURE__ */ jsx("div", { className: "step-number mb-3", children: "2" }),
-          /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold", children: "Step 2: Paste the Link in the Downloader" }),
+          /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold", children: "Langkah 2: Tempel Link di Downloader" }),
           /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Tempel link TikTok ke kotak downloader di halaman ini. Pastikan link yang kamu paste adalah link publik dan masih aktif." })
         ] }) }),
         /* @__PURE__ */ jsx("div", { className: "col-md-6 col-lg-3", children: /* @__PURE__ */ jsxs("div", { className: "bg-white rounded-4 p-4 h-100 shadow-sm", children: [
           /* @__PURE__ */ jsx("div", { className: "step-number mb-3", children: "3" }),
-          /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold", children: "Step 3: Choose MP4, MP3, Photo, Story, or Watermark Option" }),
+          /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold", children: "Langkah 3: Pilih Opsi MP4, MP3, Foto, Story, atau Watermark" }),
           /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Setelah link diproses, pilih format yang kamu butuhkan. Kamu bisa memilih video without watermark, video with watermark, MP3/audio, photo, story, profile picture, atau thumbnail jika tersedia." })
         ] }) }),
         /* @__PURE__ */ jsx("div", { className: "col-md-6 col-lg-3", children: /* @__PURE__ */ jsxs("div", { className: "bg-white rounded-4 p-4 h-100 shadow-sm", children: [
           /* @__PURE__ */ jsx("div", { className: "step-number mb-3", children: "4" }),
-          /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold", children: "Step 4: Save the File to Your Device" }),
+          /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold", children: "Langkah 4: Simpan File ke Perangkat Kamu" }),
           /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Klik tombol download dan tunggu sampai file tersimpan. Di Android dan PC, file biasanya masuk ke folder Downloads. Di iPhone, file bisa tersimpan di Files atau Photos, tergantung browser dan pengaturan perangkat." })
         ] }) })
       ] })
     ] }) }),
     /* @__PURE__ */ jsx("section", { className: "py-5 bg-white", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
-      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "TikTok Downloader for Android, iPhone, and PC" }),
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "TikTok Downloader untuk Android, iPhone, dan PC" }),
       /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "Tool ini berjalan langsung dari browser, jadi kamu bisa menggunakannya di banyak perangkat tanpa install aplikasi tambahan." }),
       /* @__PURE__ */ jsxs("div", { className: "row g-4", children: [
         /* @__PURE__ */ jsx("div", { className: "col-lg-4", children: /* @__PURE__ */ jsxs("div", { className: "bg-light rounded-4 p-4 h-100", children: [
-          /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold", children: "Download TikTok Videos on Android" }),
+          /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold", children: "Download Video TikTok di Android" }),
           /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Di Android, buka TikTok, salin link video, lalu paste link di downloader. Setelah download selesai, file biasanya ada di folder Downloads atau File Manager." })
         ] }) }),
         /* @__PURE__ */ jsx("div", { className: "col-lg-4", children: /* @__PURE__ */ jsxs("div", { className: "bg-light rounded-4 p-4 h-100", children: [
-          /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold", children: "Download TikTok Videos on iPhone or iPad" }),
+          /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold", children: "Download Video TikTok di iPhone atau iPad" }),
           /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Di iPhone atau iPad, gunakan Safari atau browser lain. Setelah file diunduh, kamu bisa menemukannya di aplikasi Files. Beberapa file juga bisa dipindahkan ke Photos." })
         ] }) }),
         /* @__PURE__ */ jsx("div", { className: "col-lg-4", children: /* @__PURE__ */ jsxs("div", { className: "bg-light rounded-4 p-4 h-100", children: [
-          /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold", children: "Download TikTok Videos on PC or Laptop" }),
+          /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold", children: "Download Video TikTok di PC atau Laptop" }),
           /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Di PC, kamu hanya perlu browser seperti Chrome, Edge, Firefox, atau Safari. Tidak perlu software tambahan. Paste link TikTok, pilih format, lalu simpan file ke komputer." })
         ] }) })
       ] })
@@ -4868,7 +5016,7 @@ function HomeId() {
       ] }) })
     ] }) }),
     /* @__PURE__ */ jsx("section", { className: "py-5 bg-white", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
-      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Do You Need a TikTok Downloader APK or App?" }),
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Apakah Perlu APK atau Aplikasi TikTok Downloader?" }),
       /* @__PURE__ */ jsx("p", { className: "text-muted", children: "Tidak. Kamu tidak perlu download APK atau install TikTok video download app untuk menggunakan tool ini. Semuanya bisa dilakukan langsung dari browser." }),
       /* @__PURE__ */ jsx("p", { className: "text-muted", children: "Ini lebih praktis karena kamu tidak perlu memenuhi memori HP dengan aplikasi tambahan. Kamu juga tidak perlu login ke akun TikTok atau memberikan password." }),
       /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold mt-4", children: "Tidak Perlu APK atau Aplikasi" }),
@@ -4876,23 +5024,23 @@ function HomeId() {
       /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Cukup salin link TikTok, tempel di kotak downloader, pilih format, lalu simpan file ke perangkat kamu. Tidak perlu login dan tidak perlu memasukkan password TikTok." })
     ] }) }),
     /* @__PURE__ */ jsx("section", { className: "py-5 bg-light", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
-      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Free TikTok Downloader With No Login" }),
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "TikTok Downloader Gratis Tanpa Login" }),
       /* @__PURE__ */ jsx("p", { className: "text-muted", children: "TikTok Downloader ini bisa digunakan gratis. Kamu tidak perlu daftar akun, tidak perlu login, dan tidak perlu memasukkan password TikTok." }),
       /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Cukup gunakan link video publik. Ini membuat proses download lebih cepat dan lebih aman untuk pengguna yang hanya ingin menyimpan video, audio, foto, atau story dari TikTok." })
     ] }) }),
     /* @__PURE__ */ jsx("section", { className: "py-5 bg-white", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
-      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Is This TikTok Downloader Safe?" }),
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Apakah TikTok Downloader Ini Aman?" }),
       /* @__PURE__ */ jsx("p", { className: "text-muted", children: "Tool ini tidak meminta password TikTok dan tidak membutuhkan login. Kamu hanya perlu menempelkan link konten TikTok yang ingin diunduh." }),
       /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Untuk menjaga privasi dan penggunaan yang benar, gunakan tool ini hanya untuk konten publik. Video private, video yang sudah dihapus, atau link yang tidak bisa diakses mungkin tidak dapat diproses." })
     ] }) }),
     /* @__PURE__ */ jsx("section", { className: "py-5 bg-light", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
-      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Responsible Use and Copyright" }),
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Penggunaan yang Bertanggung Jawab dan Hak Cipta" }),
       /* @__PURE__ */ jsx("p", { className: "text-muted", children: "Gunakan file yang kamu download untuk kebutuhan pribadi, referensi, atau belajar. Jika ingin repost, membagikan ulang, atau memakai konten untuk bisnis, pastikan kamu punya izin dari kreator dan tetap menghormati hak cipta." }),
       /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Tool ini dibuat untuk membantu pengguna menyimpan konten TikTok dari link publik. Jangan gunakan konten orang lain untuk tujuan komersial tanpa izin." })
     ] }) }),
     /* @__PURE__ */ jsx("section", { className: "py-5 bg-white", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
-      /* @__PURE__ */ jsx("div", { className: "text-center mb-5", children: /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Frequently Asked Questions" }) }),
-      /* @__PURE__ */ jsx("div", { className: "row justify-content-center", children: /* @__PURE__ */ jsx("div", { className: "col-lg-9", children: /* @__PURE__ */ jsx("div", { className: "accordion faq-accordion", id: "faqAccordionId", children: faqs$6.map((faq, index) => /* @__PURE__ */ jsxs(
+      /* @__PURE__ */ jsx("div", { className: "text-center mb-5", children: /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Pertanyaan yang Sering Diajukan" }) }),
+      /* @__PURE__ */ jsx("div", { className: "row justify-content-center", children: /* @__PURE__ */ jsx("div", { className: "col-lg-9", children: /* @__PURE__ */ jsx("div", { className: "accordion faq-accordion", id: "faqAccordionId", children: homeFaqsId.map((faq, index) => /* @__PURE__ */ jsxs(
         "div",
         {
           className: "accordion-item border-0 mb-3 rounded-3 overflow-hidden shadow-sm",
@@ -4922,11 +5070,11 @@ function HomeId() {
       )) }) }) })
     ] }) }),
     /* @__PURE__ */ jsx("section", { className: "hero-gradient text-white py-5", children: /* @__PURE__ */ jsxs("div", { className: "container py-4 text-center", children: [
-      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Download TikTok Videos Faster and Easier" }),
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Download Video TikTok Lebih Cepat dan Mudah" }),
       /* @__PURE__ */ jsx("p", { className: "lead text-white-50 mb-0 mx-auto", style: { maxWidth: "900px" }, children: "TikTok Downloader ini dibuat untuk satu hal: membantu kamu menyimpan konten TikTok dengan cara yang cepat, jelas, dan tidak ribet. Dari video without watermark HD, video with watermark, MP3/audio/music, photo, story, profile picture, sampai thumbnail, semuanya bisa diarahkan dari satu halaman tanpa APK, tanpa login, dan tanpa install aplikasi tambahan." })
     ] }) }),
     /* @__PURE__ */ jsx("section", { className: "py-4 bg-light", children: /* @__PURE__ */ jsxs("div", { className: "container", children: [
-      /* @__PURE__ */ jsx("h2", { className: "h5 fw-bold mb-2", children: "Disclaimer" }),
+      /* @__PURE__ */ jsx("h2", { className: "h5 fw-bold mb-2", children: "Penafian" }),
       /* @__PURE__ */ jsx("p", { className: "text-muted small mb-0", children: "This tool is not affiliated with TikTok. Please respect creator rights and use downloaded content responsibly." })
     ] }) })
   ] }) });
@@ -4983,7 +5131,7 @@ const t$5 = {
   ready: "Download links are ready.",
   defaultTitle: "TikTok Download"
 };
-const faqs$5 = [
+const faqs$1 = [
   {
     q: "Is this TikTok MP3 Downloader free?",
     a: "Yes. You can use our TikTok MP3 Downloader to convert audio from supported public TikTok videos without paying subscription fees. There are no sign-up requirements, making it easy to start downloading immediately."
@@ -5495,7 +5643,7 @@ function Mp3En() {
     /* @__PURE__ */ jsx("section", { className: "py-5 bg-light", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
       /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Frequently Asked Questions" }),
       /* @__PURE__ */ jsx("p", { className: "text-muted mb-5", children: "Below are answers to the questions users ask most often when searching for a TikTok MP3 Downloader, TikTok Audio Downloader, or TikTok to MP3 Converter." }),
-      /* @__PURE__ */ jsx("div", { className: "row justify-content-center", children: /* @__PURE__ */ jsx("div", { className: "col-lg-10", children: /* @__PURE__ */ jsx("div", { className: "accordion faq-accordion", id: "faqAccordionMp3En", children: faqs$5.map((faq, index) => /* @__PURE__ */ jsxs(
+      /* @__PURE__ */ jsx("div", { className: "row justify-content-center", children: /* @__PURE__ */ jsx("div", { className: "col-lg-10", children: /* @__PURE__ */ jsx("div", { className: "accordion faq-accordion", id: "faqAccordionMp3En", children: faqs$1.map((faq, index) => /* @__PURE__ */ jsxs(
         "div",
         {
           className: "accordion-item border-0 mb-3 rounded-3 overflow-hidden shadow-sm",
@@ -5622,7 +5770,7 @@ const checklist = [
   "Gratis Tanpa Batas",
   "Mudah Digunakan Langsung dari Browser"
 ];
-const faqs$4 = [
+const faqs = [
   {
     q: "Apakah TikTok MP3 Downloader ini gratis?",
     a: "Ya. Anda dapat menggunakan layanan ini secara gratis tanpa biaya berlangganan maupun biaya tersembunyi."
@@ -5937,7 +6085,7 @@ function Mp3Id() {
     ] }) }),
     /* @__PURE__ */ jsx("section", { className: "py-5 bg-white", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
       /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-5", children: "Pertanyaan yang Sering Diajukan (FAQ)" }),
-      /* @__PURE__ */ jsx("div", { className: "row justify-content-center", children: /* @__PURE__ */ jsx("div", { className: "col-lg-10", children: /* @__PURE__ */ jsx("div", { className: "accordion faq-accordion", id: "faqAccordionMp3Id", children: faqs$4.map((faq, index) => /* @__PURE__ */ jsxs(
+      /* @__PURE__ */ jsx("div", { className: "row justify-content-center", children: /* @__PURE__ */ jsx("div", { className: "col-lg-10", children: /* @__PURE__ */ jsx("div", { className: "accordion faq-accordion", id: "faqAccordionMp3Id", children: faqs.map((faq, index) => /* @__PURE__ */ jsxs(
         "div",
         {
           className: "accordion-item border-0 mb-3 rounded-3 overflow-hidden shadow-sm",
@@ -6030,6 +6178,174 @@ function Mp3Id() {
     ] }) })
   ] }) });
 }
+const thumbFaqsEn = [
+  {
+    q: "Can I download a TikTok thumbnail?",
+    a: "Yes. Paste a public TikTok video link and the tool reads the cover image attached to that video, then lets you save it. You do not need the creator’s permission to view a public cover, but you should still respect their rights when you reuse it."
+  },
+  {
+    q: "What is a TikTok thumbnail exactly?",
+    a: "It is the still image TikTok shows before a video starts playing. Creators either pick a frame from the video or upload a custom cover. Either way, that image is what this tool saves."
+  },
+  {
+    q: "What image format and size do I get?",
+    a: "The cover is saved as a JPG file in the largest size TikTok makes available for that video. Because it comes straight from TikTok, the resolution depends on what the creator uploaded."
+  },
+  {
+    q: "Why does my thumbnail look smaller than the video?",
+    a: "TikTok stores cover images separately from the video file, and covers are often served at a lower resolution than the clip itself. The tool saves the largest version TikTok exposes, so a small cover means TikTok has no bigger one."
+  },
+  {
+    q: "Do I need a video link or a profile link?",
+    a: "A direct video link. The tool has to open a specific video to read its cover. If you want the round avatar from an account instead, use the TikTok profile picture downloader."
+  },
+  {
+    q: "Can I download the thumbnail of a private video?",
+    a: "No. Private and deleted videos are not reachable by any third-party tool. Only public videos work."
+  },
+  {
+    q: "Does this work with TikTok photo posts and slideshows?",
+    a: "Photo posts behave differently from video posts. Paste the link and the tool will show whatever images it can read from that post. If nothing appears, the post is either private or in a format TikTok does not expose."
+  },
+  {
+    q: "Do I need to install an app or APK?",
+    a: "No. This runs in your browser on Android, iPhone, iPad, Windows, and Mac. There is no app, no APK, and no extension to install."
+  },
+  {
+    q: "Is the TikTok thumbnail downloader free?",
+    a: "Yes, it is free with no sign-up, no account, and no download limit. Paste a public link and save the cover image."
+  },
+  {
+    q: "Can I use a downloaded thumbnail in my own video?",
+    a: "That depends on the creator. The cover image belongs to whoever made the video, so reusing it publicly or commercially needs their permission. Saving it for personal reference is a different matter from republishing it."
+  }
+];
+const thumbFaqsId = [
+  {
+    q: "Bisakah download foto TikTok dari link video?",
+    a: "Bisa. Tempel link video TikTok yang bersifat publik, lalu tool akan membaca gambar cover dari video tersebut dan kamu bisa menyimpannya. Tetap hormati hak kreator saat menggunakannya kembali."
+  },
+  {
+    q: "Apa itu cover atau thumbnail TikTok?",
+    a: "Cover adalah gambar diam yang muncul sebelum video TikTok diputar. Kreator bisa memilih satu frame dari videonya atau mengunggah gambar cover sendiri. Gambar itulah yang disimpan tool ini."
+  },
+  {
+    q: "Format dan ukuran gambarnya apa?",
+    a: "Gambar disimpan sebagai file JPG dengan ukuran terbesar yang disediakan TikTok untuk video tersebut. Karena diambil langsung dari TikTok, resolusinya bergantung pada yang diunggah kreator."
+  },
+  {
+    q: "Kenapa hasil fotonya lebih kecil dari videonya?",
+    a: "TikTok menyimpan gambar cover terpisah dari file videonya, dan cover sering disajikan dengan resolusi lebih rendah. Tool ini mengambil versi terbesar yang tersedia, jadi kalau kecil berarti memang tidak ada versi yang lebih besar."
+  },
+  {
+    q: "Perlu link video atau link profil?",
+    a: "Perlu link video. Tool harus membuka video tertentu untuk membaca covernya. Kalau kamu mau foto profil bulat milik sebuah akun, gunakan halaman download foto profil TikTok."
+  },
+  {
+    q: "Bisakah download foto dari video yang privat?",
+    a: "Tidak bisa. Video privat maupun yang sudah dihapus tidak dapat diakses tool pihak ketiga mana pun. Hanya video publik yang bisa diproses."
+  },
+  {
+    q: "Apakah bisa untuk postingan foto dan slideshow TikTok?",
+    a: "Postingan foto berbeda formatnya dengan postingan video. Tempel linknya dan tool akan menampilkan gambar yang bisa dibaca dari postingan tersebut. Kalau tidak ada yang muncul, postingan itu privat atau formatnya tidak dibuka TikTok."
+  },
+  {
+    q: "Apakah perlu install aplikasi atau APK?",
+    a: "Tidak. Tool ini berjalan langsung di browser pada Android, iPhone, iPad, Windows, dan Mac. Tanpa aplikasi, tanpa APK, dan tanpa ekstensi."
+  },
+  {
+    q: "Apakah download foto TikTok ini gratis?",
+    a: "Ya, gratis sepenuhnya. Tidak perlu daftar, tidak perlu akun, dan tidak ada batas jumlah download."
+  },
+  {
+    q: "Boleh dipakai untuk konten saya sendiri?",
+    a: "Itu tergantung izin kreatornya. Gambar cover adalah milik pembuat videonya, jadi memakainya ulang secara publik atau komersial memerlukan izin. Menyimpannya untuk keperluan pribadi berbeda dengan mempublikasikannya kembali."
+  }
+];
+const profileFaqsEn = [
+  {
+    q: "Can I download a TikTok profile picture?",
+    a: "Yes. Enter a public TikTok username or profile link and the tool fetches that account’s avatar in the largest size TikTok serves, then lets you save it."
+  },
+  {
+    q: "Do I enter a username or a video link?",
+    a: "A username or profile link, such as @username or the tiktok.com/@username address. A video link points at one clip, not at the account, so it will not return an avatar. Use the thumbnail downloader for video covers."
+  },
+  {
+    q: "Do I need the @ symbol?",
+    a: "No. Both @username and username work, and pasting the full profile URL works too. The tool strips whatever wrapper it finds and looks up the account."
+  },
+  {
+    q: "What size is the downloaded avatar?",
+    a: "TikTok serves avatars at several sizes and the tool requests the largest one available. That is usually a few hundred pixels square, because TikTok itself does not store a huge original."
+  },
+  {
+    q: "Why is the profile picture blurry when I enlarge it?",
+    a: "TikTok avatars are displayed small, so they are stored small. No downloader can produce more detail than TikTok holds. If the saved image looks soft when blown up, that is the limit of the source file."
+  },
+  {
+    q: "Can I download the profile picture of a private account?",
+    a: "Usually yes, because TikTok shows avatars on private profiles even when the videos are hidden. If the account is banned, deleted, or region-blocked, the lookup will fail."
+  },
+  {
+    q: "Will the account owner know I saved their picture?",
+    a: "No. The lookup happens between this tool and TikTok. Nothing is posted to the account, and the owner gets no view or download notification."
+  },
+  {
+    q: "Do I need to install an app?",
+    a: "No. This works in any modern browser on Android, iPhone, iPad, Windows, and Mac, with no app, APK, or extension."
+  },
+  {
+    q: "Is the profile picture downloader free?",
+    a: "Yes. There is no charge, no account, and no limit on how many avatars you look up."
+  },
+  {
+    q: "Can I use someone’s avatar as my own?",
+    a: "You should not. A profile picture usually shows a real person or a brand’s artwork, and reusing it as your own identity can mislead people and infringe the owner’s rights."
+  }
+];
+const profileFaqsId = [
+  {
+    q: "Bisakah download foto profil TikTok?",
+    a: "Bisa. Masukkan username atau link profil TikTok yang publik, lalu tool akan mengambil foto profil akun tersebut dalam ukuran terbesar yang disediakan TikTok dan kamu bisa menyimpannya."
+  },
+  {
+    q: "Harus masukkan username atau link video?",
+    a: "Masukkan username atau link profil, misalnya @username atau alamat tiktok.com/@username. Link video menunjuk ke satu klip, bukan ke akunnya, jadi tidak akan menghasilkan foto profil. Untuk cover video, gunakan halaman download foto TikTok."
+  },
+  {
+    q: "Apakah tanda @ wajib ditulis?",
+    a: "Tidak. Baik @username maupun username saja bisa dipakai, dan menempel link profil lengkap juga bisa. Tool akan membaca bagian usernamenya secara otomatis."
+  },
+  {
+    q: "Berapa ukuran foto profil yang didapat?",
+    a: "TikTok menyediakan foto profil dalam beberapa ukuran, dan tool ini meminta yang paling besar. Biasanya beberapa ratus piksel persegi, karena TikTok memang tidak menyimpan versi yang sangat besar."
+  },
+  {
+    q: "Kenapa foto profilnya pecah saat diperbesar?",
+    a: "Foto profil TikTok ditampilkan kecil sehingga disimpannya juga kecil. Tidak ada downloader yang bisa menghasilkan detail lebih banyak daripada yang disimpan TikTok. Kalau hasilnya buram saat diperbesar, itu batas dari file aslinya."
+  },
+  {
+    q: "Bisakah download foto profil akun yang privat?",
+    a: "Umumnya bisa, karena TikTok tetap menampilkan foto profil pada akun privat meski videonya disembunyikan. Kalau akunnya diblokir, dihapus, atau dibatasi wilayah, pencariannya akan gagal."
+  },
+  {
+    q: "Apakah pemilik akun tahu kalau fotonya disimpan?",
+    a: "Tidak. Proses pencarian terjadi antara tool ini dan TikTok. Tidak ada apa pun yang dikirim ke akun tersebut, dan pemiliknya tidak mendapat notifikasi."
+  },
+  {
+    q: "Apakah perlu install aplikasi?",
+    a: "Tidak. Tool ini berjalan di browser mana pun pada Android, iPhone, iPad, Windows, dan Mac, tanpa aplikasi, APK, atau ekstensi."
+  },
+  {
+    q: "Apakah gratis?",
+    a: "Ya, gratis. Tidak ada biaya, tidak perlu akun, dan tidak ada batas berapa kali kamu mencari foto profil."
+  },
+  {
+    q: "Boleh memakai foto profil orang lain sebagai milik saya?",
+    a: "Sebaiknya jangan. Foto profil biasanya menampilkan wajah seseorang atau karya milik sebuah brand, dan memakainya sebagai identitas sendiri bisa menyesatkan orang lain sekaligus melanggar hak pemiliknya."
+  }
+];
 const t$3 = {
   cardTitle: "",
   cardSubtitle: "",
@@ -6054,22 +6370,22 @@ const t$3 = {
   downloadThumbnail: "Download Image",
   noThumbnail: "No thumbnail was found for this TikTok link."
 };
-const faqs$3 = [
+const useCases$1 = [
   {
-    q: "Can I download TikTok thumbnails?",
-    a: "Yes, if thumbnail download is supported, you can use a TikTok video link to save the video cover image or preview image."
+    title: "Saving a reference before a video disappears",
+    body: "Creators delete and re-upload constantly. If a video is part of research, a trend you are tracking, or a tutorial you want to find again, the cover image is the fastest visual bookmark."
   },
   {
-    q: "What image format is the thumbnail saved as?",
-    a: "The cover image is saved as a JPG image file that you can open on any phone, tablet, or computer."
+    title: "Building a moodboard",
+    body: "Editors and designers collect covers to study how a niche presents itself: which faces, colours, and text overlays keep showing up in a feed."
   },
   {
-    q: "Do I need to install an app?",
-    a: "No. This is a browser-based tool, so you do not need to install an app, APK, software, or extension."
+    title: "Studying what makes people tap",
+    body: "The cover is the only thing a viewer sees before deciding to watch. Collecting the covers of videos that performed well is a cheap way to learn a niche."
   },
   {
-    q: "Is the thumbnail downloader free?",
-    a: "Yes, the tool is free to use. Paste a public TikTok video link and download the cover image without payment or login."
+    title: "Filing a report or a claim",
+    body: "If you are reporting stolen content or documenting something, a saved cover gives you a dated visual record that does not depend on the post staying online."
   }
 ];
 function ThumbEn() {
@@ -6081,8 +6397,8 @@ function ThumbEn() {
           " ",
           /* @__PURE__ */ jsx("span", { className: "tiktok-text", children: "Download Video Cover Image" })
         ] }),
-        /* @__PURE__ */ jsx("p", { className: "lead mb-3 text-white-50", children: "Save the thumbnail or cover image of any public TikTok video in a fast and simple way. Copy the TikTok video link, paste it into the downloader, then download the cover image as a JPG file." }),
-        /* @__PURE__ */ jsx("p", { className: "mb-0 text-white-50", children: "A thumbnail or cover image is useful when you want to save the preview image from a TikTok video. For thumbnails, a direct TikTok video link works best because the tool needs to read the video cover image." })
+        /* @__PURE__ */ jsx("p", { className: "lead mb-3 text-white-50", children: "Save the thumbnail or cover image of any public TikTok video. Copy the video link, paste it into the box, and download the cover as a JPG file in the largest size TikTok makes available." }),
+        /* @__PURE__ */ jsx("p", { className: "mb-0 text-white-50", children: "A cover image is the still frame a viewer sees before tapping play. Because it is stored against a specific video rather than an account, a direct TikTok video link is what this tool needs." })
       ] }),
       /* @__PURE__ */ jsxs("div", { className: "col-lg-6", children: [
         Form,
@@ -6091,33 +6407,165 @@ function ThumbEn() {
     ] }) }) }),
     Results,
     /* @__PURE__ */ jsx("section", { className: "py-5 bg-white", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
-      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Download TikTok Video Thumbnail and Cover Image" }),
-      /* @__PURE__ */ jsx("p", { className: "text-muted", children: "Every public TikTok video has a cover image that is shown before the video plays. With this TikTok Thumbnail Downloader you can save that cover image to your device in the best available quality." }),
-      /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "This is helpful for saving a video preview, keeping a reference image, or reusing a cover for your own notes. Paste the TikTok video link, then download the thumbnail as a JPG image." })
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "What Is a TikTok Thumbnail?" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted", children: "A TikTok thumbnail, also called the cover image, is the single still picture that represents a video before it plays. You see it on a creator's profile grid, in search results, and for a fraction of a second as a video loads in your feed." }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted", children: "Creators set it in one of two ways. Most pick a frame from inside the video using TikTok's cover selector. Others upload a separate image made in a design app, which is why some covers carry text, borders, or a layout that never appears in the video itself." }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Either way, TikTok stores that image as its own file, separate from the video. This downloader reads that file and hands it to you as a JPG. Nothing is re-encoded and no frame is extracted from the video, so what you save is exactly what TikTok serves." })
     ] }) }),
     /* @__PURE__ */ jsx("section", { className: "py-5 bg-light", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Why People Download TikTok Thumbnails" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "Saving a cover is rarely about the picture on its own. These are the reasons that come up most often." }),
+      /* @__PURE__ */ jsx("div", { className: "row g-4", children: useCases$1.map((item) => /* @__PURE__ */ jsx("div", { className: "col-md-6", children: /* @__PURE__ */ jsxs("div", { className: "bg-white rounded-4 p-4 h-100 shadow-sm", children: [
+        /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold", children: item.title }),
+        /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: item.body })
+      ] }) }, item.title)) })
+    ] }) }),
+    /* @__PURE__ */ jsx("section", { className: "py-5 bg-white", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Thumbnail, Photo Post, or Profile Picture?" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: 'Three different TikTok images get called "the picture", and each one needs a different kind of link. This is the quickest way to tell them apart.' }),
+      /* @__PURE__ */ jsx("div", { className: "table-responsive", children: /* @__PURE__ */ jsxs("table", { className: "table align-middle", children: [
+        /* @__PURE__ */ jsx("thead", { children: /* @__PURE__ */ jsxs("tr", { children: [
+          /* @__PURE__ */ jsx("th", { scope: "col", children: "Image" }),
+          /* @__PURE__ */ jsx("th", { scope: "col", children: "Where it appears" }),
+          /* @__PURE__ */ jsx("th", { scope: "col", children: "What you paste" }),
+          /* @__PURE__ */ jsx("th", { scope: "col", children: "Tool" })
+        ] }) }),
+        /* @__PURE__ */ jsxs("tbody", { children: [
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { className: "fw-semibold", children: "Thumbnail / cover" }),
+            /* @__PURE__ */ jsx("td", { children: "Before a video plays, and on the profile grid" }),
+            /* @__PURE__ */ jsx("td", { children: "A video link" }),
+            /* @__PURE__ */ jsx("td", { children: "This page" })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { className: "fw-semibold", children: "Photo post image" }),
+            /* @__PURE__ */ jsx("td", { children: "Inside a photo or slideshow post" }),
+            /* @__PURE__ */ jsx("td", { children: "A post link" }),
+            /* @__PURE__ */ jsx("td", { children: /* @__PURE__ */ jsx(Link, { to: "/", children: "TikTok downloader" }) })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { className: "fw-semibold", children: "Profile picture" }),
+            /* @__PURE__ */ jsx("td", { children: "The round avatar on an account" }),
+            /* @__PURE__ */ jsx("td", { children: "A username or profile link" }),
+            /* @__PURE__ */ jsx("td", { children: /* @__PURE__ */ jsx(Link, { to: "/profile", children: "Profile picture downloader" }) })
+          ] })
+        ] })
+      ] }) }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "If you paste a video link here and get an error, check that the video is public and that the link opens normally in a browser. Shortened share links usually work, but a link copied from inside the TikTok app while logged into a private account will not." })
+    ] }) }),
+    /* @__PURE__ */ jsx("section", { className: "py-5 bg-light", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "What Quality Should You Expect?" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted", children: "This is where most people are surprised, so it is worth being direct: a TikTok cover image is usually smaller than the video it belongs to. TikTok generates covers at a size meant for feed previews, not for printing or full-screen display." }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted", children: "The tool always requests the largest version TikTok exposes for that video. If the saved file still looks modest, that is the ceiling of the source, not a limitation added here. No downloader can return detail that TikTok never stored." }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Covers uploaded by the creator as a custom image tend to be sharper than covers auto-selected from a video frame, because the creator supplied a clean file rather than a compressed still pulled out of a moving clip." })
+    ] }) }),
+    /* @__PURE__ */ jsx("section", { className: "py-5 bg-white", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
       /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3 text-center", children: "How to Download a TikTok Thumbnail" }),
       /* @__PURE__ */ jsxs("div", { className: "row g-4 mt-2", children: [
-        /* @__PURE__ */ jsx("div", { className: "col-md-4", children: /* @__PURE__ */ jsxs("div", { className: "bg-white rounded-4 p-4 h-100 shadow-sm", children: [
+        /* @__PURE__ */ jsx("div", { className: "col-md-4", children: /* @__PURE__ */ jsxs("div", { className: "bg-light rounded-4 p-4 h-100", children: [
           /* @__PURE__ */ jsx("div", { className: "step-number mb-3", children: "1" }),
           /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold", children: "Copy the TikTok Video Link" }),
-          /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Open TikTok, find the video, tap the Share button, and choose Copy Link." })
+          /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Open TikTok, find the video, tap the Share button, and choose Copy Link. On desktop you can copy the address straight from the browser bar." })
         ] }) }),
-        /* @__PURE__ */ jsx("div", { className: "col-md-4", children: /* @__PURE__ */ jsxs("div", { className: "bg-white rounded-4 p-4 h-100 shadow-sm", children: [
+        /* @__PURE__ */ jsx("div", { className: "col-md-4", children: /* @__PURE__ */ jsxs("div", { className: "bg-light rounded-4 p-4 h-100", children: [
           /* @__PURE__ */ jsx("div", { className: "step-number mb-3", children: "2" }),
           /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold", children: "Paste the Link in the Downloader" }),
-          /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Paste the TikTok video link into the box above. Make sure the link is public and active." })
+          /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Paste it into the box above and press Download. The link has to point at a public video that is still online." })
+        ] }) }),
+        /* @__PURE__ */ jsx("div", { className: "col-md-4", children: /* @__PURE__ */ jsxs("div", { className: "bg-light rounded-4 p-4 h-100", children: [
+          /* @__PURE__ */ jsx("div", { className: "step-number mb-3", children: "3" }),
+          /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold", children: "Save the Cover Image" }),
+          /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Check the preview, then click Download Image. The cover is saved to your device as a JPG file." })
+        ] }) })
+      ] })
+    ] }) }),
+    /* @__PURE__ */ jsx("section", { className: "py-5 bg-light", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Download TikTok Covers on iPhone, Android, and PC" }),
+      /* @__PURE__ */ jsxs("div", { className: "row g-4 mt-2", children: [
+        /* @__PURE__ */ jsx("div", { className: "col-md-4", children: /* @__PURE__ */ jsxs("div", { className: "bg-white rounded-4 p-4 h-100 shadow-sm", children: [
+          /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold", children: "On iPhone or iPad" }),
+          /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Copy the link in the TikTok app, open this page in Safari, and paste it. When the image appears, either use the download button or press and hold the preview and choose Add to Photos." })
         ] }) }),
         /* @__PURE__ */ jsx("div", { className: "col-md-4", children: /* @__PURE__ */ jsxs("div", { className: "bg-white rounded-4 p-4 h-100 shadow-sm", children: [
-          /* @__PURE__ */ jsx("div", { className: "step-number mb-3", children: "3" }),
-          /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold", children: "Download the Cover Image" }),
-          /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Preview the cover image, then click Download Image to save the thumbnail as a JPG file." })
+          /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold", children: "On Android" }),
+          /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Copy the link, open this page in Chrome, and paste it. The saved JPG lands in your Downloads folder and normally shows up in Gallery or Google Photos soon after." })
+        ] }) }),
+        /* @__PURE__ */ jsx("div", { className: "col-md-4", children: /* @__PURE__ */ jsxs("div", { className: "bg-white rounded-4 p-4 h-100 shadow-sm", children: [
+          /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold", children: "On PC or Mac" }),
+          /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Copy the video address from the browser bar, paste it here, and download. This is the easiest route when you want to drop the cover straight into a document or an editor." })
         ] }) })
       ] })
     ] }) }),
     /* @__PURE__ */ jsx("section", { className: "py-5 bg-white", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "If the Thumbnail Does Not Load" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "Most failures come down to the link rather than the tool. Work through these in order." }),
+      /* @__PURE__ */ jsxs("ul", { className: "text-muted", children: [
+        /* @__PURE__ */ jsxs("li", { className: "mb-2", children: [
+          /* @__PURE__ */ jsx("strong", { children: "Check the video is public." }),
+          " Private videos, friends-only videos, and deleted posts cannot be read by any third-party tool."
+        ] }),
+        /* @__PURE__ */ jsxs("li", { className: "mb-2", children: [
+          /* @__PURE__ */ jsx("strong", { children: "Open the link yourself first." }),
+          " Paste it into a new browser tab. If TikTok does not load the video for you, it will not load for the downloader either."
+        ] }),
+        /* @__PURE__ */ jsxs("li", { className: "mb-2", children: [
+          /* @__PURE__ */ jsx("strong", { children: "Make sure it is a video link, not a profile link." }),
+          " A tiktok.com/@username address points at an account. You need the longer address that includes /video/ and a number."
+        ] }),
+        /* @__PURE__ */ jsxs("li", { className: "mb-2", children: [
+          /* @__PURE__ */ jsx("strong", { children: "Watch for a truncated paste." }),
+          " Long links sometimes get cut off when copied between apps. Compare the end of what you pasted against the original."
+        ] }),
+        /* @__PURE__ */ jsxs("li", { className: "mb-0", children: [
+          /* @__PURE__ */ jsx("strong", { children: "Try again in a minute." }),
+          " TikTok occasionally rate-limits requests. A short wait usually clears it."
+        ] })
+      ] })
+    ] }) }),
+    /* @__PURE__ */ jsx("section", { className: "py-5 bg-light", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "No App, No APK, No Sign-Up" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted", children: "This tool runs entirely in your browser. There is nothing to install, no permission to grant, and no account to create. That matters for a task this small: installing an app to save one image asks far more of you than the job is worth, and those apps routinely request access to storage, contacts, or your TikTok login." }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Your TikTok credentials are never involved here. The tool only reads what a public video link already exposes, which is the same information anyone could see by opening the video." })
+    ] }) }),
+    /* @__PURE__ */ jsx("section", { className: "py-5 bg-white", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Is This Thumbnail Downloader Safe?" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted", children: "We do not ask for a login, so there are no TikTok credentials to lose. The links you paste are used to fulfil that one request and are not kept as a browsing history tied to you. Nothing is installed on your device." }),
+      /* @__PURE__ */ jsxs("p", { className: "text-muted mb-0", children: [
+        "Read the ",
+        /* @__PURE__ */ jsx(Link, { to: "/privacy-policy", children: "privacy policy" }),
+        " for the specifics of what is and is not collected, including how analytics and advertising cookies work on this site."
+      ] })
+    ] }) }),
+    /* @__PURE__ */ jsx("section", { className: "py-5 bg-light", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Responsible Use and Copyright" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted", children: "A cover image is part of someone's work. Saving one to study, to keep a reference, or to file a report is ordinary use. Republishing it as your own cover, putting it on merchandise, or using it in an advert is not, and doing so without permission can infringe the creator's rights." }),
+      /* @__PURE__ */ jsxs("p", { className: "text-muted mb-0", children: [
+        "Covers also frequently show identifiable people. Treat those images the way you would want a photo of yourself treated. The",
+        " ",
+        /* @__PURE__ */ jsx(Link, { to: "/terms-conditions", children: "terms and conditions" }),
+        " set out what is allowed here."
+      ] })
+    ] }) }),
+    /* @__PURE__ */ jsx("section", { className: "py-5 bg-white", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Other TikTok Tools on This Site" }),
+      /* @__PURE__ */ jsxs("div", { className: "row g-4", children: [
+        /* @__PURE__ */ jsx("div", { className: "col-md-4", children: /* @__PURE__ */ jsxs("div", { className: "bg-light rounded-4 p-4 h-100", children: [
+          /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold", children: /* @__PURE__ */ jsx(Link, { to: "/", children: "TikTok Video Downloader" }) }),
+          /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Save the full video as MP4, with or without the watermark." })
+        ] }) }),
+        /* @__PURE__ */ jsx("div", { className: "col-md-4", children: /* @__PURE__ */ jsxs("div", { className: "bg-light rounded-4 p-4 h-100", children: [
+          /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold", children: /* @__PURE__ */ jsx(Link, { to: "/mp3", children: "TikTok MP3 Downloader" }) }),
+          /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Pull the audio out of a TikTok video and save it as an MP3." })
+        ] }) }),
+        /* @__PURE__ */ jsx("div", { className: "col-md-4", children: /* @__PURE__ */ jsxs("div", { className: "bg-light rounded-4 p-4 h-100", children: [
+          /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold", children: /* @__PURE__ */ jsx(Link, { to: "/profile", children: "TikTok Profile Picture Downloader" }) }),
+          /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Save an account's avatar using a username or profile link." })
+        ] }) })
+      ] })
+    ] }) }),
+    /* @__PURE__ */ jsx("section", { className: "py-5 bg-light", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
       /* @__PURE__ */ jsx("div", { className: "text-center mb-5", children: /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Frequently Asked Questions" }) }),
-      /* @__PURE__ */ jsx("div", { className: "row justify-content-center", children: /* @__PURE__ */ jsx("div", { className: "col-lg-9", children: /* @__PURE__ */ jsx("div", { className: "accordion faq-accordion", id: "faqAccordionThumbEn", children: faqs$3.map((faq, index) => /* @__PURE__ */ jsxs(
+      /* @__PURE__ */ jsx("div", { className: "row justify-content-center", children: /* @__PURE__ */ jsx("div", { className: "col-lg-9", children: /* @__PURE__ */ jsx("div", { className: "accordion faq-accordion", id: "faqAccordionThumbEn", children: thumbFaqsEn.map((faq, index) => /* @__PURE__ */ jsxs(
         "div",
         {
           className: "accordion-item border-0 mb-3 rounded-3 overflow-hidden shadow-sm",
@@ -6129,6 +6577,8 @@ function ThumbEn() {
                 type: "button",
                 "data-bs-toggle": "collapse",
                 "data-bs-target": `#faqThumbEn${index}`,
+                "aria-expanded": index === 0,
+                "aria-controls": `faqThumbEn${index}`,
                 children: faq.q
               }
             ) }),
@@ -6146,9 +6596,9 @@ function ThumbEn() {
         faq.q
       )) }) }) })
     ] }) }),
-    /* @__PURE__ */ jsx("section", { className: "py-4 bg-light", children: /* @__PURE__ */ jsxs("div", { className: "container", children: [
+    /* @__PURE__ */ jsx("section", { className: "py-4 bg-white", children: /* @__PURE__ */ jsxs("div", { className: "container", children: [
       /* @__PURE__ */ jsx("h2", { className: "h5 fw-bold mb-2", children: "Disclaimer" }),
-      /* @__PURE__ */ jsx("p", { className: "text-muted small mb-0", children: "This tool is not affiliated with TikTok. Please respect creator rights and use downloaded content responsibly." })
+      /* @__PURE__ */ jsx("p", { className: "text-muted small mb-0", children: "This tool is not affiliated with TikTok or ByteDance. TikTok is a trademark of ByteDance Ltd. Please respect creator rights and use downloaded content responsibly." })
     ] }) })
   ] }) });
 }
@@ -6156,14 +6606,14 @@ const t$2 = {
   cardTitle: "",
   cardSubtitle: "",
   placeholder: "https://www.tiktok.com/@user/video/...",
-  pasteButton: "Paste TikTok Link",
+  pasteButton: "Tempel Link TikTok",
   mp4Label: "MP4 (Video)",
   mp3Label: "MP3 (Audio)",
   downloadButton: "Download",
   processing: "Memproses...",
   resultsTitle: "Hasil Download",
-  resultsSubtitle: "Lihat preview cover image, lalu download di bawah ini.",
-  previewNote: "Preview dan download cover image video.",
+  resultsSubtitle: "Lihat preview gambarnya, lalu download di bawah ini.",
+  previewNote: "Preview dan download gambar cover video.",
   downloadVideo: "Download Video",
   downloadAudio: "Download Audio",
   downloadingPrefix: "Mengunduh",
@@ -6171,27 +6621,27 @@ const t$2 = {
   invalidUrl: "Masukkan link TikTok yang valid",
   fetchFailed: "Gagal mengambil link download TikTok.",
   noLinksFound: "Tidak ada link download yang ditemukan. Coba link TikTok lain.",
-  ready: "Cover image sudah siap.",
-  defaultTitle: "Thumbnail TikTok",
-  downloadThumbnail: "Download Image",
-  noThumbnail: "Thumbnail tidak ditemukan untuk link TikTok ini."
+  ready: "Gambar sudah siap.",
+  defaultTitle: "Foto TikTok",
+  downloadThumbnail: "Download Gambar",
+  noThumbnail: "Gambar tidak ditemukan untuk link TikTok ini."
 };
-const faqs$2 = [
+const useCases = [
   {
-    q: "Apakah saya bisa download thumbnail TikTok?",
-    a: "Ya, jika fitur tersedia, kamu bisa menggunakan link video TikTok untuk menyimpan cover atau preview image dari video tersebut."
+    title: "Menyimpan sebelum videonya hilang",
+    body: "Kreator sering menghapus lalu mengunggah ulang videonya. Kalau video itu bagian dari riset, tren yang kamu ikuti, atau tutorial yang ingin kamu cari lagi, gambar covernya adalah penanda visual paling cepat."
   },
   {
-    q: "Thumbnail disimpan dalam format apa?",
-    a: "Cover image disimpan sebagai file gambar JPG yang bisa dibuka di HP, tablet, maupun komputer."
+    title: "Mengumpulkan referensi desain",
+    body: "Editor dan desainer mengumpulkan cover untuk mempelajari cara sebuah niche menampilkan dirinya: wajah, warna, dan teks seperti apa yang terus muncul di feed."
   },
   {
-    q: "Apakah saya perlu menginstal aplikasi?",
-    a: "Tidak. Tool ini berjalan langsung di browser, jadi tidak perlu APK, aplikasi, software, atau ekstensi tambahan."
+    title: "Mempelajari cover yang bikin orang berhenti scroll",
+    body: "Cover adalah satu-satunya hal yang dilihat penonton sebelum memutuskan menonton. Mengumpulkan cover dari video yang performanya bagus adalah cara murah untuk memahami sebuah niche."
   },
   {
-    q: "Apakah thumbnail downloader ini gratis?",
-    a: "Ya, tool ini gratis digunakan. Tempel link video TikTok publik, lalu download cover image tanpa biaya dan tanpa login."
+    title: "Bukti laporan atau klaim",
+    body: "Kalau kamu melaporkan konten yang dicuri atau mendokumentasikan sesuatu, gambar yang sudah tersimpan menjadi catatan visual yang tidak bergantung pada postingannya tetap online."
   }
 ];
 function ThumbId() {
@@ -6199,47 +6649,179 @@ function ThumbId() {
     /* @__PURE__ */ jsx("section", { id: "download-section", className: "hero-gradient text-white py-5", children: /* @__PURE__ */ jsx("div", { className: "container py-5", children: /* @__PURE__ */ jsxs("div", { className: "row align-items-center", children: [
       /* @__PURE__ */ jsxs("div", { className: "col-lg-6 mb-5 mb-lg-0", children: [
         /* @__PURE__ */ jsxs("h1", { className: "display-5 fw-bold mb-4", children: [
-          "TikTok Thumbnail Downloader —",
+          "Download Foto TikTok —",
           " ",
-          /* @__PURE__ */ jsx("span", { className: "tiktok-text", children: "Download Cover Video TikTok" })
+          /* @__PURE__ */ jsx("span", { className: "tiktok-text", children: "Simpan Cover Video Kualitas HD" })
         ] }),
-        /* @__PURE__ */ jsx("p", { className: "lead mb-3 text-white-50", children: "Simpan thumbnail atau cover image dari video TikTok publik dengan cepat dan mudah. Salin link video TikTok, tempel di kotak downloader, lalu download cover image sebagai file JPG." }),
-        /* @__PURE__ */ jsx("p", { className: "mb-0 text-white-50", children: "Thumbnail berguna untuk menyimpan cover atau preview dari video TikTok. Untuk thumbnail, gunakan link video TikTok agar tool bisa mengambil cover image dari video tersebut." })
+        /* @__PURE__ */ jsx("p", { className: "lead mb-3 text-white-50", children: "Download foto atau gambar cover dari video TikTok publik mana pun. Salin link videonya, tempel di kotak ini, lalu simpan gambarnya sebagai file JPG dalam ukuran terbesar yang disediakan TikTok." }),
+        /* @__PURE__ */ jsx("p", { className: "mb-0 text-white-50", children: "Gambar cover adalah foto diam yang dilihat penonton sebelum menekan play. Karena gambar itu tersimpan pada video tertentu dan bukan pada akun, tool ini membutuhkan link video TikTok secara langsung." })
       ] }),
       /* @__PURE__ */ jsxs("div", { className: "col-lg-6", children: [
         Form,
-        /* @__PURE__ */ jsx("p", { className: "text-center text-white-50 small mt-3 mb-0", children: "Gratis • Tanpa Login • Tanpa APK • Support Android, iPhone, dan PC" })
+        /* @__PURE__ */ jsx("p", { className: "text-center text-white-50 small mt-3 mb-0", children: "Gratis • Tanpa Login • Tanpa Aplikasi • Bisa di Android, iPhone, dan PC" })
       ] })
     ] }) }) }),
     Results,
     /* @__PURE__ */ jsx("section", { className: "py-5 bg-white", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
-      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Download Thumbnail dan Cover Image Video TikTok" }),
-      /* @__PURE__ */ jsx("p", { className: "text-muted", children: "Setiap video TikTok publik memiliki cover image yang muncul sebelum video diputar. Dengan TikTok Thumbnail Downloader ini, kamu bisa menyimpan cover image tersebut ke perangkat dalam kualitas terbaik yang tersedia." }),
-      /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Fitur ini cocok untuk menyimpan preview video, menyimpan gambar referensi, atau menggunakan cover untuk catatan pribadi. Tempel link video TikTok, lalu download thumbnail sebagai file JPG." })
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Apa Itu Foto Cover TikTok?" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted", children: "Foto cover, atau yang sering disebut thumbnail, adalah satu gambar diam yang mewakili sebuah video sebelum diputar. Gambar ini muncul di grid profil kreator, di hasil pencarian, dan sepersekian detik saat video sedang dimuat di feed kamu." }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted", children: "Kreator menentukannya dengan dua cara. Kebanyakan memilih satu frame dari dalam videonya lewat fitur pemilih cover milik TikTok. Sebagian lagi mengunggah gambar terpisah yang dibuat di aplikasi desain, dan itulah sebabnya beberapa cover memuat teks atau tata letak yang tidak pernah muncul di videonya." }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Apa pun caranya, TikTok menyimpan gambar itu sebagai file tersendiri, terpisah dari videonya. Tool ini membaca file tersebut dan memberikannya kepada kamu sebagai JPG. Tidak ada proses encode ulang dan tidak ada frame yang diambil paksa dari video, jadi yang kamu simpan persis seperti yang disajikan TikTok." })
     ] }) }),
     /* @__PURE__ */ jsx("section", { className: "py-5 bg-light", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
-      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3 text-center", children: "Cara Download Thumbnail TikTok" }),
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Kenapa Orang Download Foto TikTok" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "Menyimpan cover jarang soal gambarnya semata. Ini alasan yang paling sering muncul." }),
+      /* @__PURE__ */ jsx("div", { className: "row g-4", children: useCases.map((item) => /* @__PURE__ */ jsx("div", { className: "col-md-6", children: /* @__PURE__ */ jsxs("div", { className: "bg-white rounded-4 p-4 h-100 shadow-sm", children: [
+        /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold", children: item.title }),
+        /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: item.body })
+      ] }) }, item.title)) })
+    ] }) }),
+    /* @__PURE__ */ jsx("section", { className: "py-5 bg-white", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Cover Video, Postingan Foto, atau Foto Profil?" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: 'Ada tiga gambar TikTok yang sama-sama disebut "foto", dan masing-masing butuh jenis link yang berbeda. Ini cara tercepat membedakannya.' }),
+      /* @__PURE__ */ jsx("div", { className: "table-responsive", children: /* @__PURE__ */ jsxs("table", { className: "table align-middle", children: [
+        /* @__PURE__ */ jsx("thead", { children: /* @__PURE__ */ jsxs("tr", { children: [
+          /* @__PURE__ */ jsx("th", { scope: "col", children: "Gambar" }),
+          /* @__PURE__ */ jsx("th", { scope: "col", children: "Muncul di mana" }),
+          /* @__PURE__ */ jsx("th", { scope: "col", children: "Yang kamu tempel" }),
+          /* @__PURE__ */ jsx("th", { scope: "col", children: "Tool" })
+        ] }) }),
+        /* @__PURE__ */ jsxs("tbody", { children: [
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { className: "fw-semibold", children: "Cover video" }),
+            /* @__PURE__ */ jsx("td", { children: "Sebelum video diputar, dan di grid profil" }),
+            /* @__PURE__ */ jsx("td", { children: "Link video" }),
+            /* @__PURE__ */ jsx("td", { children: "Halaman ini" })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { className: "fw-semibold", children: "Gambar postingan foto" }),
+            /* @__PURE__ */ jsx("td", { children: "Di dalam postingan foto atau slideshow" }),
+            /* @__PURE__ */ jsx("td", { children: "Link postingan" }),
+            /* @__PURE__ */ jsx("td", { children: /* @__PURE__ */ jsx(Link, { to: "/id", children: "TikTok downloader" }) })
+          ] }),
+          /* @__PURE__ */ jsxs("tr", { children: [
+            /* @__PURE__ */ jsx("td", { className: "fw-semibold", children: "Foto profil" }),
+            /* @__PURE__ */ jsx("td", { children: "Avatar bulat pada sebuah akun" }),
+            /* @__PURE__ */ jsx("td", { children: "Username atau link profil" }),
+            /* @__PURE__ */ jsx("td", { children: /* @__PURE__ */ jsx(Link, { to: "/id/profile", children: "Download foto profil" }) })
+          ] })
+        ] })
+      ] }) }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Kalau kamu menempel link video di sini lalu muncul error, pastikan videonya publik dan linknya bisa dibuka biasa di browser. Link share yang dipendekkan umumnya bisa, tapi link yang disalin dari dalam aplikasi saat login di akun privat tidak akan jalan." })
+    ] }) }),
+    /* @__PURE__ */ jsx("section", { className: "py-5 bg-light", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Kualitas Gambarnya Seperti Apa?" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted", children: "Bagian ini yang paling sering mengejutkan, jadi kami sampaikan terus terang: gambar cover TikTok biasanya lebih kecil daripada videonya. TikTok membuat cover dengan ukuran yang ditujukan untuk preview di feed, bukan untuk dicetak atau ditampilkan layar penuh." }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted", children: "Tool ini selalu meminta versi terbesar yang disediakan TikTok untuk video tersebut. Kalau hasilnya tetap terasa kecil, itu batas dari sumbernya, bukan batasan yang ditambahkan di sini. Tidak ada downloader yang bisa mengembalikan detail yang memang tidak pernah disimpan TikTok." }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Cover yang diunggah sendiri oleh kreator sebagai gambar khusus umumnya lebih tajam daripada cover yang diambil otomatis dari frame video, karena kreator menyediakan file bersih, bukan potongan gambar terkompresi dari klip yang bergerak." })
+    ] }) }),
+    /* @__PURE__ */ jsx("section", { className: "py-5 bg-white", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3 text-center", children: "Cara Download Foto TikTok" }),
       /* @__PURE__ */ jsxs("div", { className: "row g-4 mt-2", children: [
-        /* @__PURE__ */ jsx("div", { className: "col-md-4", children: /* @__PURE__ */ jsxs("div", { className: "bg-white rounded-4 p-4 h-100 shadow-sm", children: [
+        /* @__PURE__ */ jsx("div", { className: "col-md-4", children: /* @__PURE__ */ jsxs("div", { className: "bg-light rounded-4 p-4 h-100", children: [
           /* @__PURE__ */ jsx("div", { className: "step-number mb-3", children: "1" }),
           /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold", children: "Salin Link Video TikTok" }),
-          /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Buka TikTok, pilih video, tekan tombol Share, lalu pilih Copy Link." })
+          /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Buka TikTok, cari videonya, ketuk tombol Share, lalu pilih Copy Link. Di desktop kamu bisa langsung menyalin alamatnya dari kolom browser." })
         ] }) }),
-        /* @__PURE__ */ jsx("div", { className: "col-md-4", children: /* @__PURE__ */ jsxs("div", { className: "bg-white rounded-4 p-4 h-100 shadow-sm", children: [
+        /* @__PURE__ */ jsx("div", { className: "col-md-4", children: /* @__PURE__ */ jsxs("div", { className: "bg-light rounded-4 p-4 h-100", children: [
           /* @__PURE__ */ jsx("div", { className: "step-number mb-3", children: "2" }),
           /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold", children: "Tempel Link di Downloader" }),
-          /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Tempel link video TikTok ke kotak di atas. Pastikan link bersifat publik dan masih aktif." })
+          /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Tempel di kotak yang ada di atas lalu tekan Download. Linknya harus mengarah ke video publik yang masih aktif." })
+        ] }) }),
+        /* @__PURE__ */ jsx("div", { className: "col-md-4", children: /* @__PURE__ */ jsxs("div", { className: "bg-light rounded-4 p-4 h-100", children: [
+          /* @__PURE__ */ jsx("div", { className: "step-number mb-3", children: "3" }),
+          /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold", children: "Simpan Gambarnya" }),
+          /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Periksa previewnya, lalu ketuk Download Gambar. Cover akan tersimpan di perangkat kamu sebagai file JPG." })
+        ] }) })
+      ] })
+    ] }) }),
+    /* @__PURE__ */ jsx("section", { className: "py-5 bg-light", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Download Foto TikTok di Android, iPhone, dan PC" }),
+      /* @__PURE__ */ jsxs("div", { className: "row g-4 mt-2", children: [
+        /* @__PURE__ */ jsx("div", { className: "col-md-4", children: /* @__PURE__ */ jsxs("div", { className: "bg-white rounded-4 p-4 h-100 shadow-sm", children: [
+          /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold", children: "Di Android" }),
+          /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Salin linknya, buka halaman ini di Chrome, lalu tempel. File JPG akan masuk ke folder Download dan biasanya muncul di Galeri atau Google Photos tak lama kemudian." })
         ] }) }),
         /* @__PURE__ */ jsx("div", { className: "col-md-4", children: /* @__PURE__ */ jsxs("div", { className: "bg-white rounded-4 p-4 h-100 shadow-sm", children: [
-          /* @__PURE__ */ jsx("div", { className: "step-number mb-3", children: "3" }),
-          /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold", children: "Download Cover Image" }),
-          /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Lihat preview cover image, lalu klik Download Image untuk menyimpan thumbnail sebagai file JPG." })
+          /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold", children: "Di iPhone atau iPad" }),
+          /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Salin link di aplikasi TikTok, buka halaman ini di Safari, lalu tempel. Saat gambarnya muncul, gunakan tombol download atau tekan lama previewnya lalu pilih Add to Photos." })
+        ] }) }),
+        /* @__PURE__ */ jsx("div", { className: "col-md-4", children: /* @__PURE__ */ jsxs("div", { className: "bg-white rounded-4 p-4 h-100 shadow-sm", children: [
+          /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold", children: "Di PC atau Laptop" }),
+          /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Salin alamat videonya dari kolom browser, tempel di sini, lalu download. Ini cara paling praktis kalau gambarnya mau langsung dipakai di dokumen atau aplikasi editing." })
         ] }) })
       ] })
     ] }) }),
     /* @__PURE__ */ jsx("section", { className: "py-5 bg-white", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
-      /* @__PURE__ */ jsx("div", { className: "text-center mb-5", children: /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Frequently Asked Questions" }) }),
-      /* @__PURE__ */ jsx("div", { className: "row justify-content-center", children: /* @__PURE__ */ jsx("div", { className: "col-lg-9", children: /* @__PURE__ */ jsx("div", { className: "accordion faq-accordion", id: "faqAccordionThumbId", children: faqs$2.map((faq, index) => /* @__PURE__ */ jsxs(
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Kalau Gambarnya Tidak Muncul" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "Sebagian besar kegagalan berasal dari linknya, bukan dari toolnya. Coba periksa berurutan." }),
+      /* @__PURE__ */ jsxs("ul", { className: "text-muted", children: [
+        /* @__PURE__ */ jsxs("li", { className: "mb-2", children: [
+          /* @__PURE__ */ jsx("strong", { children: "Pastikan videonya publik." }),
+          " Video privat, video khusus teman, dan postingan yang sudah dihapus tidak bisa dibaca tool pihak ketiga mana pun."
+        ] }),
+        /* @__PURE__ */ jsxs("li", { className: "mb-2", children: [
+          /* @__PURE__ */ jsx("strong", { children: "Buka dulu linknya sendiri." }),
+          " Tempel di tab browser baru. Kalau TikTok tidak memuat videonya untuk kamu, tool ini juga tidak akan bisa."
+        ] }),
+        /* @__PURE__ */ jsxs("li", { className: "mb-2", children: [
+          /* @__PURE__ */ jsx("strong", { children: "Pastikan itu link video, bukan link profil." }),
+          " Alamat tiktok.com/@username menunjuk ke akun. Yang kamu butuhkan adalah alamat panjang yang memuat /video/ dan sederet angka."
+        ] }),
+        /* @__PURE__ */ jsxs("li", { className: "mb-2", children: [
+          /* @__PURE__ */ jsx("strong", { children: "Cek link yang terpotong." }),
+          " Link panjang kadang terpotong saat disalin antar aplikasi. Bandingkan bagian akhirnya dengan link aslinya."
+        ] }),
+        /* @__PURE__ */ jsxs("li", { className: "mb-0", children: [
+          /* @__PURE__ */ jsx("strong", { children: "Coba lagi satu menit kemudian." }),
+          " TikTok sesekali membatasi jumlah permintaan. Menunggu sebentar biasanya sudah cukup."
+        ] })
+      ] })
+    ] }) }),
+    /* @__PURE__ */ jsx("section", { className: "py-5 bg-light", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Tanpa Aplikasi, Tanpa APK, Tanpa Daftar" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted", children: "Tool ini berjalan sepenuhnya di browser kamu. Tidak ada yang perlu diinstall, tidak ada izin yang perlu diberikan, dan tidak ada akun yang perlu dibuat. Untuk pekerjaan sekecil ini hal tersebut penting: memasang aplikasi hanya demi menyimpan satu gambar meminta jauh lebih banyak daripada nilai pekerjaannya, dan aplikasi semacam itu sering meminta akses ke penyimpanan, kontak, atau bahkan login TikTok kamu." }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Data login TikTok kamu sama sekali tidak terlibat di sini. Tool ini hanya membaca apa yang memang sudah terbuka dari sebuah link video publik, yaitu informasi yang sama yang bisa dilihat siapa pun saat membuka videonya." })
+    ] }) }),
+    /* @__PURE__ */ jsx("section", { className: "py-5 bg-white", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Apakah Tool Ini Aman?" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted", children: "Kami tidak meminta login, jadi tidak ada data akun TikTok yang bisa hilang. Link yang kamu tempel dipakai untuk memproses permintaan itu saja dan tidak disimpan sebagai riwayat yang terhubung ke diri kamu. Tidak ada apa pun yang dipasang di perangkat." }),
+      /* @__PURE__ */ jsxs("p", { className: "text-muted mb-0", children: [
+        "Baca ",
+        /* @__PURE__ */ jsx(Link, { to: "/id/privacy-policy", children: "kebijakan privasi" }),
+        " untuk rincian data apa yang dikumpulkan dan tidak, termasuk cara kerja cookie analitik dan iklan di situs ini."
+      ] })
+    ] }) }),
+    /* @__PURE__ */ jsx("section", { className: "py-5 bg-light", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Penggunaan yang Bertanggung Jawab dan Hak Cipta" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted", children: "Gambar cover adalah bagian dari karya seseorang. Menyimpannya untuk dipelajari, untuk referensi, atau sebagai bukti laporan adalah penggunaan yang wajar. Mempublikasikannya ulang sebagai cover milik kamu, mencetaknya di merchandise, atau memakainya di iklan bukan, dan melakukannya tanpa izin bisa melanggar hak kreatornya." }),
+      /* @__PURE__ */ jsxs("p", { className: "text-muted mb-0", children: [
+        "Cover juga sering menampilkan wajah orang yang bisa dikenali. Perlakukan gambar seperti itu sebagaimana kamu ingin foto dirimu sendiri diperlakukan.",
+        " ",
+        /* @__PURE__ */ jsx(Link, { to: "/id/terms-conditions", children: "Syarat dan ketentuan" }),
+        " menjelaskan apa yang diizinkan di sini."
+      ] })
+    ] }) }),
+    /* @__PURE__ */ jsx("section", { className: "py-5 bg-white", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Tool TikTok Lain di Situs Ini" }),
+      /* @__PURE__ */ jsxs("div", { className: "row g-4", children: [
+        /* @__PURE__ */ jsx("div", { className: "col-md-4", children: /* @__PURE__ */ jsxs("div", { className: "bg-light rounded-4 p-4 h-100", children: [
+          /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold", children: /* @__PURE__ */ jsx(Link, { to: "/id", children: "Download Video TikTok" }) }),
+          /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Simpan video utuh sebagai MP4, dengan atau tanpa watermark." })
+        ] }) }),
+        /* @__PURE__ */ jsx("div", { className: "col-md-4", children: /* @__PURE__ */ jsxs("div", { className: "bg-light rounded-4 p-4 h-100", children: [
+          /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold", children: /* @__PURE__ */ jsx(Link, { to: "/id/mp3", children: "Download MP3 TikTok" }) }),
+          /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Ambil audionya dari video TikTok lalu simpan sebagai file MP3." })
+        ] }) }),
+        /* @__PURE__ */ jsx("div", { className: "col-md-4", children: /* @__PURE__ */ jsxs("div", { className: "bg-light rounded-4 p-4 h-100", children: [
+          /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold", children: /* @__PURE__ */ jsx(Link, { to: "/id/profile", children: "Download Foto Profil TikTok" }) }),
+          /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Simpan avatar sebuah akun lewat username atau link profilnya." })
+        ] }) })
+      ] })
+    ] }) }),
+    /* @__PURE__ */ jsx("section", { className: "py-5 bg-light", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
+      /* @__PURE__ */ jsx("div", { className: "text-center mb-5", children: /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Pertanyaan yang Sering Diajukan" }) }),
+      /* @__PURE__ */ jsx("div", { className: "row justify-content-center", children: /* @__PURE__ */ jsx("div", { className: "col-lg-9", children: /* @__PURE__ */ jsx("div", { className: "accordion faq-accordion", id: "faqAccordionThumbId", children: thumbFaqsId.map((faq, index) => /* @__PURE__ */ jsxs(
         "div",
         {
           className: "accordion-item border-0 mb-3 rounded-3 overflow-hidden shadow-sm",
@@ -6251,6 +6833,8 @@ function ThumbId() {
                 type: "button",
                 "data-bs-toggle": "collapse",
                 "data-bs-target": `#faqThumbId${index}`,
+                "aria-expanded": index === 0,
+                "aria-controls": `faqThumbId${index}`,
                 children: faq.q
               }
             ) }),
@@ -6268,9 +6852,9 @@ function ThumbId() {
         faq.q
       )) }) }) })
     ] }) }),
-    /* @__PURE__ */ jsx("section", { className: "py-4 bg-light", children: /* @__PURE__ */ jsxs("div", { className: "container", children: [
-      /* @__PURE__ */ jsx("h2", { className: "h5 fw-bold mb-2", children: "Disclaimer" }),
-      /* @__PURE__ */ jsx("p", { className: "text-muted small mb-0", children: "This tool is not affiliated with TikTok. Please respect creator rights and use downloaded content responsibly." })
+    /* @__PURE__ */ jsx("section", { className: "py-4 bg-white", children: /* @__PURE__ */ jsxs("div", { className: "container", children: [
+      /* @__PURE__ */ jsx("h2", { className: "h5 fw-bold mb-2", children: "Penafian" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted small mb-0", children: "Tool ini tidak berafiliasi dengan TikTok maupun ByteDance. TikTok adalah merek dagang milik ByteDance Ltd. Mohon hormati hak kreator dan gunakan konten yang kamu download secara bertanggung jawab." })
     ] }) })
   ] }) });
 }
@@ -6511,23 +7095,11 @@ const t$1 = {
   notFound: "Profile not found. Check the username or profile link and try again.",
   ready: "Profile picture is ready."
 };
-const faqs$1 = [
-  {
-    q: "Can I download a TikTok profile picture?",
-    a: "Yes. Enter a TikTok username or profile link, and you can save the profile picture in the largest available size."
-  },
-  {
-    q: "Do I need the video link or the profile?",
-    a: "For a profile picture, use the username or profile link (for example @username). A direct video link is used for video, audio, or thumbnail downloads instead."
-  },
-  {
-    q: "What image format is the profile picture saved as?",
-    a: "The profile picture is saved as an image file that you can open on any phone, tablet, or computer."
-  },
-  {
-    q: "Is the profile picture downloader free?",
-    a: "Yes, the tool is free to use. Enter a public TikTok username or profile link and download the profile picture without payment or login."
-  }
+const inputFormats$1 = [
+  { label: "@username", example: "@tiktok", works: true },
+  { label: "Username on its own", example: "tiktok", works: true },
+  { label: "Full profile link", example: "tiktok.com/@tiktok", works: true },
+  { label: "A video link", example: "tiktok.com/@tiktok/video/123…", works: false }
 ];
 function ProfileEn() {
   return /* @__PURE__ */ jsx(ProfileDownloader, { t: t$1, children: ({ Form, Results }) => /* @__PURE__ */ jsxs(Fragment, { children: [
@@ -6538,8 +7110,8 @@ function ProfileEn() {
           " ",
           /* @__PURE__ */ jsx("span", { className: "tiktok-text", children: "Save TikTok Avatar in HD" })
         ] }),
-        /* @__PURE__ */ jsx("p", { className: "lead mb-3 text-white-50", children: "Save a TikTok profile picture in full size in a fast and simple way. Enter the TikTok username or profile link, then download the avatar to your device." }),
-        /* @__PURE__ */ jsx("p", { className: "mb-0 text-white-50", children: "A profile picture is useful when you want to view a TikTok avatar more clearly. For profile pictures, a username or profile link is used because the tool needs to read the account avatar, not a single video." })
+        /* @__PURE__ */ jsx("p", { className: "lead mb-3 text-white-50", children: "Save any public TikTok profile picture at full size. Enter the username or paste the profile link, then download the avatar in the largest resolution TikTok serves." }),
+        /* @__PURE__ */ jsx("p", { className: "mb-0 text-white-50", children: "A profile picture belongs to an account rather than to a single video, which is why this tool asks for a username instead of a video link. TikTok only ever shows avatars at thumbnail size, so downloading is the practical way to see one properly." })
       ] }),
       /* @__PURE__ */ jsxs("div", { className: "col-lg-6", children: [
         Form,
@@ -6548,33 +7120,142 @@ function ProfileEn() {
     ] }) }) }),
     Results,
     /* @__PURE__ */ jsx("section", { className: "py-5 bg-white", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
-      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Download TikTok Profile Picture in Full Size" }),
-      /* @__PURE__ */ jsx("p", { className: "text-muted", children: "TikTok shows profile pictures in a small size inside the app. With this TikTok Profile Picture Downloader you can view and save the avatar in the largest available size directly from your browser." }),
-      /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Just enter a public TikTok username or profile link, preview the profile picture, then download it to your device." })
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Why You Cannot Just Save a TikTok Avatar" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted", children: "TikTok never displays a profile picture at full size. In the app it is a small circle, and long-pressing it does nothing useful. Taking a screenshot gives you a cropped, compressed circle with whatever happened to be behind it, at whatever resolution your screen uses." }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted", children: "Behind that circle, TikTok does store a larger square version of the image. This tool looks up the account, asks TikTok for the biggest version it publishes, and hands you that original uncropped file." }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "That is the entire job. Nothing is upscaled, sharpened, or reconstructed, because inventing detail would mean inventing pixels that were never in the picture." })
+    ] }) }),
+    /* @__PURE__ */ jsx("section", { className: "py-5 bg-light", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "What to Enter" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "The tool is forgiving about format. The one thing it cannot use is a link to a single video, because that points at a clip rather than at the account." }),
+      /* @__PURE__ */ jsx("div", { className: "table-responsive", children: /* @__PURE__ */ jsxs("table", { className: "table align-middle", children: [
+        /* @__PURE__ */ jsx("thead", { children: /* @__PURE__ */ jsxs("tr", { children: [
+          /* @__PURE__ */ jsx("th", { scope: "col", children: "Input" }),
+          /* @__PURE__ */ jsx("th", { scope: "col", children: "Example" }),
+          /* @__PURE__ */ jsx("th", { scope: "col", children: "Works here?" })
+        ] }) }),
+        /* @__PURE__ */ jsx("tbody", { children: inputFormats$1.map((row) => /* @__PURE__ */ jsxs("tr", { children: [
+          /* @__PURE__ */ jsx("td", { className: "fw-semibold", children: row.label }),
+          /* @__PURE__ */ jsx("td", { className: "text-muted", children: row.example }),
+          /* @__PURE__ */ jsx("td", { children: row.works ? "Yes" : "No — use the thumbnail downloader" })
+        ] }, row.label)) })
+      ] }) }),
+      /* @__PURE__ */ jsxs("p", { className: "text-muted mb-0", children: [
+        "Got a video link instead? The",
+        " ",
+        /* @__PURE__ */ jsx(Link, { to: "/thumbnail", children: "TikTok thumbnail downloader" }),
+        " saves the cover image from a specific video."
+      ] })
+    ] }) }),
+    /* @__PURE__ */ jsx("section", { className: "py-5 bg-white", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "How Big Is a TikTok Profile Picture?" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted", children: "Smaller than most people expect. TikTok only ever needs the avatar at the size of a small circle, so it does not keep a print-resolution original. The largest version it publishes is typically a few hundred pixels square." }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted", children: "This matters if you plan to enlarge it. A TikTok avatar will not stay sharp blown up to poster size, and any tool promising an HD or 4K version of an avatar is either upscaling it with software or showing you a different image entirely." }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "What you get here is the genuine file at its real size, which is the most that honestly exists." })
     ] }) }),
     /* @__PURE__ */ jsx("section", { className: "py-5 bg-light", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
       /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3 text-center", children: "How to Download a TikTok Profile Picture" }),
       /* @__PURE__ */ jsxs("div", { className: "row g-4 mt-2", children: [
         /* @__PURE__ */ jsx("div", { className: "col-md-4", children: /* @__PURE__ */ jsxs("div", { className: "bg-white rounded-4 p-4 h-100 shadow-sm", children: [
           /* @__PURE__ */ jsx("div", { className: "step-number mb-3", children: "1" }),
-          /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold", children: "Copy the Username or Profile Link" }),
-          /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Open TikTok and copy the username (for example @username) or the profile link." })
+          /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold", children: "Find the Username" }),
+          /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Open the account on TikTok and copy the @username shown under the avatar, or copy the profile link from the Share menu." })
         ] }) }),
         /* @__PURE__ */ jsx("div", { className: "col-md-4", children: /* @__PURE__ */ jsxs("div", { className: "bg-white rounded-4 p-4 h-100 shadow-sm", children: [
           /* @__PURE__ */ jsx("div", { className: "step-number mb-3", children: "2" }),
-          /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold", children: "Paste It in the Downloader" }),
-          /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Paste the username or profile link into the box above and click Get Profile Picture." })
+          /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold", children: "Enter It Above" }),
+          /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Type or paste it into the box and press Get Profile Picture. The @ symbol is optional." })
         ] }) }),
         /* @__PURE__ */ jsx("div", { className: "col-md-4", children: /* @__PURE__ */ jsxs("div", { className: "bg-white rounded-4 p-4 h-100 shadow-sm", children: [
           /* @__PURE__ */ jsx("div", { className: "step-number mb-3", children: "3" }),
-          /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold", children: "Download the Profile Picture" }),
-          /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Preview the avatar, then click Download Profile Picture to save it to your device." })
+          /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold", children: "Save the Avatar" }),
+          /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Check the preview to confirm it is the right account, then click Download Profile Picture." })
         ] }) })
       ] })
     ] }) }),
     /* @__PURE__ */ jsx("section", { className: "py-5 bg-white", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Save TikTok Avatars on iPhone, Android, and Desktop" }),
+      /* @__PURE__ */ jsxs("div", { className: "row g-4 mt-2", children: [
+        /* @__PURE__ */ jsx("div", { className: "col-md-4", children: /* @__PURE__ */ jsxs("div", { className: "bg-light rounded-4 p-4 h-100", children: [
+          /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold", children: "On iPhone or iPad" }),
+          /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Copy the username in the TikTok app, switch to Safari, and paste it here. Once the avatar appears you can download it, or press and hold the image and choose Add to Photos." })
+        ] }) }),
+        /* @__PURE__ */ jsx("div", { className: "col-md-4", children: /* @__PURE__ */ jsxs("div", { className: "bg-light rounded-4 p-4 h-100", children: [
+          /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold", children: "On Android" }),
+          /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Paste the username in Chrome and download. The image lands in your Downloads folder and usually appears in Gallery or Google Photos shortly after." })
+        ] }) }),
+        /* @__PURE__ */ jsx("div", { className: "col-md-4", children: /* @__PURE__ */ jsxs("div", { className: "bg-light rounded-4 p-4 h-100", children: [
+          /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold", children: "On PC or Mac" }),
+          /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Paste the profile address straight from the browser bar. This is the easiest route if the avatar is going into a document, a slide, or a design file." })
+        ] }) })
+      ] })
+    ] }) }),
+    /* @__PURE__ */ jsx("section", { className: "py-5 bg-light", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "If the Profile Is Not Found" }),
+      /* @__PURE__ */ jsxs("ul", { className: "text-muted", children: [
+        /* @__PURE__ */ jsxs("li", { className: "mb-2", children: [
+          /* @__PURE__ */ jsx("strong", { children: "Check the spelling." }),
+          " TikTok usernames often contain dots, underscores, or repeated letters that are easy to mistype. Copy and paste rather than typing by hand."
+        ] }),
+        /* @__PURE__ */ jsxs("li", { className: "mb-2", children: [
+          /* @__PURE__ */ jsx("strong", { children: "Make sure it is a username, not a display name." }),
+          " The display name is the larger text on a profile and can contain spaces and emoji. The username is the one starting with @."
+        ] }),
+        /* @__PURE__ */ jsxs("li", { className: "mb-2", children: [
+          /* @__PURE__ */ jsx("strong", { children: "The account may have been renamed." }),
+          " Usernames can be changed, and an old one stops resolving as soon as it is released."
+        ] }),
+        /* @__PURE__ */ jsxs("li", { className: "mb-2", children: [
+          /* @__PURE__ */ jsx("strong", { children: "The account may be banned or deleted." }),
+          " Nothing can be fetched from an account TikTok has removed."
+        ] }),
+        /* @__PURE__ */ jsxs("li", { className: "mb-0", children: [
+          /* @__PURE__ */ jsx("strong", { children: "Wait a moment and retry." }),
+          " Occasional lookup failures clear on their own after a short pause."
+        ] })
+      ] }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-0 mt-3", children: "Private accounts usually still work, because TikTok keeps avatars visible even when the videos behind them are hidden." })
+    ] }) }),
+    /* @__PURE__ */ jsx("section", { className: "py-5 bg-white", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Using Someone Else's Picture Responsibly" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted", children: "A profile picture is different from other content on TikTok. It is usually a photo of a real person, and it functions as their identity on the platform. That deserves more care than a video cover does." }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted", children: "Viewing an avatar properly, saving a brand logo for a reference deck, or keeping a copy of your own picture are all reasonable. Setting someone else's face as your own avatar, building a fake account around it, or editing it into something they never posted is not, and in many places that carries real legal consequences beyond TikTok's own rules." }),
+      /* @__PURE__ */ jsxs("p", { className: "text-muted mb-0", children: [
+        "The account owner is never notified when you use this tool, which is exactly why the responsibility for using it well sits with you. Our",
+        " ",
+        /* @__PURE__ */ jsx(Link, { to: "/terms-conditions", children: "terms and conditions" }),
+        " cover what is permitted."
+      ] })
+    ] }) }),
+    /* @__PURE__ */ jsx("section", { className: "py-5 bg-light", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Is This Downloader Safe to Use?" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted", children: "There is no login, so no TikTok credentials are ever involved. Nothing is installed, no extension is required, and the usernames you look up are used to complete that one request rather than being kept as a profile of you." }),
+      /* @__PURE__ */ jsxs("p", { className: "text-muted mb-0", children: [
+        "The ",
+        /* @__PURE__ */ jsx(Link, { to: "/privacy-policy", children: "privacy policy" }),
+        " sets out exactly what is collected, including how analytics and advertising cookies behave on this site."
+      ] })
+    ] }) }),
+    /* @__PURE__ */ jsx("section", { className: "py-5 bg-white", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Other TikTok Tools on This Site" }),
+      /* @__PURE__ */ jsxs("div", { className: "row g-4", children: [
+        /* @__PURE__ */ jsx("div", { className: "col-md-4", children: /* @__PURE__ */ jsxs("div", { className: "bg-light rounded-4 p-4 h-100", children: [
+          /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold", children: /* @__PURE__ */ jsx(Link, { to: "/", children: "TikTok Video Downloader" }) }),
+          /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Save the full video as MP4, with or without the watermark." })
+        ] }) }),
+        /* @__PURE__ */ jsx("div", { className: "col-md-4", children: /* @__PURE__ */ jsxs("div", { className: "bg-light rounded-4 p-4 h-100", children: [
+          /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold", children: /* @__PURE__ */ jsx(Link, { to: "/mp3", children: "TikTok MP3 Downloader" }) }),
+          /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Pull the audio out of a TikTok video and save it as an MP3." })
+        ] }) }),
+        /* @__PURE__ */ jsx("div", { className: "col-md-4", children: /* @__PURE__ */ jsxs("div", { className: "bg-light rounded-4 p-4 h-100", children: [
+          /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold", children: /* @__PURE__ */ jsx(Link, { to: "/thumbnail", children: "TikTok Thumbnail Downloader" }) }),
+          /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Save the cover image of a specific video using its link." })
+        ] }) })
+      ] })
+    ] }) }),
+    /* @__PURE__ */ jsx("section", { className: "py-5 bg-light", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
       /* @__PURE__ */ jsx("div", { className: "text-center mb-5", children: /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Frequently Asked Questions" }) }),
-      /* @__PURE__ */ jsx("div", { className: "row justify-content-center", children: /* @__PURE__ */ jsx("div", { className: "col-lg-9", children: /* @__PURE__ */ jsx("div", { className: "accordion faq-accordion", id: "faqAccordionProfileEn", children: faqs$1.map((faq, index) => /* @__PURE__ */ jsxs(
+      /* @__PURE__ */ jsx("div", { className: "row justify-content-center", children: /* @__PURE__ */ jsx("div", { className: "col-lg-9", children: /* @__PURE__ */ jsx("div", { className: "accordion faq-accordion", id: "faqAccordionProfileEn", children: profileFaqsEn.map((faq, index) => /* @__PURE__ */ jsxs(
         "div",
         {
           className: "accordion-item border-0 mb-3 rounded-3 overflow-hidden shadow-sm",
@@ -6586,6 +7267,8 @@ function ProfileEn() {
                 type: "button",
                 "data-bs-toggle": "collapse",
                 "data-bs-target": `#faqProfileEn${index}`,
+                "aria-expanded": index === 0,
+                "aria-controls": `faqProfileEn${index}`,
                 children: faq.q
               }
             ) }),
@@ -6603,89 +7286,185 @@ function ProfileEn() {
         faq.q
       )) }) }) })
     ] }) }),
-    /* @__PURE__ */ jsx("section", { className: "py-4 bg-light", children: /* @__PURE__ */ jsxs("div", { className: "container", children: [
+    /* @__PURE__ */ jsx("section", { className: "py-4 bg-white", children: /* @__PURE__ */ jsxs("div", { className: "container", children: [
       /* @__PURE__ */ jsx("h2", { className: "h5 fw-bold mb-2", children: "Disclaimer" }),
-      /* @__PURE__ */ jsx("p", { className: "text-muted small mb-0", children: "This tool is not affiliated with TikTok. Please respect creator rights and use downloaded content responsibly." })
+      /* @__PURE__ */ jsx("p", { className: "text-muted small mb-0", children: "This tool is not affiliated with TikTok or ByteDance. TikTok is a trademark of ByteDance Ltd. Please respect creator rights and use downloaded content responsibly." })
     ] }) })
   ] }) });
 }
 const t = {
   placeholder: "@username atau link profil",
-  pasteButton: "Paste TikTok Link",
-  fetchButton: "Ambil Profile Picture",
+  pasteButton: "Tempel Link TikTok",
+  fetchButton: "Ambil Foto Profil",
   processing: "Memproses...",
   resultsTitle: "Hasil Download",
-  resultsSubtitle: "Lihat preview profile picture, lalu download di bawah ini.",
-  downloadButton: "Download Profile Picture",
+  resultsSubtitle: "Lihat preview foto profilnya, lalu download di bawah ini.",
+  downloadButton: "Download Foto Profil",
   downloadingPrefix: "Mengunduh",
   invalidInput: "Masukkan username atau link profil TikTok yang valid",
   notFound: "Profil tidak ditemukan. Periksa username atau link profil, lalu coba lagi.",
-  ready: "Profile picture sudah siap."
+  ready: "Foto profil sudah siap."
 };
-const faqs = [
-  {
-    q: "Apakah saya bisa download profile picture TikTok?",
-    a: "Ya. Masukkan username atau link profil TikTok, lalu kamu bisa menyimpan foto profil dalam ukuran terbesar yang tersedia."
-  },
-  {
-    q: "Saya perlu link video atau profil?",
-    a: "Untuk profile picture, gunakan username atau link profil (misalnya @username). Link video langsung dipakai untuk download video, audio, atau thumbnail."
-  },
-  {
-    q: "Profile picture disimpan dalam format apa?",
-    a: "Foto profil disimpan sebagai file gambar yang bisa dibuka di HP, tablet, maupun komputer."
-  },
-  {
-    q: "Apakah profile picture downloader ini gratis?",
-    a: "Ya, tool ini gratis digunakan. Masukkan username atau link profil TikTok publik, lalu download foto profil tanpa biaya dan tanpa login."
-  }
+const inputFormats = [
+  { label: "@username", example: "@tiktok", works: true },
+  { label: "Username saja", example: "tiktok", works: true },
+  { label: "Link profil lengkap", example: "tiktok.com/@tiktok", works: true },
+  { label: "Link video", example: "tiktok.com/@tiktok/video/123…", works: false }
 ];
 function ProfileId() {
   return /* @__PURE__ */ jsx(ProfileDownloader, { t, children: ({ Form, Results }) => /* @__PURE__ */ jsxs(Fragment, { children: [
     /* @__PURE__ */ jsx("section", { id: "download-section", className: "hero-gradient text-white py-5", children: /* @__PURE__ */ jsx("div", { className: "container py-5", children: /* @__PURE__ */ jsxs("div", { className: "row align-items-center", children: [
       /* @__PURE__ */ jsxs("div", { className: "col-lg-6 mb-5 mb-lg-0", children: [
         /* @__PURE__ */ jsxs("h1", { className: "display-5 fw-bold mb-4", children: [
-          "TikTok Profile Picture Downloader —",
+          "Download Foto Profil TikTok —",
           " ",
-          /* @__PURE__ */ jsx("span", { className: "tiktok-text", children: "Simpan Foto Profil TikTok HD" })
+          /* @__PURE__ */ jsx("span", { className: "tiktok-text", children: "Simpan Avatar Ukuran Penuh" })
         ] }),
-        /* @__PURE__ */ jsx("p", { className: "lead mb-3 text-white-50", children: "Simpan profile picture TikTok dalam ukuran penuh dengan cepat dan mudah. Masukkan username atau link profil TikTok, lalu download avatar ke perangkat kamu." }),
-        /* @__PURE__ */ jsx("p", { className: "mb-0 text-white-50", children: "Profile picture berguna untuk melihat avatar TikTok dalam ukuran lebih jelas. Untuk profile picture, gunakan username atau link profil karena tool perlu membaca avatar akun, bukan satu video saja." })
+        /* @__PURE__ */ jsx("p", { className: "lead mb-3 text-white-50", children: "Simpan foto profil TikTok publik mana pun dalam ukuran penuh. Masukkan usernamenya atau tempel link profilnya, lalu download avatarnya dalam resolusi terbesar yang disediakan TikTok." }),
+        /* @__PURE__ */ jsx("p", { className: "mb-0 text-white-50", children: "Foto profil melekat pada akun, bukan pada satu video, itulah sebabnya tool ini meminta username dan bukan link video. TikTok hanya menampilkan avatar dalam ukuran kecil, jadi mendownloadnya adalah cara paling praktis untuk melihatnya dengan jelas." })
       ] }),
       /* @__PURE__ */ jsxs("div", { className: "col-lg-6", children: [
         Form,
-        /* @__PURE__ */ jsx("p", { className: "text-center text-white-50 small mt-3 mb-0", children: "Gratis • Tanpa Login • Tanpa APK • Support Android, iPhone, dan PC" })
+        /* @__PURE__ */ jsx("p", { className: "text-center text-white-50 small mt-3 mb-0", children: "Gratis • Tanpa Login • Tanpa Aplikasi • Bisa di Android, iPhone, dan PC" })
       ] })
     ] }) }) }),
     Results,
     /* @__PURE__ */ jsx("section", { className: "py-5 bg-white", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
-      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Download Profile Picture TikTok Ukuran Penuh" }),
-      /* @__PURE__ */ jsx("p", { className: "text-muted", children: "TikTok menampilkan foto profil dalam ukuran kecil di dalam aplikasi. Dengan TikTok Profile Picture Downloader ini, kamu bisa melihat dan menyimpan avatar dalam ukuran terbesar yang tersedia langsung dari browser." }),
-      /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Cukup masukkan username atau link profil TikTok publik, lihat preview profile picture, lalu download ke perangkat kamu." })
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Kenapa Foto Profil TikTok Susah Disimpan Langsung" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted", children: "TikTok tidak pernah menampilkan foto profil dalam ukuran penuh. Di aplikasi bentuknya hanya lingkaran kecil, dan menekannya lama pun tidak menghasilkan apa-apa. Screenshot hanya memberi kamu lingkaran yang terpotong dan terkompresi beserta latar belakang seadanya, dengan resolusi mengikuti layar kamu." }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted", children: "Padahal di balik lingkaran itu TikTok menyimpan versi persegi yang lebih besar. Tool ini mencari akunnya, meminta versi terbesar yang dipublikasikan TikTok, lalu memberikan file aslinya kepada kamu tanpa dipotong." }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Hanya itu pekerjaannya. Tidak ada proses upscale, penajaman, atau rekonstruksi, karena menambah detail berarti mengarang piksel yang memang tidak pernah ada di gambarnya." })
     ] }) }),
     /* @__PURE__ */ jsx("section", { className: "py-5 bg-light", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
-      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3 text-center", children: "Cara Download Profile Picture TikTok" }),
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Apa yang Harus Dimasukkan" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "Tool ini fleksibel soal format. Satu-satunya yang tidak bisa dipakai adalah link ke satu video, karena link itu menunjuk ke klipnya, bukan ke akunnya." }),
+      /* @__PURE__ */ jsx("div", { className: "table-responsive", children: /* @__PURE__ */ jsxs("table", { className: "table align-middle", children: [
+        /* @__PURE__ */ jsx("thead", { children: /* @__PURE__ */ jsxs("tr", { children: [
+          /* @__PURE__ */ jsx("th", { scope: "col", children: "Input" }),
+          /* @__PURE__ */ jsx("th", { scope: "col", children: "Contoh" }),
+          /* @__PURE__ */ jsx("th", { scope: "col", children: "Bisa dipakai?" })
+        ] }) }),
+        /* @__PURE__ */ jsx("tbody", { children: inputFormats.map((row) => /* @__PURE__ */ jsxs("tr", { children: [
+          /* @__PURE__ */ jsx("td", { className: "fw-semibold", children: row.label }),
+          /* @__PURE__ */ jsx("td", { className: "text-muted", children: row.example }),
+          /* @__PURE__ */ jsx("td", { children: row.works ? "Bisa" : "Tidak — pakai halaman download foto TikTok" })
+        ] }, row.label)) })
+      ] }) }),
+      /* @__PURE__ */ jsxs("p", { className: "text-muted mb-0", children: [
+        "Punyanya link video? Halaman",
+        " ",
+        /* @__PURE__ */ jsx(Link, { to: "/id/thumbnail", children: "download foto TikTok" }),
+        " menyimpan gambar cover dari video tertentu."
+      ] })
+    ] }) }),
+    /* @__PURE__ */ jsx("section", { className: "py-5 bg-white", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Seberapa Besar Foto Profil TikTok?" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted", children: "Lebih kecil daripada yang dibayangkan kebanyakan orang. TikTok hanya membutuhkan avatar seukuran lingkaran kecil, jadi mereka tidak menyimpan versi beresolusi cetak. Versi terbesar yang dipublikasikan umumnya beberapa ratus piksel persegi." }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted", children: "Ini penting kalau kamu berniat memperbesarnya. Avatar TikTok tidak akan tetap tajam saat dibesarkan seukuran poster, dan tool mana pun yang menjanjikan versi HD atau 4K dari sebuah avatar sebenarnya sedang meng-upscale dengan software atau menampilkan gambar yang berbeda sama sekali." }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Yang kamu dapat di sini adalah file aslinya pada ukuran sebenarnya, dan itulah maksimal yang benar-benar ada." })
+    ] }) }),
+    /* @__PURE__ */ jsx("section", { className: "py-5 bg-light", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3 text-center", children: "Cara Download Foto Profil TikTok" }),
       /* @__PURE__ */ jsxs("div", { className: "row g-4 mt-2", children: [
         /* @__PURE__ */ jsx("div", { className: "col-md-4", children: /* @__PURE__ */ jsxs("div", { className: "bg-white rounded-4 p-4 h-100 shadow-sm", children: [
           /* @__PURE__ */ jsx("div", { className: "step-number mb-3", children: "1" }),
-          /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold", children: "Salin Username atau Link Profil" }),
-          /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Buka TikTok, salin username (misalnya @username) atau link profil." })
+          /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold", children: "Cari Usernamenya" }),
+          /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Buka akunnya di TikTok lalu salin @username yang tertulis di bawah avatar, atau salin link profilnya lewat menu Share." })
         ] }) }),
         /* @__PURE__ */ jsx("div", { className: "col-md-4", children: /* @__PURE__ */ jsxs("div", { className: "bg-white rounded-4 p-4 h-100 shadow-sm", children: [
           /* @__PURE__ */ jsx("div", { className: "step-number mb-3", children: "2" }),
-          /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold", children: "Tempel di Downloader" }),
-          /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Tempel username atau link profil ke kotak di atas, lalu klik Ambil Profile Picture." })
+          /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold", children: "Masukkan di Kotak Atas" }),
+          /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Ketik atau tempel di kotak yang ada di atas lalu tekan Ambil Foto Profil. Tanda @ boleh ditulis, boleh juga tidak." })
         ] }) }),
         /* @__PURE__ */ jsx("div", { className: "col-md-4", children: /* @__PURE__ */ jsxs("div", { className: "bg-white rounded-4 p-4 h-100 shadow-sm", children: [
           /* @__PURE__ */ jsx("div", { className: "step-number mb-3", children: "3" }),
-          /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold", children: "Download Profile Picture" }),
-          /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Lihat preview avatar, lalu klik Download Profile Picture untuk menyimpannya ke perangkat." })
+          /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold", children: "Simpan Avatarnya" }),
+          /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Periksa previewnya untuk memastikan akunnya benar, lalu ketuk Download Foto Profil." })
         ] }) })
       ] })
     ] }) }),
     /* @__PURE__ */ jsx("section", { className: "py-5 bg-white", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
-      /* @__PURE__ */ jsx("div", { className: "text-center mb-5", children: /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Frequently Asked Questions" }) }),
-      /* @__PURE__ */ jsx("div", { className: "row justify-content-center", children: /* @__PURE__ */ jsx("div", { className: "col-lg-9", children: /* @__PURE__ */ jsx("div", { className: "accordion faq-accordion", id: "faqAccordionProfileId", children: faqs.map((faq, index) => /* @__PURE__ */ jsxs(
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Simpan Foto Profil TikTok di Android, iPhone, dan PC" }),
+      /* @__PURE__ */ jsxs("div", { className: "row g-4 mt-2", children: [
+        /* @__PURE__ */ jsx("div", { className: "col-md-4", children: /* @__PURE__ */ jsxs("div", { className: "bg-light rounded-4 p-4 h-100", children: [
+          /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold", children: "Di Android" }),
+          /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Tempel usernamenya di Chrome lalu download. Gambarnya masuk ke folder Download dan biasanya muncul di Galeri atau Google Photos tak lama kemudian." })
+        ] }) }),
+        /* @__PURE__ */ jsx("div", { className: "col-md-4", children: /* @__PURE__ */ jsxs("div", { className: "bg-light rounded-4 p-4 h-100", children: [
+          /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold", children: "Di iPhone atau iPad" }),
+          /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Salin usernamenya di aplikasi TikTok, pindah ke Safari, lalu tempel di sini. Saat avatarnya muncul kamu bisa mendownloadnya atau menekan lama gambarnya lalu pilih Add to Photos." })
+        ] }) }),
+        /* @__PURE__ */ jsx("div", { className: "col-md-4", children: /* @__PURE__ */ jsxs("div", { className: "bg-light rounded-4 p-4 h-100", children: [
+          /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold", children: "Di PC atau Laptop" }),
+          /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Tempel alamat profilnya langsung dari kolom browser. Ini cara paling mudah kalau avatarnya mau dipakai di dokumen, slide, atau file desain." })
+        ] }) })
+      ] })
+    ] }) }),
+    /* @__PURE__ */ jsx("section", { className: "py-5 bg-light", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Kalau Profilnya Tidak Ditemukan" }),
+      /* @__PURE__ */ jsxs("ul", { className: "text-muted", children: [
+        /* @__PURE__ */ jsxs("li", { className: "mb-2", children: [
+          /* @__PURE__ */ jsx("strong", { children: "Periksa ejaannya." }),
+          " Username TikTok sering memuat titik, garis bawah, atau huruf berulang yang mudah salah ketik. Lebih aman salin dan tempel daripada mengetik manual."
+        ] }),
+        /* @__PURE__ */ jsxs("li", { className: "mb-2", children: [
+          /* @__PURE__ */ jsx("strong", { children: "Pastikan itu username, bukan nama tampilan." }),
+          " Nama tampilan adalah teks besar di profil dan bisa memuat spasi serta emoji. Username adalah yang diawali tanda @."
+        ] }),
+        /* @__PURE__ */ jsxs("li", { className: "mb-2", children: [
+          /* @__PURE__ */ jsx("strong", { children: "Akunnya mungkin sudah ganti nama." }),
+          " Username bisa diubah, dan yang lama langsung tidak berlaku begitu dilepas."
+        ] }),
+        /* @__PURE__ */ jsxs("li", { className: "mb-2", children: [
+          /* @__PURE__ */ jsx("strong", { children: "Akunnya mungkin diblokir atau dihapus." }),
+          " Tidak ada yang bisa diambil dari akun yang sudah dihapus TikTok."
+        ] }),
+        /* @__PURE__ */ jsxs("li", { className: "mb-0", children: [
+          /* @__PURE__ */ jsx("strong", { children: "Tunggu sebentar lalu coba lagi." }),
+          " Kegagalan sesekali biasanya hilang sendiri setelah jeda singkat."
+        ] })
+      ] }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted mb-0 mt-3", children: "Akun privat umumnya tetap bisa, karena TikTok membiarkan avatarnya terlihat meski video di dalamnya disembunyikan." })
+    ] }) }),
+    /* @__PURE__ */ jsx("section", { className: "py-5 bg-white", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Memakai Foto Orang Lain Secara Bertanggung Jawab" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted", children: "Foto profil berbeda dari konten TikTok lainnya. Biasanya itu foto orang sungguhan, dan berfungsi sebagai identitas mereka di platform. Hal itu perlu diperlakukan lebih hati-hati daripada sekadar cover video." }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted", children: "Melihat avatar dengan jelas, menyimpan logo brand untuk bahan presentasi, atau menyimpan salinan foto milik kamu sendiri adalah hal yang wajar. Memasang wajah orang lain sebagai avatar kamu, membuat akun palsu dengannya, atau mengeditnya menjadi sesuatu yang tidak pernah mereka unggah bukan hal yang wajar, dan di banyak tempat itu membawa konsekuensi hukum yang nyata di luar aturan TikTok sendiri." }),
+      /* @__PURE__ */ jsxs("p", { className: "text-muted mb-0", children: [
+        "Pemilik akun tidak pernah diberi tahu saat kamu memakai tool ini, dan justru karena itulah tanggung jawab penggunaannya ada di tangan kamu.",
+        " ",
+        /* @__PURE__ */ jsx(Link, { to: "/id/terms-conditions", children: "Syarat dan ketentuan" }),
+        " kami menjelaskan apa yang diizinkan."
+      ] })
+    ] }) }),
+    /* @__PURE__ */ jsx("section", { className: "py-5 bg-light", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Apakah Tool Ini Aman Dipakai?" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted", children: "Tidak ada login, jadi tidak ada data akun TikTok yang terlibat sama sekali. Tidak ada yang diinstall, tidak perlu ekstensi, dan username yang kamu cari dipakai untuk menyelesaikan permintaan itu saja, bukan disimpan sebagai profil tentang kamu." }),
+      /* @__PURE__ */ jsxs("p", { className: "text-muted mb-0", children: [
+        /* @__PURE__ */ jsx(Link, { to: "/id/privacy-policy", children: "Kebijakan privasi" }),
+        " menjelaskan secara rinci data apa saja yang dikumpulkan, termasuk cara kerja cookie analitik dan iklan di situs ini."
+      ] })
+    ] }) }),
+    /* @__PURE__ */ jsx("section", { className: "py-5 bg-white", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Tool TikTok Lain di Situs Ini" }),
+      /* @__PURE__ */ jsxs("div", { className: "row g-4", children: [
+        /* @__PURE__ */ jsx("div", { className: "col-md-4", children: /* @__PURE__ */ jsxs("div", { className: "bg-light rounded-4 p-4 h-100", children: [
+          /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold", children: /* @__PURE__ */ jsx(Link, { to: "/id", children: "Download Video TikTok" }) }),
+          /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Simpan video utuh sebagai MP4, dengan atau tanpa watermark." })
+        ] }) }),
+        /* @__PURE__ */ jsx("div", { className: "col-md-4", children: /* @__PURE__ */ jsxs("div", { className: "bg-light rounded-4 p-4 h-100", children: [
+          /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold", children: /* @__PURE__ */ jsx(Link, { to: "/id/mp3", children: "Download MP3 TikTok" }) }),
+          /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Ambil audionya dari video TikTok lalu simpan sebagai file MP3." })
+        ] }) }),
+        /* @__PURE__ */ jsx("div", { className: "col-md-4", children: /* @__PURE__ */ jsxs("div", { className: "bg-light rounded-4 p-4 h-100", children: [
+          /* @__PURE__ */ jsx("h3", { className: "h5 fw-bold", children: /* @__PURE__ */ jsx(Link, { to: "/id/thumbnail", children: "Download Foto TikTok" }) }),
+          /* @__PURE__ */ jsx("p", { className: "text-muted mb-0", children: "Simpan gambar cover dari sebuah video lewat linknya." })
+        ] }) })
+      ] })
+    ] }) }),
+    /* @__PURE__ */ jsx("section", { className: "py-5 bg-light", children: /* @__PURE__ */ jsxs("div", { className: "container py-4", children: [
+      /* @__PURE__ */ jsx("div", { className: "text-center mb-5", children: /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-3", children: "Pertanyaan yang Sering Diajukan" }) }),
+      /* @__PURE__ */ jsx("div", { className: "row justify-content-center", children: /* @__PURE__ */ jsx("div", { className: "col-lg-9", children: /* @__PURE__ */ jsx("div", { className: "accordion faq-accordion", id: "faqAccordionProfileId", children: profileFaqsId.map((faq, index) => /* @__PURE__ */ jsxs(
         "div",
         {
           className: "accordion-item border-0 mb-3 rounded-3 overflow-hidden shadow-sm",
@@ -6697,6 +7476,8 @@ function ProfileId() {
                 type: "button",
                 "data-bs-toggle": "collapse",
                 "data-bs-target": `#faqProfileId${index}`,
+                "aria-expanded": index === 0,
+                "aria-controls": `faqProfileId${index}`,
                 children: faq.q
               }
             ) }),
@@ -6714,68 +7495,38 @@ function ProfileId() {
         faq.q
       )) }) }) })
     ] }) }),
-    /* @__PURE__ */ jsx("section", { className: "py-4 bg-light", children: /* @__PURE__ */ jsxs("div", { className: "container", children: [
-      /* @__PURE__ */ jsx("h2", { className: "h5 fw-bold mb-2", children: "Disclaimer" }),
-      /* @__PURE__ */ jsx("p", { className: "text-muted small mb-0", children: "This tool is not affiliated with TikTok. Please respect creator rights and use downloaded content responsibly." })
+    /* @__PURE__ */ jsx("section", { className: "py-4 bg-white", children: /* @__PURE__ */ jsxs("div", { className: "container", children: [
+      /* @__PURE__ */ jsx("h2", { className: "h5 fw-bold mb-2", children: "Penafian" }),
+      /* @__PURE__ */ jsx("p", { className: "text-muted small mb-0", children: "Tool ini tidak berafiliasi dengan TikTok maupun ByteDance. TikTok adalah merek dagang milik ByteDance Ltd. Mohon hormati hak kreator dan gunakan konten yang kamu download secara bertanggung jawab." })
     ] }) })
   ] }) });
 }
-function FAQ() {
-  const faqs2 = [
-    {
-      question: "How to download TikTok videos?",
-      answer: "Downloading TikTok videos is simple: 1) Open TikTok and find the video you want to download. 2) Tap the Share button and copy the link. 3) Paste the URL into our TikTok downloader. 4) Select MP4 or MP3 format. 5) Click Download and save your video!"
-    },
-    {
-      question: "Can I download TikTok videos in HD?",
-      answer: "Yes! Our TikTok video downloader supports HD quality downloads. We save videos in the highest available quality, typically 1080p or 720p depending on the original video quality uploaded to TikTok."
-    },
-    {
-      question: "Are there any limitations to downloads?",
-      answer: "No, there are no limitations! Our TikTok downloader offers unlimited free downloads. You can download as many TikTok videos as you want, whenever you want, without any daily or monthly limits."
-    },
-    {
-      question: "Is the TikTok downloader service free?",
-      answer: "Yes, our TikTok video downloader is 100% free to use. There are no hidden fees, no premium plans, and no registration required. Just paste the URL and download immediately."
-    },
-    {
-      question: "Can I download TikTok videos without watermark?",
-      answer: "Absolutely! Our tool specifically removes the TikTok watermark from videos. You get clean, watermark-free videos that you can use for personal projects, compilations, or sharing."
-    },
-    {
-      question: "Does this work on mobile devices?",
-      answer: "Yes! Our TikTok downloader is fully responsive and works on all devices including Android phones, iPhones, iPads, and desktop computers. No app installation is required."
-    },
-    {
-      question: "Can I convert TikTok videos to MP3?",
-      answer: "Yes, you can easily convert TikTok videos to MP3 audio format. Simply paste the video URL, select MP3 as your download format, and get the audio file. Perfect for saving TikTok sounds and music!"
-    },
-    {
-      question: "Is it safe to use this TikTok downloader?",
-      answer: "Yes, our service is completely safe. We don't store any personal information, don't require login, and don't install any software on your device. Your privacy is our priority."
-    },
-    {
-      question: "Why isn't my download working?",
-      answer: "If your download isn't working, check these: 1) Make sure the URL is correct and complete. 2) The video might be private or deleted. 3) Try refreshing the page and pasting the URL again. 4) Contact us if the issue persists."
-    },
-    {
-      question: "Can I download private TikTok videos?",
-      answer: "No, our downloader can only download public TikTok videos. Private videos require the owner's permission and cannot be accessed by third-party tools."
-    },
-    {
-      question: "How long does it take to download a video?",
-      answer: "Downloads are typically instant! Most TikTok videos are downloaded within 5-10 seconds, depending on your internet connection speed and the video length."
-    },
-    {
-      question: "Is downloading TikTok videos legal?",
-      answer: "Downloading TikTok videos for personal use is generally acceptable. However, you should respect copyright and not redistribute or use content commercially without the creator's permission."
-    }
-  ];
+const copy$4 = {
+  en: {
+    h1: "Frequently Asked Questions",
+    lead: "Find answers to common questions about our TikTok video downloader",
+    stillTitle: "Still Have Questions?",
+    stillBody: "Can't find the answer you're looking for? Feel free to reach out to our support team.",
+    cta: "Contact Us",
+    contactHref: "/contact"
+  },
+  id: {
+    h1: "Pertanyaan yang Sering Diajukan",
+    lead: "Temukan jawaban untuk pertanyaan umum seputar TikTok downloader kami",
+    stillTitle: "Masih Ada Pertanyaan?",
+    stillBody: "Tidak menemukan jawaban yang kamu cari? Jangan ragu menghubungi tim dukungan kami.",
+    cta: "Hubungi Kami",
+    contactHref: "/id/contact"
+  }
+};
+function FAQ({ lang = "en" }) {
+  const t2 = copy$4[lang];
+  const faqs2 = lang === "id" ? faqPageId : faqPageEn;
   return /* @__PURE__ */ jsxs(Fragment, { children: [
     /* @__PURE__ */ jsx("section", { className: "hero-gradient text-white py-5", children: /* @__PURE__ */ jsx("div", { className: "container py-4", children: /* @__PURE__ */ jsxs("div", { className: "text-center", children: [
       /* @__PURE__ */ jsx(FontAwesomeIcon, { icon: faQuestionCircle, className: "mb-3", style: { fontSize: "48px" } }),
-      /* @__PURE__ */ jsx("h1", { className: "display-5 fw-bold mb-3", children: "Frequently Asked Questions" }),
-      /* @__PURE__ */ jsx("p", { className: "lead text-white-50", children: "Find answers to common questions about our TikTok video downloader" })
+      /* @__PURE__ */ jsx("h1", { className: "display-5 fw-bold mb-3", children: t2.h1 }),
+      /* @__PURE__ */ jsx("p", { className: "lead text-white-50", children: t2.lead })
     ] }) }) }),
     /* @__PURE__ */ jsx("section", { className: "py-5", children: /* @__PURE__ */ jsx("div", { className: "container py-4", children: /* @__PURE__ */ jsx("div", { className: "row justify-content-center", children: /* @__PURE__ */ jsxs("div", { className: "col-lg-8", children: [
       /* @__PURE__ */ jsx("div", { className: "accordion faq-accordion", id: "faqFullAccordion", children: faqs2.map((faq, index) => /* @__PURE__ */ jsxs("div", { className: "accordion-item border-0 mb-3 rounded-3 overflow-hidden shadow-sm", children: [
@@ -6786,7 +7537,9 @@ function FAQ() {
             type: "button",
             "data-bs-toggle": "collapse",
             "data-bs-target": `#faqItem${index}`,
-            children: faq.question
+            "aria-expanded": index === 0,
+            "aria-controls": `faqItem${index}`,
+            children: faq.q
           }
         ) }),
         /* @__PURE__ */ jsx(
@@ -6795,51 +7548,69 @@ function FAQ() {
             id: `faqItem${index}`,
             className: `accordion-collapse collapse ${index === 0 ? "show" : ""}`,
             "data-bs-parent": "#faqFullAccordion",
-            children: /* @__PURE__ */ jsx("div", { className: "accordion-body", children: faq.answer })
+            children: /* @__PURE__ */ jsx("div", { className: "accordion-body", children: faq.a })
           }
         )
-      ] }, index)) }),
+      ] }, faq.q)) }),
       /* @__PURE__ */ jsxs("div", { className: "text-center mt-5 p-5 bg-light rounded-4", children: [
-        /* @__PURE__ */ jsx("h3", { className: "fw-bold mb-3", children: "Still Have Questions?" }),
-        /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "Can't find the answer you're looking for? Feel free to reach out to our support team." }),
-        /* @__PURE__ */ jsx(Link, { to: "/contact", className: "btn btn-tiktok", children: "Contact Us" })
+        /* @__PURE__ */ jsx("h3", { className: "fw-bold mb-3", children: t2.stillTitle }),
+        /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: t2.stillBody }),
+        /* @__PURE__ */ jsx(Link, { to: t2.contactHref, className: "btn btn-tiktok", children: t2.cta })
       ] })
     ] }) }) }) })
   ] });
 }
-var faFacebook = {
-  prefix: "fab",
-  iconName: "facebook",
-  icon: [512, 512, [62e3], "f09a", "M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256C0 376 82.7 476.8 194.2 504.5l0-170.3-52.8 0 0-78.2 52.8 0 0-33.7c0-87.1 39.4-127.5 125-127.5 16.2 0 44.2 3.2 55.7 6.4l0 70.8c-6-.6-16.5-1-29.6-1-42 0-58.2 15.9-58.2 57.2l0 27.8 83.6 0-14.4 78.2-69.3 0 0 175.9C413.8 494.8 512 386.9 512 256z"]
+const copy$3 = {
+  en: {
+    h1: "Contact Us",
+    lead: "Get in touch with our TikTok downloader support team",
+    formTitle: "Send Us a Message",
+    thanksTitle: "Thank You!",
+    thanksBody: "Your message has been received. We'll get back to you as soon as possible.",
+    nameLabel: "Your Name",
+    namePlaceholder: "Enter your name",
+    emailLabel: "Email Address",
+    emailPlaceholder: "Enter your email",
+    messageLabel: "Your Message",
+    messagePlaceholder: "How can we help you?",
+    sending: "Sending...",
+    send: "Send Message",
+    infoTitle: "Get in Touch",
+    infoBody: "Have questions about our TikTok video downloader? Need help with a download? We're here to help. Fill out the form and we'll respond as quickly as possible.",
+    responseTitle: "Response Time",
+    responseBody: "We typically respond to all inquiries within 24-48 hours during business days.",
+    noteLabel: "Note:",
+    noteBody: "For copyright inquiries or DMCA takedown requests, please include relevant documentation in your message."
+  },
+  id: {
+    h1: "Hubungi Kami",
+    lead: "Hubungi tim dukungan TikTok downloader kami",
+    formTitle: "Kirim Pesan",
+    thanksTitle: "Terima Kasih!",
+    thanksBody: "Pesan kamu sudah kami terima. Kami akan membalas secepat mungkin.",
+    nameLabel: "Nama Kamu",
+    namePlaceholder: "Masukkan nama kamu",
+    emailLabel: "Alamat Email",
+    emailPlaceholder: "Masukkan email kamu",
+    messageLabel: "Pesan Kamu",
+    messagePlaceholder: "Ada yang bisa kami bantu?",
+    sending: "Mengirim...",
+    send: "Kirim Pesan",
+    infoTitle: "Hubungi Kami",
+    infoBody: "Punya pertanyaan seputar TikTok downloader ini? Butuh bantuan saat download? Isi formulir di samping dan kami akan membalas secepat mungkin.",
+    responseTitle: "Waktu Respons",
+    responseBody: "Kami biasanya membalas semua pertanyaan dalam 24-48 jam pada hari kerja.",
+    noteLabel: "Catatan:",
+    noteBody: "Untuk pertanyaan hak cipta atau permintaan penghapusan DMCA, mohon sertakan dokumen pendukung di dalam pesan kamu."
+  }
 };
-var faTiktok = {
-  prefix: "fab",
-  iconName: "tiktok",
-  icon: [448, 512, [], "e07b", "M448.5 209.9c-44 .1-87-13.6-122.8-39.2l0 178.7c0 33.1-10.1 65.4-29 92.6s-45.6 48-76.6 59.6-64.8 13.5-96.9 5.3-60.9-25.9-82.7-50.8-35.3-56-39-88.9 2.9-66.1 18.6-95.2 40-52.7 69.6-67.7 62.9-20.5 95.7-16l0 89.9c-15-4.7-31.1-4.6-46 .4s-27.9 14.6-37 27.3-14 28.1-13.9 43.9 5.2 31 14.5 43.7 22.4 22.1 37.4 26.9 31.1 4.8 46-.1 28-14.4 37.2-27.1 14.2-28.1 14.2-43.8l0-349.4 88 0c-.1 7.4 .6 14.9 1.9 22.2 3.1 16.3 9.4 31.9 18.7 45.7s21.3 25.6 35.2 34.6c19.9 13.1 43.2 20.1 67 20.1l0 87.4z"]
-};
-var faInstagram = {
-  prefix: "fab",
-  iconName: "instagram",
-  icon: [448, 512, [], "f16d", "M224.3 141a115 115 0 1 0 -.6 230 115 115 0 1 0 .6-230zm-.6 40.4a74.6 74.6 0 1 1 .6 149.2 74.6 74.6 0 1 1 -.6-149.2zm93.4-45.1a26.8 26.8 0 1 1 53.6 0 26.8 26.8 0 1 1 -53.6 0zm129.7 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM399 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"]
-};
-var faTwitter = {
-  prefix: "fab",
-  iconName: "twitter",
-  icon: [512, 512, [], "f099", "M459.4 151.7c.3 4.5 .3 9.1 .3 13.6 0 138.7-105.6 298.6-298.6 298.6-59.5 0-114.7-17.2-161.1-47.1 8.4 1 16.6 1.3 25.3 1.3 49.1 0 94.2-16.6 130.3-44.8-46.1-1-84.8-31.2-98.1-72.8 6.5 1 13 1.6 19.8 1.6 9.4 0 18.8-1.3 27.6-3.6-48.1-9.7-84.1-52-84.1-103l0-1.3c14 7.8 30.2 12.7 47.4 13.3-28.3-18.8-46.8-51-46.8-87.4 0-19.5 5.2-37.4 14.3-53 51.7 63.7 129.3 105.3 216.4 109.8-1.6-7.8-2.6-15.9-2.6-24 0-57.8 46.8-104.9 104.9-104.9 30.2 0 57.5 12.7 76.7 33.1 23.7-4.5 46.5-13.3 66.6-25.3-7.8 24.4-24.4 44.8-46.1 57.8 21.1-2.3 41.6-8.1 60.4-16.2-14.3 20.8-32.2 39.3-52.6 54.3z"]
-};
-function Contact() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: ""
-  });
+function Contact({ lang = "en" }) {
+  const t2 = copy$3[lang];
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const handleChange = (e2) => {
-    setFormData({
-      ...formData,
-      [e2.target.name]: e2.target.value
-    });
+    setFormData({ ...formData, [e2.target.name]: e2.target.value });
   };
   const handleSubmit = (e2) => {
     e2.preventDefault();
@@ -6853,20 +7624,20 @@ function Contact() {
   return /* @__PURE__ */ jsxs(Fragment, { children: [
     /* @__PURE__ */ jsx("section", { className: "hero-gradient text-white py-5", children: /* @__PURE__ */ jsx("div", { className: "container py-4", children: /* @__PURE__ */ jsxs("div", { className: "text-center", children: [
       /* @__PURE__ */ jsx(FontAwesomeIcon, { icon: faEnvelope, className: "mb-3", style: { fontSize: "48px" } }),
-      /* @__PURE__ */ jsx("h1", { className: "display-5 fw-bold mb-3", children: "Contact Us" }),
-      /* @__PURE__ */ jsx("p", { className: "lead text-white-50", children: "Get in touch with our TikTok downloader support team" })
+      /* @__PURE__ */ jsx("h1", { className: "display-5 fw-bold mb-3", children: t2.h1 }),
+      /* @__PURE__ */ jsx("p", { className: "lead text-white-50", children: t2.lead })
     ] }) }) }),
     /* @__PURE__ */ jsx("section", { className: "py-5", children: /* @__PURE__ */ jsx("div", { className: "container py-4", children: /* @__PURE__ */ jsx("div", { className: "row justify-content-center", children: /* @__PURE__ */ jsx("div", { className: "col-lg-8", children: /* @__PURE__ */ jsxs("div", { className: "row g-4", children: [
       /* @__PURE__ */ jsx("div", { className: "col-md-7", children: /* @__PURE__ */ jsxs("div", { className: "bg-white rounded-4 shadow-sm p-4 p-md-5", children: [
-        /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-4", children: "Send Us a Message" }),
+        /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-4", children: t2.formTitle }),
         submitted ? /* @__PURE__ */ jsxs("div", { className: "alert alert-success", role: "alert", children: [
-          /* @__PURE__ */ jsx("h4", { className: "alert-heading", children: "Thank You!" }),
-          /* @__PURE__ */ jsx("p", { children: "Your message has been received. We'll get back to you as soon as possible." })
+          /* @__PURE__ */ jsx("h3", { className: "alert-heading h4", children: t2.thanksTitle }),
+          /* @__PURE__ */ jsx("p", { className: "mb-0", children: t2.thanksBody })
         ] }) : /* @__PURE__ */ jsxs("form", { onSubmit: handleSubmit, children: [
           /* @__PURE__ */ jsxs("div", { className: "mb-3", children: [
             /* @__PURE__ */ jsxs("label", { htmlFor: "name", className: "form-label fw-semibold", children: [
               /* @__PURE__ */ jsx(FontAwesomeIcon, { icon: faUser, className: "me-2 text-muted" }),
-              "Your Name"
+              t2.nameLabel
             ] }),
             /* @__PURE__ */ jsx(
               "input",
@@ -6875,9 +7646,10 @@ function Contact() {
                 className: "form-control form-control-lg",
                 id: "name",
                 name: "name",
+                autoComplete: "name",
                 value: formData.name,
                 onChange: handleChange,
-                placeholder: "Enter your name",
+                placeholder: t2.namePlaceholder,
                 required: true
               }
             )
@@ -6885,7 +7657,7 @@ function Contact() {
           /* @__PURE__ */ jsxs("div", { className: "mb-3", children: [
             /* @__PURE__ */ jsxs("label", { htmlFor: "email", className: "form-label fw-semibold", children: [
               /* @__PURE__ */ jsx(FontAwesomeIcon, { icon: faEnvelope, className: "me-2 text-muted" }),
-              "Email Address"
+              t2.emailLabel
             ] }),
             /* @__PURE__ */ jsx(
               "input",
@@ -6894,9 +7666,10 @@ function Contact() {
                 className: "form-control form-control-lg",
                 id: "email",
                 name: "email",
+                autoComplete: "email",
                 value: formData.email,
                 onChange: handleChange,
-                placeholder: "Enter your email",
+                placeholder: t2.emailPlaceholder,
                 required: true
               }
             )
@@ -6904,7 +7677,7 @@ function Contact() {
           /* @__PURE__ */ jsxs("div", { className: "mb-4", children: [
             /* @__PURE__ */ jsxs("label", { htmlFor: "message", className: "form-label fw-semibold", children: [
               /* @__PURE__ */ jsx(FontAwesomeIcon, { icon: faComment, className: "me-2 text-muted" }),
-              "Your Message"
+              t2.messageLabel
             ] }),
             /* @__PURE__ */ jsx(
               "textarea",
@@ -6915,221 +7688,764 @@ function Contact() {
                 rows: 5,
                 value: formData.message,
                 onChange: handleChange,
-                placeholder: "How can we help you?",
+                placeholder: t2.messagePlaceholder,
                 required: true
               }
             )
           ] }),
           /* @__PURE__ */ jsx("div", { className: "d-grid", children: /* @__PURE__ */ jsx("button", { type: "submit", className: "btn btn-tiktok btn-lg", disabled: isLoading, children: isLoading ? /* @__PURE__ */ jsxs(Fragment, { children: [
             /* @__PURE__ */ jsx("span", { className: "spinner-border spinner-border-sm me-2", role: "status" }),
-            "Sending..."
+            t2.sending
           ] }) : /* @__PURE__ */ jsxs(Fragment, { children: [
             /* @__PURE__ */ jsx(FontAwesomeIcon, { icon: faPaperPlane, className: "me-2" }),
-            "Send Message"
+            t2.send
           ] }) }) })
         ] })
       ] }) }),
       /* @__PURE__ */ jsx("div", { className: "col-md-5", children: /* @__PURE__ */ jsxs("div", { className: "bg-light rounded-4 p-4 h-100", children: [
-        /* @__PURE__ */ jsx("h3", { className: "fw-bold mb-4", children: "Get in Touch" }),
-        /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "Have questions about our TikTok video downloader? Need help with a download? We're here to help! Fill out the form and we'll respond as quickly as possible." }),
-        /* @__PURE__ */ jsx("h5", { className: "fw-bold mb-3", children: "Response Time" }),
-        /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: "We typically respond to all inquiries within 24-48 hours during business days." }),
-        /* @__PURE__ */ jsx("h5", { className: "fw-bold mb-3", children: "Follow Us" }),
-        /* @__PURE__ */ jsxs("div", { className: "d-flex gap-3", children: [
-          /* @__PURE__ */ jsx("a", { href: "#", className: "social-icon bg-dark", children: /* @__PURE__ */ jsx(FontAwesomeIcon, { icon: faTiktok }) }),
-          /* @__PURE__ */ jsx("a", { href: "#", className: "social-icon bg-dark", children: /* @__PURE__ */ jsx(FontAwesomeIcon, { icon: faInstagram }) }),
-          /* @__PURE__ */ jsx("a", { href: "#", className: "social-icon bg-dark", children: /* @__PURE__ */ jsx(FontAwesomeIcon, { icon: faTwitter }) })
-        ] }),
+        /* @__PURE__ */ jsx("h2", { className: "fw-bold mb-4 h3", children: t2.infoTitle }),
+        /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: t2.infoBody }),
+        /* @__PURE__ */ jsx("h3", { className: "fw-bold mb-3 h5", children: t2.responseTitle }),
+        /* @__PURE__ */ jsx("p", { className: "text-muted mb-4", children: t2.responseBody }),
         /* @__PURE__ */ jsx("hr", { className: "my-4" }),
         /* @__PURE__ */ jsx("div", { className: "small text-muted", children: /* @__PURE__ */ jsxs("p", { className: "mb-2", children: [
-          /* @__PURE__ */ jsx("strong", { children: "Note:" }),
-          " For copyright inquiries or DMCA takedown requests, please include relevant documentation in your message."
+          /* @__PURE__ */ jsx("strong", { children: t2.noteLabel }),
+          " ",
+          t2.noteBody
         ] }) })
       ] }) })
     ] }) }) }) }) })
   ] });
 }
-function PrivacyPolicy() {
+const LAST_UPDATED$1 = "2026-08-01";
+const copy$2 = {
+  en: {
+    h1: "Privacy Policy",
+    lead: "Your privacy is important to us. Learn how we handle your data.",
+    lastUpdated: "Last Updated:",
+    contactLead: "If you have any questions about this Privacy Policy or our data practices, please contact us through our ",
+    contactLink: "contact page",
+    contactHref: "/contact",
+    contactTail: ".",
+    disclaimerLabel: "Disclaimer:",
+    disclaimer: "Our service is not affiliated with TikTok or ByteDance. TikTok is a trademark of ByteDance Ltd. We simply provide a tool to download publicly available content for personal use.",
+    sections: [
+      {
+        h2: "1. Introduction",
+        blocks: [
+          {
+            p: 'Welcome to All TikTok Downloader ("we," "our," or "us"). We are committed to protecting your privacy and ensuring the security of any information you provide while using our service. This Privacy Policy explains how we collect, use, and protect your information when you use our TikTok downloading service.'
+          }
+        ]
+      },
+      {
+        h2: "2. Information We Collect",
+        blocks: [
+          { p: "Our service is designed with your privacy in mind. We collect minimal information:" },
+          {
+            ul: [
+              "Video URLs: when you paste a TikTok URL to download a video, we process that URL to provide our service. We do not store these URLs after the download is complete.",
+              "Usage data: we may collect anonymous usage statistics such as page views, download counts, and general geographic location at country level to improve our service.",
+              "Contact information: if you contact us through our contact form, we collect your name, email address, and message content so we can respond to your inquiry."
+            ]
+          }
+        ]
+      },
+      {
+        h2: "3. How We Use Your Information",
+        blocks: [
+          { p: "We use the information we collect to:" },
+          {
+            ul: [
+              "Provide and maintain our TikTok downloading service",
+              "Improve and optimize our service",
+              "Respond to your inquiries and support requests",
+              "Monitor and analyze usage patterns",
+              "Prevent fraudulent or abusive use of our service"
+            ]
+          }
+        ]
+      },
+      {
+        h2: "4. Cookies and Tracking Technologies",
+        blocks: [
+          { p: "We use cookies and similar tracking technologies to improve your experience on our website. These may include:" },
+          {
+            ul: [
+              "Essential cookies: required for the basic functionality of our website.",
+              "Analytics cookies: help us understand how visitors interact with our website.",
+              "Advertising cookies: may be used by our advertising partners to show relevant advertisements."
+            ]
+          },
+          { p: "You can control cookies through your browser settings. Disabling cookies may affect how parts of our service work." }
+        ]
+      },
+      {
+        h2: "5. Data Security",
+        blocks: [
+          {
+            p: "We use appropriate technical and organizational measures to protect your information against unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the Internet is completely secure, and we cannot guarantee absolute security."
+          }
+        ]
+      },
+      {
+        h2: "6. Third-Party Services",
+        blocks: [
+          {
+            p: "Our website may contain links to third-party websites or services. We are not responsible for the privacy practices of those third parties, and we encourage you to review their privacy policies."
+          },
+          { p: "We may use third-party services such as:" },
+          {
+            ul: [
+              "Analytics providers for website statistics",
+              "Advertising networks such as Google AdSense",
+              "Content delivery networks (CDNs)"
+            ]
+          }
+        ]
+      },
+      {
+        h2: "7. Children's Privacy",
+        blocks: [
+          {
+            p: "Our service is not intended for children under 13 years of age. We do not knowingly collect personal information from children under 13. If you are a parent or guardian and believe your child has provided us with personal information, please contact us."
+          }
+        ]
+      },
+      {
+        h2: "8. Your Rights",
+        blocks: [
+          { p: "Depending on where you live, you may have the following rights:" },
+          {
+            ul: [
+              "The right to access your personal information",
+              "The right to correct inaccurate information",
+              "The right to delete your personal information",
+              "The right to object to processing",
+              "The right to data portability"
+            ]
+          }
+        ]
+      },
+      {
+        h2: "9. Changes to This Privacy Policy",
+        blocks: [
+          {
+            p: 'We may update this Privacy Policy from time to time. We will post the new version on this page and update the "Last Updated" date above. We encourage you to review this page periodically.'
+          }
+        ]
+      }
+    ]
+  },
+  id: {
+    h1: "Kebijakan Privasi",
+    lead: "Privasi kamu penting bagi kami. Pelajari cara kami menangani data kamu.",
+    lastUpdated: "Terakhir Diperbarui:",
+    contactLead: "Jika kamu punya pertanyaan tentang Kebijakan Privasi ini atau cara kami menangani data, silakan hubungi kami melalui ",
+    contactLink: "halaman kontak",
+    contactHref: "/id/contact",
+    contactTail: ".",
+    disclaimerLabel: "Penafian:",
+    disclaimer: "Layanan ini tidak berafiliasi dengan TikTok maupun ByteDance. TikTok adalah merek dagang milik ByteDance Ltd. Kami hanya menyediakan tool untuk menyimpan konten publik untuk keperluan pribadi.",
+    sections: [
+      {
+        h2: "1. Pendahuluan",
+        blocks: [
+          {
+            p: 'Selamat datang di All TikTok Downloader ("kami"). Kami berkomitmen melindungi privasi kamu dan menjaga keamanan informasi apa pun yang kamu berikan saat menggunakan layanan ini. Kebijakan Privasi ini menjelaskan bagaimana kami mengumpulkan, menggunakan, dan melindungi informasi kamu.'
+          }
+        ]
+      },
+      {
+        h2: "2. Informasi yang Kami Kumpulkan",
+        blocks: [
+          { p: "Layanan ini dirancang dengan mengutamakan privasi. Kami hanya mengumpulkan informasi seminimal mungkin:" },
+          {
+            ul: [
+              "Link video: saat kamu menempel link TikTok untuk mendownload video, kami memproses link tersebut untuk menjalankan layanan. Kami tidak menyimpan link itu setelah proses download selesai.",
+              "Data penggunaan: kami dapat mengumpulkan statistik anonim seperti jumlah kunjungan halaman, jumlah download, dan lokasi umum setingkat negara untuk meningkatkan layanan.",
+              "Informasi kontak: jika kamu menghubungi kami lewat formulir kontak, kami mengumpulkan nama, alamat email, dan isi pesan agar dapat membalas pertanyaan kamu."
+            ]
+          }
+        ]
+      },
+      {
+        h2: "3. Cara Kami Menggunakan Informasi Kamu",
+        blocks: [
+          { p: "Informasi yang kami kumpulkan digunakan untuk:" },
+          {
+            ul: [
+              "Menyediakan dan memelihara layanan download TikTok ini",
+              "Meningkatkan dan mengoptimalkan layanan",
+              "Membalas pertanyaan dan permintaan dukungan kamu",
+              "Memantau dan menganalisis pola penggunaan",
+              "Mencegah penyalahgunaan atau penggunaan layanan secara curang"
+            ]
+          }
+        ]
+      },
+      {
+        h2: "4. Cookie dan Teknologi Pelacakan",
+        blocks: [
+          { p: "Kami menggunakan cookie dan teknologi serupa untuk meningkatkan pengalaman kamu di situs ini, antara lain:" },
+          {
+            ul: [
+              "Cookie esensial: dibutuhkan agar fungsi dasar situs dapat berjalan.",
+              "Cookie analitik: membantu kami memahami cara pengunjung menggunakan situs.",
+              "Cookie iklan: dapat digunakan mitra iklan kami untuk menampilkan iklan yang relevan."
+            ]
+          },
+          { p: "Kamu bisa mengatur cookie lewat pengaturan browser. Menonaktifkan cookie dapat memengaruhi sebagian fungsi layanan." }
+        ]
+      },
+      {
+        h2: "5. Keamanan Data",
+        blocks: [
+          {
+            p: "Kami menerapkan langkah teknis dan organisasi yang memadai untuk melindungi informasi kamu dari akses, perubahan, pengungkapan, atau penghapusan tanpa izin. Namun, tidak ada metode pengiriman data melalui Internet yang sepenuhnya aman, sehingga kami tidak dapat menjamin keamanan mutlak."
+          }
+        ]
+      },
+      {
+        h2: "6. Layanan Pihak Ketiga",
+        blocks: [
+          {
+            p: "Situs kami dapat memuat tautan ke situs atau layanan pihak ketiga. Kami tidak bertanggung jawab atas praktik privasi pihak ketiga tersebut, dan kami menyarankan kamu membaca kebijakan privasi mereka."
+          },
+          { p: "Kami dapat menggunakan layanan pihak ketiga seperti:" },
+          {
+            ul: [
+              "Penyedia analitik untuk statistik situs",
+              "Jaringan iklan seperti Google AdSense",
+              "Jaringan pengiriman konten (CDN)"
+            ]
+          }
+        ]
+      },
+      {
+        h2: "7. Privasi Anak",
+        blocks: [
+          {
+            p: "Layanan ini tidak ditujukan untuk anak di bawah 13 tahun. Kami tidak dengan sengaja mengumpulkan data pribadi anak di bawah 13 tahun. Jika kamu orang tua atau wali dan meyakini anak kamu telah memberikan data pribadi kepada kami, silakan hubungi kami."
+          }
+        ]
+      },
+      {
+        h2: "8. Hak Kamu",
+        blocks: [
+          { p: "Tergantung tempat tinggal kamu, kamu mungkin memiliki hak berikut:" },
+          {
+            ul: [
+              "Hak untuk mengakses data pribadi kamu",
+              "Hak untuk memperbaiki data yang tidak akurat",
+              "Hak untuk menghapus data pribadi kamu",
+              "Hak untuk menolak pemrosesan data",
+              "Hak atas portabilitas data"
+            ]
+          }
+        ]
+      },
+      {
+        h2: "9. Perubahan Kebijakan Privasi Ini",
+        blocks: [
+          {
+            p: 'Kami dapat memperbarui Kebijakan Privasi ini sewaktu-waktu. Versi terbaru akan kami tampilkan di halaman ini beserta tanggal "Terakhir Diperbarui" di atas. Kami menyarankan kamu meninjau halaman ini secara berkala.'
+          }
+        ]
+      }
+    ]
+  }
+};
+function PrivacyPolicy({ lang = "en" }) {
+  const t2 = copy$2[lang];
+  const contactHeading = lang === "id" ? "10. Hubungi Kami" : "10. Contact Us";
   return /* @__PURE__ */ jsxs(Fragment, { children: [
     /* @__PURE__ */ jsx("section", { className: "hero-gradient text-white py-5", children: /* @__PURE__ */ jsx("div", { className: "container py-4", children: /* @__PURE__ */ jsxs("div", { className: "text-center", children: [
       /* @__PURE__ */ jsx(FontAwesomeIcon, { icon: faShieldAlt, className: "mb-3", style: { fontSize: "48px" } }),
-      /* @__PURE__ */ jsx("h1", { className: "display-5 fw-bold mb-3", children: "Privacy Policy" }),
-      /* @__PURE__ */ jsx("p", { className: "lead text-white-50", children: "Your privacy is important to us. Learn how we protect your data." })
+      /* @__PURE__ */ jsx("h1", { className: "display-5 fw-bold mb-3", children: t2.h1 }),
+      /* @__PURE__ */ jsx("p", { className: "lead text-white-50", children: t2.lead })
     ] }) }) }),
     /* @__PURE__ */ jsx("section", { className: "py-5", children: /* @__PURE__ */ jsx("div", { className: "container py-4", children: /* @__PURE__ */ jsx("div", { className: "row justify-content-center", children: /* @__PURE__ */ jsx("div", { className: "col-lg-8", children: /* @__PURE__ */ jsxs("div", { className: "bg-white rounded-4 shadow-sm p-4 p-md-5", children: [
       /* @__PURE__ */ jsxs("p", { className: "text-muted mb-4", children: [
-        /* @__PURE__ */ jsx("strong", { children: "Last Updated:" }),
+        /* @__PURE__ */ jsx("strong", { children: t2.lastUpdated }),
         " ",
-        (/* @__PURE__ */ new Date()).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })
+        /* @__PURE__ */ jsx("time", { dateTime: LAST_UPDATED$1, children: LAST_UPDATED$1 })
       ] }),
-      /* @__PURE__ */ jsx("h2", { className: "fw-bold mt-4 mb-3", children: "1. Introduction" }),
-      /* @__PURE__ */ jsx("p", { children: 'Welcome to TikTok Video Downloader ("we," "our," or "us"). We are committed to protecting your privacy and ensuring the security of any information you provide while using our service. This Privacy Policy explains how we collect, use, and protect your information when you use our TikTok video downloading service.' }),
-      /* @__PURE__ */ jsx("h2", { className: "fw-bold mt-4 mb-3", children: "2. Information We Collect" }),
-      /* @__PURE__ */ jsx("p", { children: "Our service is designed with your privacy in mind. We collect minimal information:" }),
-      /* @__PURE__ */ jsxs("ul", { children: [
-        /* @__PURE__ */ jsxs("li", { children: [
-          /* @__PURE__ */ jsx("strong", { children: "Video URLs:" }),
-          " When you paste a TikTok URL to download a video, we process this URL to provide our service. We do not store these URLs after the download is complete."
-        ] }),
-        /* @__PURE__ */ jsxs("li", { children: [
-          /* @__PURE__ */ jsx("strong", { children: "Usage Data:" }),
-          " We may collect anonymous usage statistics such as page views, download counts, and general geographic location (country level) to improve our service."
-        ] }),
-        /* @__PURE__ */ jsxs("li", { children: [
-          /* @__PURE__ */ jsx("strong", { children: "Contact Information:" }),
-          " If you contact us through our contact form, we collect your name, email address, and message content to respond to your inquiry."
-        ] })
-      ] }),
-      /* @__PURE__ */ jsx("h2", { className: "fw-bold mt-4 mb-3", children: "3. How We Use Your Information" }),
-      /* @__PURE__ */ jsx("p", { children: "We use the information we collect to:" }),
-      /* @__PURE__ */ jsxs("ul", { children: [
-        /* @__PURE__ */ jsx("li", { children: "Provide and maintain our TikTok video downloading service" }),
-        /* @__PURE__ */ jsx("li", { children: "Improve and optimize our service" }),
-        /* @__PURE__ */ jsx("li", { children: "Respond to your inquiries and support requests" }),
-        /* @__PURE__ */ jsx("li", { children: "Monitor and analyze usage patterns" }),
-        /* @__PURE__ */ jsx("li", { children: "Prevent fraudulent or abusive use of our service" })
-      ] }),
-      /* @__PURE__ */ jsx("h2", { className: "fw-bold mt-4 mb-3", children: "4. Cookies and Tracking Technologies" }),
-      /* @__PURE__ */ jsx("p", { children: "We use cookies and similar tracking technologies to enhance your experience on our website. These may include:" }),
-      /* @__PURE__ */ jsxs("ul", { children: [
-        /* @__PURE__ */ jsxs("li", { children: [
-          /* @__PURE__ */ jsx("strong", { children: "Essential Cookies:" }),
-          " Required for the basic functionality of our website."
-        ] }),
-        /* @__PURE__ */ jsxs("li", { children: [
-          /* @__PURE__ */ jsx("strong", { children: "Analytics Cookies:" }),
-          " Help us understand how visitors interact with our website."
-        ] }),
-        /* @__PURE__ */ jsxs("li", { children: [
-          /* @__PURE__ */ jsx("strong", { children: "Advertising Cookies:" }),
-          " May be used by our advertising partners to show relevant advertisements."
-        ] })
-      ] }),
-      /* @__PURE__ */ jsx("p", { children: "You can control cookies through your browser settings. However, disabling cookies may affect the functionality of our service." }),
-      /* @__PURE__ */ jsx("h2", { className: "fw-bold mt-4 mb-3", children: "5. Data Security" }),
-      /* @__PURE__ */ jsx("p", { children: "We implement appropriate technical and organizational measures to protect your information against unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the Internet is 100% secure, and we cannot guarantee absolute security." }),
-      /* @__PURE__ */ jsx("h2", { className: "fw-bold mt-4 mb-3", children: "6. Third-Party Services" }),
-      /* @__PURE__ */ jsx("p", { children: "Our website may contain links to third-party websites or services. We are not responsible for the privacy practices of these third parties. We encourage you to review the privacy policies of any third-party services you use." }),
-      /* @__PURE__ */ jsx("p", { children: "We may use third-party services such as:" }),
-      /* @__PURE__ */ jsxs("ul", { children: [
-        /* @__PURE__ */ jsx("li", { children: "Google Analytics for website analytics" }),
-        /* @__PURE__ */ jsx("li", { children: "Google AdSense or similar advertising networks" }),
-        /* @__PURE__ */ jsx("li", { children: "Content delivery networks (CDNs)" })
-      ] }),
-      /* @__PURE__ */ jsx("h2", { className: "fw-bold mt-4 mb-3", children: "7. Children's Privacy" }),
-      /* @__PURE__ */ jsx("p", { children: "Our service is not intended for children under 13 years of age. We do not knowingly collect personal information from children under 13. If you are a parent or guardian and believe your child has provided us with personal information, please contact us." }),
-      /* @__PURE__ */ jsx("h2", { className: "fw-bold mt-4 mb-3", children: "8. Your Rights" }),
-      /* @__PURE__ */ jsx("p", { children: "Depending on your location, you may have the following rights:" }),
-      /* @__PURE__ */ jsxs("ul", { children: [
-        /* @__PURE__ */ jsx("li", { children: "The right to access your personal information" }),
-        /* @__PURE__ */ jsx("li", { children: "The right to correct inaccurate information" }),
-        /* @__PURE__ */ jsx("li", { children: "The right to delete your personal information" }),
-        /* @__PURE__ */ jsx("li", { children: "The right to object to processing" }),
-        /* @__PURE__ */ jsx("li", { children: "The right to data portability" })
-      ] }),
-      /* @__PURE__ */ jsx("h2", { className: "fw-bold mt-4 mb-3", children: "9. Changes to This Privacy Policy" }),
-      /* @__PURE__ */ jsx("p", { children: 'We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last Updated" date. We encourage you to review this Privacy Policy periodically.' }),
-      /* @__PURE__ */ jsx("h2", { className: "fw-bold mt-4 mb-3", children: "10. Contact Us" }),
+      t2.sections.map((section) => /* @__PURE__ */ jsxs("div", { children: [
+        /* @__PURE__ */ jsx("h2", { className: "fw-bold mt-4 mb-3 h4", children: section.h2 }),
+        section.blocks.map(
+          (block, i2) => "p" in block ? /* @__PURE__ */ jsx("p", { children: block.p }, i2) : /* @__PURE__ */ jsx("ul", { children: block.ul.map((item) => /* @__PURE__ */ jsx("li", { children: item }, item)) }, i2)
+        )
+      ] }, section.h2)),
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mt-4 mb-3 h4", children: contactHeading }),
       /* @__PURE__ */ jsxs("p", { children: [
-        "If you have any questions about this Privacy Policy or our data practices, please contact us through our ",
-        /* @__PURE__ */ jsx("a", { href: "#/contact", children: "contact page" }),
-        "."
+        t2.contactLead,
+        /* @__PURE__ */ jsx(Link, { to: t2.contactHref, children: t2.contactLink }),
+        t2.contactTail
       ] }),
       /* @__PURE__ */ jsxs("div", { className: "alert alert-info mt-4", children: [
-        /* @__PURE__ */ jsx("strong", { children: "Disclaimer:" }),
-        " Our service is not affiliated with TikTok or ByteDance. TikTok is a trademark of ByteDance Ltd. We simply provide a tool to download publicly available content for personal use."
+        /* @__PURE__ */ jsx("strong", { children: t2.disclaimerLabel }),
+        " ",
+        t2.disclaimer
       ] })
     ] }) }) }) }) })
   ] });
 }
-function TermsConditions() {
+const LAST_UPDATED = "2026-08-01";
+const copy$1 = {
+  en: {
+    h1: "Terms and Conditions",
+    lead: "Please read these terms carefully before using our service",
+    lastUpdated: "Last Updated:",
+    contactHeading: "13. Contact Information",
+    contactLead: "If you have any questions about these Terms and Conditions, please contact us through our ",
+    contactLink: "contact page",
+    contactHref: "/contact",
+    contactTail: ".",
+    noticeLabel: "Important Notice:",
+    notice: "By using All TikTok Downloader, you acknowledge that you have read, understood, and agree to be bound by these Terms and Conditions. If you do not agree with any part of these terms, please stop using the service.",
+    sections: [
+      {
+        h2: "1. Acceptance of Terms",
+        blocks: [
+          {
+            p: 'By accessing or using All TikTok Downloader ("the Service"), you agree to be bound by these Terms and Conditions. If you do not agree to these terms, please do not use our Service.'
+          }
+        ]
+      },
+      {
+        h2: "2. Description of Service",
+        blocks: [
+          {
+            p: 'All TikTok Downloader provides a free online tool that lets users download publicly available TikTok content in various formats, including MP4 video, MP3 audio, thumbnails, and profile pictures. The Service is provided "as is" and "as available" without warranties of any kind.'
+          }
+        ]
+      },
+      {
+        h2: "3. User Responsibilities",
+        blocks: [
+          { p: "By using our Service, you agree to:" },
+          {
+            ul: [
+              "Respect copyright: only download content you have the right to download. Do not download or distribute copyrighted material without proper authorization.",
+              "Personal use only: downloaded content should be for personal, non-commercial use unless you have explicit permission from the creator.",
+              "No misuse: do not use the Service for any illegal purpose or in violation of applicable laws.",
+              "No automated access: do not use bots, scrapers, or automated tools against the Service.",
+              "Credit creators: when sharing downloaded content, credit the original creator wherever possible."
+            ]
+          }
+        ]
+      },
+      {
+        h2: "4. Intellectual Property",
+        blocks: [
+          {
+            p: "Content downloaded through our Service belongs to the original creators on TikTok. We do not claim ownership of any third-party content. Our Service only provides a technical means to download publicly available content."
+          },
+          {
+            p: "The All TikTok Downloader website, including its design and code, is our intellectual property and is protected by copyright law."
+          }
+        ]
+      },
+      {
+        h2: "5. Copyright and DMCA",
+        blocks: [
+          {
+            p: "We respect intellectual property rights and expect our users to do the same. If you believe your copyrighted work has been infringed through our Service, please contact us with the following information:"
+          },
+          {
+            ul: [
+              "A description of the copyrighted work",
+              "The URL where the infringing content was accessed",
+              "Your contact information",
+              "A statement that you have a good faith belief the use is not authorized",
+              "A statement, under penalty of perjury, that the information is accurate"
+            ]
+          }
+        ]
+      },
+      {
+        h2: "6. Disclaimer of Warranties",
+        blocks: [
+          {
+            p: 'The Service is provided "as is" without warranties of any kind, either express or implied, including but not limited to warranties of merchantability, fitness for a particular purpose, or non-infringement.'
+          },
+          { p: "We do not guarantee that:" },
+          {
+            ul: [
+              "The Service will be uninterrupted or error-free",
+              "Every download will succeed",
+              "The Service will meet your specific requirements",
+              "Downloaded content quality will meet your expectations"
+            ]
+          }
+        ]
+      },
+      {
+        h2: "7. Limitation of Liability",
+        blocks: [
+          {
+            p: "To the maximum extent permitted by law, we shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including loss of profits, data, or use, arising out of or related to your use of the Service."
+          }
+        ]
+      },
+      {
+        h2: "8. Indemnification",
+        blocks: [
+          {
+            p: "You agree to indemnify and hold harmless All TikTok Downloader and its operators from any claims, damages, losses, liabilities, and expenses, including legal fees, arising from your use of the Service or your violation of these Terms."
+          }
+        ]
+      },
+      {
+        h2: "9. Third-Party Services",
+        blocks: [
+          {
+            p: "Our Service is not affiliated with, endorsed by, or sponsored by TikTok or ByteDance. TikTok is a trademark of ByteDance Ltd. We are an independent third-party service."
+          }
+        ]
+      },
+      {
+        h2: "10. Modifications to Service",
+        blocks: [
+          {
+            p: "We reserve the right to modify, suspend, or discontinue the Service at any time without notice. We may also update these Terms at any time. Continued use of the Service after changes means you accept the new terms."
+          }
+        ]
+      },
+      {
+        h2: "11. Governing Law",
+        blocks: [
+          {
+            p: "These Terms shall be governed by and construed in accordance with applicable law. Any dispute arising from these Terms or from use of the Service shall be resolved through appropriate legal channels."
+          }
+        ]
+      },
+      {
+        h2: "12. Severability",
+        blocks: [
+          {
+            p: "If any provision of these Terms is found to be unenforceable or invalid, that provision shall be limited or removed to the minimum extent necessary, and the remaining provisions shall remain in full force."
+          }
+        ]
+      }
+    ]
+  },
+  id: {
+    h1: "Syarat dan Ketentuan",
+    lead: "Mohon baca syarat berikut dengan saksama sebelum menggunakan layanan ini",
+    lastUpdated: "Terakhir Diperbarui:",
+    contactHeading: "13. Informasi Kontak",
+    contactLead: "Jika kamu punya pertanyaan tentang Syarat dan Ketentuan ini, silakan hubungi kami melalui ",
+    contactLink: "halaman kontak",
+    contactHref: "/id/contact",
+    contactTail: ".",
+    noticeLabel: "Pemberitahuan Penting:",
+    notice: "Dengan menggunakan All TikTok Downloader, kamu menyatakan telah membaca, memahami, dan menyetujui Syarat dan Ketentuan ini. Jika kamu tidak menyetujui sebagian isinya, mohon hentikan penggunaan layanan ini.",
+    sections: [
+      {
+        h2: "1. Persetujuan atas Syarat",
+        blocks: [
+          {
+            p: 'Dengan mengakses atau menggunakan All TikTok Downloader ("Layanan"), kamu setuju terikat pada Syarat dan Ketentuan ini. Jika kamu tidak menyetujuinya, mohon jangan gunakan Layanan ini.'
+          }
+        ]
+      },
+      {
+        h2: "2. Deskripsi Layanan",
+        blocks: [
+          {
+            p: 'All TikTok Downloader adalah tool online gratis yang memungkinkan pengguna menyimpan konten TikTok publik dalam berbagai format, termasuk video MP4, audio MP3, thumbnail, dan foto profil. Layanan ini disediakan "sebagaimana adanya" tanpa jaminan apa pun.'
+          }
+        ]
+      },
+      {
+        h2: "3. Tanggung Jawab Pengguna",
+        blocks: [
+          { p: "Dengan menggunakan Layanan ini, kamu setuju untuk:" },
+          {
+            ul: [
+              "Menghormati hak cipta: hanya download konten yang memang berhak kamu simpan. Jangan mendownload atau menyebarkan materi berhak cipta tanpa izin.",
+              "Penggunaan pribadi: konten yang didownload sebaiknya untuk keperluan pribadi dan non-komersial, kecuali kamu punya izin tegas dari kreatornya.",
+              "Tidak menyalahgunakan: jangan gunakan Layanan untuk tujuan ilegal atau melanggar hukum yang berlaku.",
+              "Tidak mengakses secara otomatis: jangan gunakan bot, scraper, atau tool otomatis terhadap Layanan ini.",
+              "Mencantumkan kreator: saat membagikan konten yang didownload, cantumkan kreator aslinya sebisa mungkin."
+            ]
+          }
+        ]
+      },
+      {
+        h2: "4. Kekayaan Intelektual",
+        blocks: [
+          {
+            p: "Konten yang didownload melalui Layanan ini adalah milik kreator aslinya di TikTok. Kami tidak mengklaim kepemilikan atas konten pihak ketiga mana pun. Layanan ini hanya menyediakan sarana teknis untuk menyimpan konten yang bersifat publik."
+          },
+          {
+            p: "Situs All TikTok Downloader, termasuk desain dan kodenya, adalah kekayaan intelektual kami dan dilindungi undang-undang hak cipta."
+          }
+        ]
+      },
+      {
+        h2: "5. Hak Cipta dan DMCA",
+        blocks: [
+          {
+            p: "Kami menghormati hak kekayaan intelektual dan mengharapkan hal yang sama dari pengguna. Jika kamu meyakini karya berhak cipta milikmu dilanggar melalui Layanan ini, silakan hubungi kami dengan menyertakan:"
+          },
+          {
+            ul: [
+              "Deskripsi karya berhak cipta tersebut",
+              "URL tempat konten yang diduga melanggar diakses",
+              "Informasi kontak kamu",
+              "Pernyataan bahwa kamu meyakini dengan itikad baik bahwa penggunaan tersebut tidak diizinkan",
+              "Pernyataan, di bawah sumpah, bahwa informasi yang kamu berikan akurat"
+            ]
+          }
+        ]
+      },
+      {
+        h2: "6. Penafian Jaminan",
+        blocks: [
+          {
+            p: 'Layanan disediakan "sebagaimana adanya" tanpa jaminan apa pun, baik tersurat maupun tersirat, termasuk jaminan atas kelayakan jual, kesesuaian untuk tujuan tertentu, atau tidak adanya pelanggaran.'
+          },
+          { p: "Kami tidak menjamin bahwa:" },
+          {
+            ul: [
+              "Layanan akan berjalan tanpa gangguan atau tanpa kesalahan",
+              "Setiap proses download akan selalu berhasil",
+              "Layanan akan memenuhi kebutuhan spesifik kamu",
+              "Kualitas konten yang didownload akan sesuai harapan kamu"
+            ]
+          }
+        ]
+      },
+      {
+        h2: "7. Batasan Tanggung Jawab",
+        blocks: [
+          {
+            p: "Sejauh diizinkan hukum, kami tidak bertanggung jawab atas kerugian tidak langsung, insidental, khusus, konsekuensial, atau punitif, termasuk kehilangan keuntungan, data, atau penggunaan, yang timbul dari atau berkaitan dengan penggunaan Layanan ini."
+          }
+        ]
+      },
+      {
+        h2: "8. Ganti Rugi",
+        blocks: [
+          {
+            p: "Kamu setuju untuk membebaskan All TikTok Downloader beserta pengelolanya dari segala klaim, kerugian, kewajiban, dan biaya, termasuk biaya hukum, yang timbul dari penggunaan Layanan oleh kamu atau pelanggaran kamu atas Syarat ini."
+          }
+        ]
+      },
+      {
+        h2: "9. Layanan Pihak Ketiga",
+        blocks: [
+          {
+            p: "Layanan ini tidak berafiliasi, tidak didukung, dan tidak disponsori oleh TikTok maupun ByteDance. TikTok adalah merek dagang milik ByteDance Ltd. Kami adalah layanan pihak ketiga yang independen."
+          }
+        ]
+      },
+      {
+        h2: "10. Perubahan Layanan",
+        blocks: [
+          {
+            p: "Kami berhak mengubah, menghentikan sementara, atau menutup Layanan kapan saja tanpa pemberitahuan. Kami juga dapat memperbarui Syarat ini sewaktu-waktu. Penggunaan Layanan setelah perubahan berarti kamu menerima syarat yang baru."
+          }
+        ]
+      },
+      {
+        h2: "11. Hukum yang Berlaku",
+        blocks: [
+          {
+            p: "Syarat ini diatur dan ditafsirkan berdasarkan hukum yang berlaku. Setiap sengketa yang timbul dari Syarat ini atau dari penggunaan Layanan akan diselesaikan melalui jalur hukum yang sesuai."
+          }
+        ]
+      },
+      {
+        h2: "12. Keterpisahan",
+        blocks: [
+          {
+            p: "Jika ada ketentuan dalam Syarat ini yang dinyatakan tidak berlaku atau tidak dapat dilaksanakan, ketentuan tersebut akan dibatasi atau dihapus seminimal mungkin, dan ketentuan lainnya tetap berlaku sepenuhnya."
+          }
+        ]
+      }
+    ]
+  }
+};
+function TermsConditions({ lang = "en" }) {
+  const t2 = copy$1[lang];
   return /* @__PURE__ */ jsxs(Fragment, { children: [
     /* @__PURE__ */ jsx("section", { className: "hero-gradient text-white py-5", children: /* @__PURE__ */ jsx("div", { className: "container py-4", children: /* @__PURE__ */ jsxs("div", { className: "text-center", children: [
       /* @__PURE__ */ jsx(FontAwesomeIcon, { icon: faFileContract, className: "mb-3", style: { fontSize: "48px" } }),
-      /* @__PURE__ */ jsx("h1", { className: "display-5 fw-bold mb-3", children: "Terms and Conditions" }),
-      /* @__PURE__ */ jsx("p", { className: "lead text-white-50", children: "Please read these terms carefully before using our service" })
+      /* @__PURE__ */ jsx("h1", { className: "display-5 fw-bold mb-3", children: t2.h1 }),
+      /* @__PURE__ */ jsx("p", { className: "lead text-white-50", children: t2.lead })
     ] }) }) }),
     /* @__PURE__ */ jsx("section", { className: "py-5", children: /* @__PURE__ */ jsx("div", { className: "container py-4", children: /* @__PURE__ */ jsx("div", { className: "row justify-content-center", children: /* @__PURE__ */ jsx("div", { className: "col-lg-8", children: /* @__PURE__ */ jsxs("div", { className: "bg-white rounded-4 shadow-sm p-4 p-md-5", children: [
       /* @__PURE__ */ jsxs("p", { className: "text-muted mb-4", children: [
-        /* @__PURE__ */ jsx("strong", { children: "Last Updated:" }),
+        /* @__PURE__ */ jsx("strong", { children: t2.lastUpdated }),
         " ",
-        (/* @__PURE__ */ new Date()).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })
+        /* @__PURE__ */ jsx("time", { dateTime: LAST_UPDATED, children: LAST_UPDATED })
       ] }),
-      /* @__PURE__ */ jsx("h2", { className: "fw-bold mt-4 mb-3", children: "1. Acceptance of Terms" }),
-      /* @__PURE__ */ jsx("p", { children: 'By accessing or using TikTok Video Downloader ("the Service"), you agree to be bound by these Terms and Conditions. If you do not agree to these terms, please do not use our Service.' }),
-      /* @__PURE__ */ jsx("h2", { className: "fw-bold mt-4 mb-3", children: "2. Description of Service" }),
-      /* @__PURE__ */ jsx("p", { children: 'TikTok Video Downloader provides a free online tool that allows users to download publicly available TikTok videos in various formats (MP4, MP3) without watermarks. The Service is provided "as is" and "as available" without warranties of any kind.' }),
-      /* @__PURE__ */ jsx("h2", { className: "fw-bold mt-4 mb-3", children: "3. User Responsibilities" }),
-      /* @__PURE__ */ jsx("p", { children: "By using our Service, you agree to:" }),
-      /* @__PURE__ */ jsxs("ul", { children: [
-        /* @__PURE__ */ jsxs("li", { children: [
-          /* @__PURE__ */ jsx("strong", { children: "Respect Copyright:" }),
-          " Only download content you have the right to download. Do not download or distribute copyrighted material without proper authorization."
-        ] }),
-        /* @__PURE__ */ jsxs("li", { children: [
-          /* @__PURE__ */ jsx("strong", { children: "Personal Use Only:" }),
-          " Downloaded content should be for personal, non-commercial use unless you have explicit permission from the content creator."
-        ] }),
-        /* @__PURE__ */ jsxs("li", { children: [
-          /* @__PURE__ */ jsx("strong", { children: "No Misuse:" }),
-          " Do not use the Service for any illegal purposes or in violation of any applicable laws or regulations."
-        ] }),
-        /* @__PURE__ */ jsxs("li", { children: [
-          /* @__PURE__ */ jsx("strong", { children: "No Automated Access:" }),
-          " Do not use bots, scrapers, or automated tools to access the Service."
-        ] }),
-        /* @__PURE__ */ jsxs("li", { children: [
-          /* @__PURE__ */ jsx("strong", { children: "Credit Creators:" }),
-          " When sharing downloaded content, give proper credit to the original creator whenever possible."
-        ] })
-      ] }),
-      /* @__PURE__ */ jsx("h2", { className: "fw-bold mt-4 mb-3", children: "4. Intellectual Property" }),
-      /* @__PURE__ */ jsx("p", { children: "The content downloaded through our Service belongs to the original creators on TikTok. We do not claim ownership of any third-party content. Our Service simply provides a technical means to download publicly available content." }),
-      /* @__PURE__ */ jsx("p", { children: "The TikTok Video Downloader website, including its design, logos, and code, is our intellectual property and is protected by copyright laws." }),
-      /* @__PURE__ */ jsx("h2", { className: "fw-bold mt-4 mb-3", children: "5. Copyright and DMCA" }),
-      /* @__PURE__ */ jsx("p", { children: "We respect intellectual property rights and expect our users to do the same. If you believe that your copyrighted work has been infringed through our Service, please contact us with the following information:" }),
-      /* @__PURE__ */ jsxs("ul", { children: [
-        /* @__PURE__ */ jsx("li", { children: "A description of the copyrighted work" }),
-        /* @__PURE__ */ jsx("li", { children: "The URL where the infringing content was accessed" }),
-        /* @__PURE__ */ jsx("li", { children: "Your contact information" }),
-        /* @__PURE__ */ jsx("li", { children: "A statement that you have a good faith belief that the use is not authorized" }),
-        /* @__PURE__ */ jsx("li", { children: "A statement under penalty of perjury that the information is accurate" })
-      ] }),
-      /* @__PURE__ */ jsx("h2", { className: "fw-bold mt-4 mb-3", children: "6. Disclaimer of Warranties" }),
-      /* @__PURE__ */ jsx("p", { children: 'THE SERVICE IS PROVIDED "AS IS" WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR NON-INFRINGEMENT.' }),
-      /* @__PURE__ */ jsx("p", { children: "We do not guarantee that:" }),
-      /* @__PURE__ */ jsxs("ul", { children: [
-        /* @__PURE__ */ jsx("li", { children: "The Service will be uninterrupted or error-free" }),
-        /* @__PURE__ */ jsx("li", { children: "Downloads will always be successful" }),
-        /* @__PURE__ */ jsx("li", { children: "The Service will meet your specific requirements" }),
-        /* @__PURE__ */ jsx("li", { children: "Downloaded content quality will meet your expectations" })
-      ] }),
-      /* @__PURE__ */ jsx("h2", { className: "fw-bold mt-4 mb-3", children: "7. Limitation of Liability" }),
-      /* @__PURE__ */ jsx("p", { children: "TO THE MAXIMUM EXTENT PERMITTED BY LAW, WE SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING BUT NOT LIMITED TO LOSS OF PROFITS, DATA, OR USE, ARISING OUT OF OR RELATED TO YOUR USE OF THE SERVICE." }),
-      /* @__PURE__ */ jsx("h2", { className: "fw-bold mt-4 mb-3", children: "8. Indemnification" }),
-      /* @__PURE__ */ jsx("p", { children: "You agree to indemnify and hold harmless TikTok Video Downloader and its operators from any claims, damages, losses, liabilities, and expenses (including legal fees) arising from your use of the Service or violation of these Terms." }),
-      /* @__PURE__ */ jsx("h2", { className: "fw-bold mt-4 mb-3", children: "9. Third-Party Services" }),
-      /* @__PURE__ */ jsx("p", { children: "Our Service is not affiliated with, endorsed by, or sponsored by TikTok or ByteDance. TikTok is a trademark of ByteDance Ltd. We are an independent third-party service." }),
-      /* @__PURE__ */ jsx("h2", { className: "fw-bold mt-4 mb-3", children: "10. Modifications to Service" }),
-      /* @__PURE__ */ jsx("p", { children: "We reserve the right to modify, suspend, or discontinue the Service at any time without notice. We may also update these Terms and Conditions at any time. Your continued use of the Service after changes constitutes acceptance of the new terms." }),
-      /* @__PURE__ */ jsx("h2", { className: "fw-bold mt-4 mb-3", children: "11. Governing Law" }),
-      /* @__PURE__ */ jsx("p", { children: "These Terms shall be governed by and construed in accordance with applicable laws. Any disputes arising from these Terms or the use of the Service shall be resolved through appropriate legal channels." }),
-      /* @__PURE__ */ jsx("h2", { className: "fw-bold mt-4 mb-3", children: "12. Severability" }),
-      /* @__PURE__ */ jsx("p", { children: "If any provision of these Terms is found to be unenforceable or invalid, that provision shall be limited or eliminated to the minimum extent necessary, and the remaining provisions shall remain in full force and effect." }),
-      /* @__PURE__ */ jsx("h2", { className: "fw-bold mt-4 mb-3", children: "13. Contact Information" }),
+      t2.sections.map((section) => /* @__PURE__ */ jsxs("div", { children: [
+        /* @__PURE__ */ jsx("h2", { className: "fw-bold mt-4 mb-3 h4", children: section.h2 }),
+        section.blocks.map(
+          (block, i2) => "p" in block ? /* @__PURE__ */ jsx("p", { children: block.p }, i2) : /* @__PURE__ */ jsx("ul", { children: block.ul.map((item) => /* @__PURE__ */ jsx("li", { children: item }, item)) }, i2)
+        )
+      ] }, section.h2)),
+      /* @__PURE__ */ jsx("h2", { className: "fw-bold mt-4 mb-3 h4", children: t2.contactHeading }),
       /* @__PURE__ */ jsxs("p", { children: [
-        "If you have any questions about these Terms and Conditions, please contact us through our ",
-        /* @__PURE__ */ jsx("a", { href: "#/contact", children: "contact page" }),
-        "."
+        t2.contactLead,
+        /* @__PURE__ */ jsx(Link, { to: t2.contactHref, children: t2.contactLink }),
+        t2.contactTail
       ] }),
       /* @__PURE__ */ jsxs("div", { className: "alert alert-warning mt-4", children: [
-        /* @__PURE__ */ jsx("strong", { children: "Important Notice:" }),
-        " By using our TikTok Video Downloader service, you acknowledge that you have read, understood, and agree to be bound by these Terms and Conditions. If you do not agree with any part of these terms, please discontinue use of our service immediately."
+        /* @__PURE__ */ jsx("strong", { children: t2.noticeLabel }),
+        " ",
+        t2.notice
       ] })
     ] }) }) }) }) })
   ] });
 }
-const SITE_URL = "https://tiktokvideosdownloader.com";
+const SITE_NAME$1 = "All TikTok Downloader";
+const sectionLabel = {
+  home: { en: "Home", id: "Beranda" },
+  mp3: { en: "TikTok MP3 Downloader", id: "Download MP3 TikTok" },
+  thumbnail: { en: "TikTok Thumbnail Downloader", id: "Download Thumbnail TikTok" },
+  profile: { en: "TikTok Profile Picture Downloader", id: "Download Foto Profil TikTok" },
+  faq: { en: "FAQ", id: "FAQ" },
+  contact: { en: "Contact", id: "Kontak" },
+  "privacy-policy": { en: "Privacy Policy", id: "Kebijakan Privasi" },
+  "terms-conditions": { en: "Terms and Conditions", id: "Syarat dan Ketentuan" }
+};
+function faqPageSchema(faqs2, id) {
+  return {
+    "@type": "FAQPage",
+    "@id": id,
+    mainEntity: faqs2.map((faq) => ({
+      "@type": "Question",
+      name: faq.q,
+      acceptedAnswer: { "@type": "Answer", text: faq.a }
+    }))
+  };
+}
+function breadcrumbSchema({ lang, section, siteUrl, canonical }) {
+  if (section === "home") return null;
+  const homeUrl = lang === "id" ? `${siteUrl}/id/` : `${siteUrl}/`;
+  return {
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: sectionLabel.home[lang],
+        item: homeUrl
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: sectionLabel[section][lang],
+        item: canonical
+      }
+    ]
+  };
+}
+function webApplicationSchema({ lang, section, canonical, title, description }) {
+  const toolSections = ["home", "mp3", "thumbnail", "profile"];
+  if (!toolSections.includes(section)) return null;
+  return {
+    "@type": "WebApplication",
+    "@id": `${canonical}#app`,
+    name: title,
+    url: canonical,
+    description,
+    applicationCategory: "MultimediaApplication",
+    operatingSystem: "Android, iOS, Windows, macOS, Linux",
+    browserRequirements: "Requires JavaScript. Works in any modern browser.",
+    inLanguage: lang === "id" ? "id-ID" : "en",
+    isAccessibleForFree: true,
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "USD"
+    }
+  };
+}
+function howToSchema({ lang, section, canonical }) {
+  if (section !== "home") return null;
+  const steps = lang === "id" ? [
+    ["Salin link video TikTok", "Buka TikTok, pilih video, lalu ketuk Share dan salin linknya."],
+    ["Tempel link di downloader", "Kembali ke halaman ini dan tempel link TikTok ke kotak downloader."],
+    ["Pilih format download", "Pilih MP4, MP3, foto, story, atau opsi tanpa watermark sesuai kebutuhan."],
+    ["Simpan file ke perangkat", "Ketuk tombol download dan simpan file ke Android, iPhone, atau PC."]
+  ] : [
+    ["Copy the TikTok video link", "Open TikTok, find the video, tap Share and copy the link."],
+    ["Paste the URL into the downloader", "Return to this page and paste the TikTok link into the downloader box."],
+    ["Choose MP4, MP3, or watermark option", "Pick the format you need, such as a video without watermark or MP3 audio."],
+    ["Save the file to your device", "Tap the download button and save the file to your iPhone, Android, or PC."]
+  ];
+  return {
+    "@type": "HowTo",
+    "@id": `${canonical}#howto`,
+    name: lang === "id" ? "Cara Download Video TikTok" : "How to Download TikTok Videos",
+    inLanguage: lang === "id" ? "id-ID" : "en",
+    step: steps.map(([name, text], index) => ({
+      "@type": "HowToStep",
+      position: index + 1,
+      name,
+      text
+    }))
+  };
+}
+function pageSchema(ctx) {
+  const { section, canonical, title, description, lang } = ctx;
+  const type = section === "contact" ? "ContactPage" : section === "faq" ? "FAQPage" : section === "privacy-policy" || section === "terms-conditions" ? "WebPage" : "WebPage";
+  if (section === "faq") {
+    return faqPageSchema(lang === "id" ? faqPageId : faqPageEn, `${canonical}#faq`);
+  }
+  return {
+    "@type": type,
+    "@id": `${canonical}#page`,
+    url: canonical,
+    name: title,
+    description,
+    inLanguage: lang === "id" ? "id-ID" : "en",
+    isPartOf: { "@id": `${ctx.siteUrl}/#website` }
+  };
+}
+function buildJsonLd(ctx) {
+  const graph = [];
+  graph.push({
+    "@type": "WebSite",
+    "@id": `${ctx.siteUrl}/#website`,
+    name: SITE_NAME$1,
+    url: `${ctx.siteUrl}/`,
+    inLanguage: ["en", "id-ID"]
+  });
+  const page = pageSchema(ctx);
+  if (page) graph.push(page);
+  const app = webApplicationSchema(ctx);
+  if (app) graph.push(app);
+  const howTo = howToSchema(ctx);
+  if (howTo) graph.push(howTo);
+  const isId = ctx.lang === "id";
+  const pageFaqs = {
+    home: isId ? homeFaqsId : homeFaqsEn,
+    thumbnail: isId ? thumbFaqsId : thumbFaqsEn,
+    profile: isId ? profileFaqsId : profileFaqsEn
+  };
+  const faqs2 = pageFaqs[ctx.section];
+  if (faqs2?.length) {
+    graph.push(faqPageSchema(faqs2, `${ctx.canonical}#faq`));
+  }
+  const crumbs = breadcrumbSchema(ctx);
+  if (crumbs) graph.push(crumbs);
+  return { "@context": "https://schema.org", "@graph": graph };
+}
+function renderJsonLdHtml(ctx) {
+  const json = JSON.stringify(buildJsonLd(ctx)).replace(/</g, "\\u003c");
+  return `<script type="application/ld+json" data-app-schema>${json}<\/script>`;
+}
+const SITE_URL = "https://alltiktokdownloader.com";
+const SITE_NAME = "All TikTok Downloader";
+const OG_IMAGE = `${SITE_URL}/og-image.png`;
 function buildLocalizedPath(lang, section) {
   const prefix = lang === "id" ? "/id" : "";
   switch (section) {
@@ -7156,66 +8472,78 @@ function buildLocalizedPath(lang, section) {
 function canonicalUrl(path) {
   return `${SITE_URL}${path === "/" ? "/" : `${path}/`}`;
 }
-function getSeoMeta(lang, section) {
-  const metaBySection = {
-    home: lang === "id" ? {
-      title: "TikTok Downloader — Download Video TikTok Tanpa Watermark HD",
-      description: "Gunakan TikTok Downloader gratis untuk download video TikTok tanpa watermark HD, Android, iPhone, dan PC tanpa APK atau login."
-    } : {
-      title: "TikTok Downloader — Download TikTok Videos Without Watermark",
-      description: "Use a free TikTok Downloader to save TikTok videos without watermark on iPhone, Android, or PC."
+const META = {
+  en: {
+    home: {
+      title: "TikTok Downloader - TikTok to MP4 Without Watermark",
+      description: "Free TikTok downloader and TikTok to MP4 tool. Paste a public TikTok link to save videos without watermark, MP4, MP3, photos, stories, and thumbnails."
     },
-    mp3: lang === "id" ? {
-      title: "TikTok MP3 Downloader – Download MP3 TikTok Gratis & Cepat",
-      description: "Download MP3 TikTok gratis tanpa aplikasi atau login. Tempel link TikTok, unduh audio, lagu, dan sound berkualitas tinggi dengan cepat di Android, iPhone, PC, dan Mac."
-    } : {
-      title: "TikTok MP3 Downloader – Download TikTok Audio for Free",
-      description: "Free TikTok MP3 Downloader to convert TikTok videos into MP3. Download TikTok audio online in seconds without apps or sign-up."
+    mp3: {
+      title: "TikTok MP3 Downloader - Convert TikTok Video to MP3",
+      description: "Convert any public TikTok video to MP3 and download the audio free. Paste a TikTok link, pick MP3, and save the sound on iPhone, Android, or PC. No app needed."
     },
-    thumbnail: lang === "id" ? {
-      title: "TikTok Thumbnail Downloader – Download Cover Video TikTok",
-      description: "Download thumbnail atau cover image video TikTok dalam kualitas HD. Tempel link video TikTok, lalu simpan gambar cover-nya secara gratis tanpa aplikasi atau login."
-    } : {
-      title: "TikTok Thumbnail Downloader – Download TikTok Video Cover Image",
-      description: "Download the TikTok thumbnail or cover image of any public video in HD. Paste the TikTok video link and save the cover image for free without apps or sign-up."
+    thumbnail: {
+      title: "TikTok Thumbnail Downloader - Save Video Cover in HD",
+      description: "Download the thumbnail or cover image of any public TikTok video in HD. Paste the video link and save the full size cover free, with no app install or login."
     },
-    profile: lang === "id" ? {
-      title: "TikTok Profile Picture Downloader – Simpan Foto Profil TikTok HD",
-      description: "Download profile picture atau foto profil TikTok dalam ukuran penuh. Masukkan username atau link profil TikTok, lalu simpan avatar HD secara gratis tanpa aplikasi atau login."
-    } : {
-      title: "TikTok Profile Picture Downloader – Save TikTok Avatar in HD",
-      description: "Download a TikTok profile picture in full size. Enter a TikTok username or profile link and save the HD avatar for free without apps or sign-up."
+    profile: {
+      title: "TikTok Profile Picture Downloader - Save Avatar in HD",
+      description: "Download any public TikTok profile picture in full HD size. Enter a TikTok username or profile link and save the avatar free, with no app install or sign up."
     },
-    faq: lang === "id" ? {
-      title: "FAQ TikTok Downloader",
-      description: "Pertanyaan umum seputar TikTok Downloader dan cara menggunakannya."
-    } : {
-      title: "TikTok Downloader FAQ",
-      description: "Common questions about using the TikTok downloader and downloads."
+    faq: {
+      title: "TikTok Downloader FAQ - Answers to Common Questions",
+      description: "Answers to common questions about our TikTok downloader: HD quality, watermark removal, MP3 audio, mobile support, download limits, safety, and legal use."
     },
-    contact: lang === "id" ? {
-      title: "Kontak TikTok Downloader",
-      description: "Hubungi tim support TikTok Downloader."
-    } : {
-      title: "Contact TikTok Downloader",
-      description: "Get in touch with the TikTok downloader support team."
+    contact: {
+      title: "Contact TikTok Downloader - Get Help From Our Support",
+      description: "Contact the All TikTok Downloader team about a failed download, a bug, a feature request, or a copyright question. We read every message that comes in."
     },
-    "privacy-policy": lang === "id" ? {
-      title: "Privacy Policy TikTok Downloader",
-      description: "Kebijakan privasi untuk TikTok Downloader."
-    } : {
-      title: "TikTok Downloader Privacy Policy",
-      description: "Privacy policy for TikTok Downloader."
+    "privacy-policy": {
+      title: "Privacy Policy - How TikTok Downloader Handles Data",
+      description: "Read how All TikTok Downloader handles your data. We do not require login, do not store the TikTok links you paste, and do not sell personal information."
     },
-    "terms-conditions": lang === "id" ? {
-      title: "Terms and Conditions TikTok Downloader",
-      description: "Syarat dan ketentuan penggunaan TikTok Downloader."
-    } : {
-      title: "TikTok Downloader Terms and Conditions",
-      description: "Terms and conditions for using TikTok Downloader."
+    "terms-conditions": {
+      title: "Terms and Conditions - TikTok Downloader Usage Rules",
+      description: "The terms for using All TikTok Downloader, including permitted personal use, copyright responsibilities, service limits, and what we do not allow on the site."
     }
-  };
-  const current = metaBySection[section];
+  },
+  id: {
+    home: {
+      title: "Download Video TikTok Tanpa Watermark HD dan Gratis",
+      description: "Download video TikTok tanpa watermark kualitas HD secara gratis. Tempel link TikTok, lalu simpan MP4 atau MP3 di Android, iPhone, dan PC tanpa aplikasi."
+    },
+    mp3: {
+      title: "Download MP3 TikTok - Ubah Video TikTok Jadi Audio MP3",
+      description: "Download MP3 TikTok gratis tanpa aplikasi atau login. Tempel link video TikTok, pilih format MP3, lalu simpan audio, lagu, dan sound di HP, tablet, maupun PC."
+    },
+    thumbnail: {
+      title: "Download Foto TikTok - Simpan Cover Video TikTok HD",
+      description: "Download foto TikTok tanpa watermark dalam kualitas HD secara gratis. Tempel link video TikTok, lalu simpan gambar covernya tanpa aplikasi dan tanpa login."
+    },
+    profile: {
+      title: "Download Foto Profil TikTok - Simpan Avatar HD Gratis",
+      description: "Download foto profil TikTok ukuran penuh secara gratis. Masukkan username atau link profil TikTok, lalu simpan avatar HD tanpa aplikasi dan tanpa login."
+    },
+    faq: {
+      title: "FAQ TikTok Downloader - Pertanyaan yang Sering Muncul",
+      description: "Jawaban untuk pertanyaan umum seputar TikTok downloader: kualitas HD, hapus watermark, audio MP3, dukungan HP, batas download, keamanan, dan sisi legalnya."
+    },
+    contact: {
+      title: "Kontak TikTok Downloader - Hubungi Tim Dukungan Kami",
+      description: "Hubungi tim All TikTok Downloader untuk melaporkan download yang gagal, bug, permintaan fitur, atau pertanyaan hak cipta. Semua pesan kami baca satu per satu."
+    },
+    "privacy-policy": {
+      title: "Kebijakan Privasi - Cara Kami Menangani Data Pengguna",
+      description: "Baca cara All TikTok Downloader menangani data Anda. Kami tidak meminta login, tidak menyimpan link TikTok yang Anda tempel, dan tidak menjual data pribadi."
+    },
+    "terms-conditions": {
+      title: "Syarat dan Ketentuan TikTok Downloader - Aturan Pakai",
+      description: "Syarat penggunaan All TikTok Downloader, mencakup penggunaan pribadi yang diizinkan, tanggung jawab hak cipta, batasan layanan, dan hal yang kami larang."
+    }
+  }
+};
+function getSeoMeta(lang, section) {
+  const current = META[lang][section];
   const canonicalPath = buildLocalizedPath(lang, section);
   const alternateEn = buildLocalizedPath("en", section);
   const alternateId = buildLocalizedPath("id", section);
@@ -7228,32 +8556,56 @@ function getSeoMeta(lang, section) {
     alternateId: canonicalUrl(alternateId),
     xDefault: `${SITE_URL}/`,
     ogLocale: lang === "id" ? "id_ID" : "en_US",
-    ogLocaleAlternate: lang === "id" ? "en_US" : "id_ID"
+    ogLocaleAlternate: lang === "id" ? "en_US" : "id_ID",
+    ogImage: OG_IMAGE,
+    siteName: SITE_NAME
   };
+}
+function escapeAttr(value) {
+  return value.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 }
 function renderHeadHtml(lang, section) {
   const seo = getSeoMeta(lang, section);
+  const title = escapeAttr(seo.title);
+  const description = escapeAttr(seo.description);
+  const jsonLd = renderJsonLdHtml({
+    lang,
+    section,
+    siteUrl: SITE_URL,
+    canonical: seo.canonical,
+    title: seo.title,
+    description: seo.description
+  });
   return `
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>${seo.title}</title>
-    <meta name="description" content="${seo.description}" />
-    <meta name="robots" content="index, follow" />
-    <meta name="author" content="TikTok Downloader" />
+    <title>${title}</title>
+    <meta name="description" content="${description}" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="theme-color" content="#010101" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="canonical" href="${seo.canonical}" />
     <link rel="alternate" hreflang="en" href="${seo.alternateEn}" />
     <link rel="alternate" hreflang="id" href="${seo.alternateId}" />
     <link rel="alternate" hreflang="x-default" href="${seo.xDefault}" />
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="${escapeAttr(seo.siteName)}" />
     <meta property="og:locale" content="${seo.ogLocale}" />
     <meta property="og:locale:alternate" content="${seo.ogLocaleAlternate}" />
     <meta property="og:url" content="${seo.canonical}" />
-    <meta property="og:title" content="${seo.title}" />
-    <meta property="og:description" content="${seo.description}" />
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="${seo.canonical}" />
-    <meta property="twitter:title" content="${seo.title}" />
-    <meta property="twitter:description" content="${seo.description}" />
+    <meta property="og:title" content="${title}" />
+    <meta property="og:description" content="${description}" />
+    <meta property="og:image" content="${seo.ogImage}" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="${escapeAttr(seo.siteName)}" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="${seo.canonical}" />
+    <meta name="twitter:title" content="${title}" />
+    <meta name="twitter:description" content="${description}" />
+    <meta name="twitter:image" content="${seo.ogImage}" />
+    ${jsonLd}
   `.trim();
 }
 const LANGUAGES = [
@@ -7267,6 +8619,12 @@ function Navigator({ lang, section = "home" }) {
   const thumbnailHref = buildLocalizedPath(lang, "thumbnail");
   const profileHref = buildLocalizedPath(lang, "profile");
   const current = LANGUAGES.find((l2) => l2.code === lang) ?? LANGUAGES[0];
+  const secondaryNav = [
+    { section: "faq", label: lang === "id" ? "FAQ" : "FAQ" },
+    { section: "contact", label: lang === "id" ? "Kontak" : "Contact" },
+    { section: "privacy-policy", label: lang === "id" ? "Kebijakan Privasi" : "Privacy Policy" },
+    { section: "terms-conditions", label: lang === "id" ? "Syarat" : "Terms" }
+  ];
   const pageLinks = /* @__PURE__ */ jsxs(Fragment, { children: [
     /* @__PURE__ */ jsxs(
       Link,
@@ -7275,7 +8633,7 @@ function Navigator({ lang, section = "home" }) {
         to: homeHref,
         children: [
           /* @__PURE__ */ jsx(FontAwesomeIcon, { icon: faVideo, className: "small" }),
-          "TikTok MP4 Downloader"
+          lang === "id" ? "Video MP4" : "MP4 Video"
         ]
       }
     ),
@@ -7286,7 +8644,7 @@ function Navigator({ lang, section = "home" }) {
         to: mp3Href,
         children: [
           /* @__PURE__ */ jsx(FontAwesomeIcon, { icon: faMusic, className: "small" }),
-          "TikTok MP3 Downloader"
+          lang === "id" ? "Audio MP3" : "MP3 Audio"
         ]
       }
     ),
@@ -7297,7 +8655,7 @@ function Navigator({ lang, section = "home" }) {
         to: thumbnailHref,
         children: [
           /* @__PURE__ */ jsx(FontAwesomeIcon, { icon: faImage, className: "small" }),
-          "TikTok Thumbnail Downloader"
+          lang === "id" ? "Foto Cover" : "Thumbnail"
         ]
       }
     ),
@@ -7308,7 +8666,7 @@ function Navigator({ lang, section = "home" }) {
         to: profileHref,
         children: [
           /* @__PURE__ */ jsx(FontAwesomeIcon, { icon: faUser, className: "small" }),
-          "TikTok Profile Picture Downloader"
+          lang === "id" ? "Foto Profil" : "Profile Picture"
         ]
       }
     )
@@ -7361,14 +8719,49 @@ function Navigator({ lang, section = "home" }) {
     ] }),
     /* @__PURE__ */ jsx("div", { className: "collapse navbar-collapse", id: "navbarNav", children: /* @__PURE__ */ jsxs("ul", { className: "navbar-nav me-lg-auto align-items-lg-center gap-lg-1 mt-3 mt-lg-0", children: [
       /* @__PURE__ */ jsx("li", { className: "nav-item d-lg-none", children: /* @__PURE__ */ jsx("div", { className: "d-flex flex-column gap-2 mb-2", children: pageLinks }) }),
-      /* @__PURE__ */ jsx("li", { className: "nav-item", children: /* @__PURE__ */ jsx(Link, { className: "nav-link", to: "/faq", children: "FAQ" }) }),
-      /* @__PURE__ */ jsx("li", { className: "nav-item", children: /* @__PURE__ */ jsx(Link, { className: "nav-link", to: "/contact", children: "Contact" }) }),
-      /* @__PURE__ */ jsx("li", { className: "nav-item", children: /* @__PURE__ */ jsx(Link, { className: "nav-link", to: "/privacy-policy", children: "Privacy Policy" }) }),
-      /* @__PURE__ */ jsx("li", { className: "nav-item", children: /* @__PURE__ */ jsx(Link, { className: "nav-link", to: "/terms-conditions", children: "Terms" }) })
+      secondaryNav.map((item) => /* @__PURE__ */ jsx("li", { className: "nav-item", children: /* @__PURE__ */ jsx(Link, { className: "nav-link", to: buildLocalizedPath(lang, item.section), children: item.label }) }, item.section))
     ] }) })
   ] }) });
 }
-function Footer() {
+const copy = {
+  en: {
+    tagline: "Free TikTok downloader. Save TikTok videos without watermark in MP4 or MP3 format. Fast, free, and unlimited downloads.",
+    quickLinks: "Quick Links",
+    home: "Home",
+    faq: "FAQ",
+    contact: "Contact Us",
+    legal: "Legal",
+    privacy: "Privacy Policy",
+    terms: "Terms & Conditions",
+    features: "Features",
+    feature1: "Download TikTok videos without watermark",
+    feature2: "High-quality MP4 and MP3 downloads",
+    feature3: "Free and unlimited downloads",
+    feature4: "Works on all devices",
+    rights: "All rights reserved.",
+    notAffiliated: "This service is not affiliated with TikTok. Use responsibly and respect copyright."
+  },
+  id: {
+    tagline: "TikTok downloader gratis. Simpan video TikTok tanpa watermark dalam format MP4 atau MP3. Cepat, gratis, dan tanpa batas.",
+    quickLinks: "Tautan Cepat",
+    home: "Beranda",
+    faq: "FAQ",
+    contact: "Hubungi Kami",
+    legal: "Legal",
+    privacy: "Kebijakan Privasi",
+    terms: "Syarat & Ketentuan",
+    features: "Fitur",
+    feature1: "Download video TikTok tanpa watermark",
+    feature2: "Download MP4 dan MP3 kualitas tinggi",
+    feature3: "Gratis dan tanpa batas",
+    feature4: "Bisa dipakai di semua perangkat",
+    rights: "Seluruh hak cipta dilindungi.",
+    notAffiliated: "Layanan ini tidak berafiliasi dengan TikTok. Gunakan secara bertanggung jawab dan hormati hak cipta."
+  }
+};
+function Footer({ lang = "en" }) {
+  const t2 = copy[lang];
+  const href = (section) => buildLocalizedPath(lang, section);
   return /* @__PURE__ */ jsx("footer", { className: "footer-dark text-white py-5", children: /* @__PURE__ */ jsxs("div", { className: "container", children: [
     /* @__PURE__ */ jsxs("div", { className: "row", children: [
       /* @__PURE__ */ jsxs("div", { className: "col-lg-4 mb-4 mb-lg-0", children: [
@@ -7377,36 +8770,51 @@ function Footer() {
           /* @__PURE__ */ jsx("span", { className: "tiktok-text fs-4 fw-bold", children: "TikTok" }),
           /* @__PURE__ */ jsx("span", { className: "fs-4 fw-bold", children: "Downloader" })
         ] }),
-        /* @__PURE__ */ jsx("p", { className: "text-white-50 mb-3", children: "Free TikTok video downloader. Download TikTok videos without watermark in MP4 or MP3 format. Fast, free, and unlimited downloads." }),
-        /* @__PURE__ */ jsxs("div", { className: "d-flex gap-3", children: [
-          /* @__PURE__ */ jsx("a", { href: "#", className: "social-icon", "aria-label": "TikTok", children: /* @__PURE__ */ jsx(FontAwesomeIcon, { icon: faTiktok }) }),
-          /* @__PURE__ */ jsx("a", { href: "#", className: "social-icon", "aria-label": "Instagram", children: /* @__PURE__ */ jsx(FontAwesomeIcon, { icon: faInstagram }) }),
-          /* @__PURE__ */ jsx("a", { href: "#", className: "social-icon", "aria-label": "Facebook", children: /* @__PURE__ */ jsx(FontAwesomeIcon, { icon: faFacebook }) }),
-          /* @__PURE__ */ jsx("a", { href: "#", className: "social-icon", "aria-label": "Twitter", children: /* @__PURE__ */ jsx(FontAwesomeIcon, { icon: faTwitter }) })
+        /* @__PURE__ */ jsx("p", { className: "text-white-50 mb-3", children: t2.tagline })
+      ] }),
+      /* @__PURE__ */ jsxs("div", { className: "col-lg-2 col-md-4 mb-4 mb-lg-0", children: [
+        /* @__PURE__ */ jsx("h2", { className: "mb-3 fw-bold h5", children: t2.quickLinks }),
+        /* @__PURE__ */ jsxs("ul", { className: "list-unstyled", children: [
+          /* @__PURE__ */ jsx("li", { className: "mb-2", children: /* @__PURE__ */ jsx(Link, { to: href("home"), className: "text-white-50 text-decoration-none hover-white", children: t2.home }) }),
+          /* @__PURE__ */ jsx("li", { className: "mb-2", children: /* @__PURE__ */ jsx(Link, { to: href("faq"), className: "text-white-50 text-decoration-none hover-white", children: t2.faq }) }),
+          /* @__PURE__ */ jsx("li", { className: "mb-2", children: /* @__PURE__ */ jsx(
+            Link,
+            {
+              to: href("contact"),
+              className: "text-white-50 text-decoration-none hover-white",
+              children: t2.contact
+            }
+          ) })
         ] })
       ] }),
       /* @__PURE__ */ jsxs("div", { className: "col-lg-2 col-md-4 mb-4 mb-lg-0", children: [
-        /* @__PURE__ */ jsx("h5", { className: "mb-3 fw-bold", children: "Quick Links" }),
+        /* @__PURE__ */ jsx("h2", { className: "mb-3 fw-bold h5", children: t2.legal }),
         /* @__PURE__ */ jsxs("ul", { className: "list-unstyled", children: [
-          /* @__PURE__ */ jsx("li", { className: "mb-2", children: /* @__PURE__ */ jsx(Link, { to: "/", className: "text-white-50 text-decoration-none hover-white", children: "Home" }) }),
-          /* @__PURE__ */ jsx("li", { className: "mb-2", children: /* @__PURE__ */ jsx(Link, { to: "/faq", className: "text-white-50 text-decoration-none hover-white", children: "FAQ" }) }),
-          /* @__PURE__ */ jsx("li", { className: "mb-2", children: /* @__PURE__ */ jsx(Link, { to: "/contact", className: "text-white-50 text-decoration-none hover-white", children: "Contact Us" }) })
-        ] })
-      ] }),
-      /* @__PURE__ */ jsxs("div", { className: "col-lg-2 col-md-4 mb-4 mb-lg-0", children: [
-        /* @__PURE__ */ jsx("h5", { className: "mb-3 fw-bold", children: "Legal" }),
-        /* @__PURE__ */ jsxs("ul", { className: "list-unstyled", children: [
-          /* @__PURE__ */ jsx("li", { className: "mb-2", children: /* @__PURE__ */ jsx(Link, { to: "/privacy-policy", className: "text-white-50 text-decoration-none hover-white", children: "Privacy Policy" }) }),
-          /* @__PURE__ */ jsx("li", { className: "mb-2", children: /* @__PURE__ */ jsx(Link, { to: "/terms-conditions", className: "text-white-50 text-decoration-none hover-white", children: "Terms & Conditions" }) })
+          /* @__PURE__ */ jsx("li", { className: "mb-2", children: /* @__PURE__ */ jsx(
+            Link,
+            {
+              to: href("privacy-policy"),
+              className: "text-white-50 text-decoration-none hover-white",
+              children: t2.privacy
+            }
+          ) }),
+          /* @__PURE__ */ jsx("li", { className: "mb-2", children: /* @__PURE__ */ jsx(
+            Link,
+            {
+              to: href("terms-conditions"),
+              className: "text-white-50 text-decoration-none hover-white",
+              children: t2.terms
+            }
+          ) })
         ] })
       ] }),
       /* @__PURE__ */ jsxs("div", { className: "col-lg-4 col-md-4", children: [
-        /* @__PURE__ */ jsx("h5", { className: "mb-3 fw-bold", children: "Features" }),
+        /* @__PURE__ */ jsx("h2", { className: "mb-3 fw-bold h5", children: t2.features }),
         /* @__PURE__ */ jsxs("ul", { className: "list-unstyled text-white-50", children: [
-          /* @__PURE__ */ jsx(CheckListItem, { className: "mb-2 text-white-50", children: "Download TikTok Videos Without Watermark" }),
-          /* @__PURE__ */ jsx(CheckListItem, { className: "mb-2 text-white-50", children: "High-Quality MP4 & MP3 Downloads" }),
-          /* @__PURE__ */ jsx(CheckListItem, { className: "mb-2 text-white-50", children: "Free & Unlimited Downloads" }),
-          /* @__PURE__ */ jsx(CheckListItem, { className: "mb-2 text-white-50", children: "Works on All Devices" })
+          /* @__PURE__ */ jsx(CheckListItem, { className: "mb-2 text-white-50", children: t2.feature1 }),
+          /* @__PURE__ */ jsx(CheckListItem, { className: "mb-2 text-white-50", children: t2.feature2 }),
+          /* @__PURE__ */ jsx(CheckListItem, { className: "mb-2 text-white-50", children: t2.feature3 }),
+          /* @__PURE__ */ jsx(CheckListItem, { className: "mb-2 text-white-50", children: t2.feature4 })
         ] })
       ] })
     ] }),
@@ -7415,9 +8823,12 @@ function Footer() {
       /* @__PURE__ */ jsx("div", { className: "col-md-6 text-center text-md-start", children: /* @__PURE__ */ jsxs("p", { className: "text-white-50 mb-0", children: [
         "© ",
         (/* @__PURE__ */ new Date()).getFullYear(),
-        " TikTok Video Downloader. All rights reserved."
+        " ",
+        SITE_NAME,
+        ". ",
+        t2.rights
       ] }) }),
-      /* @__PURE__ */ jsx("div", { className: "col-md-6 text-center text-md-end", children: /* @__PURE__ */ jsx("p", { className: "text-white-50 mb-0 small", children: "This service is not affiliated with TikTok. Use responsibly and respect copyright." }) })
+      /* @__PURE__ */ jsx("div", { className: "col-md-6 text-center text-md-end", children: /* @__PURE__ */ jsx("p", { className: "text-white-50 mb-0 small", children: t2.notAffiliated }) })
     ] })
   ] }) });
 }
@@ -7469,6 +8880,39 @@ function useSeo(lang, section) {
       hreflang: "x-default",
       href: seo.xDefault
     });
+    ensureMeta('meta[property="og:url"]', { property: "og:url", content: seo.canonical });
+    ensureMeta('meta[property="og:title"]', { property: "og:title", content: seo.title });
+    ensureMeta('meta[property="og:description"]', {
+      property: "og:description",
+      content: seo.description
+    });
+    ensureMeta('meta[property="og:image"]', { property: "og:image", content: seo.ogImage });
+    ensureMeta('meta[property="og:locale"]', { property: "og:locale", content: seo.ogLocale });
+    ensureMeta('meta[name="twitter:title"]', { name: "twitter:title", content: seo.title });
+    ensureMeta('meta[name="twitter:description"]', {
+      name: "twitter:description",
+      content: seo.description
+    });
+    ensureMeta('meta[name="twitter:image"]', { name: "twitter:image", content: seo.ogImage });
+    let script = document.head.querySelector(
+      'script[type="application/ld+json"][data-app-schema]'
+    );
+    if (!script) {
+      script = document.createElement("script");
+      script.type = "application/ld+json";
+      script.setAttribute("data-app-schema", "");
+      document.head.appendChild(script);
+    }
+    script.textContent = JSON.stringify(
+      buildJsonLd({
+        lang,
+        section,
+        siteUrl: SITE_URL,
+        canonical: seo.canonical,
+        title: seo.title,
+        description: seo.description
+      })
+    );
   }, [lang, section]);
 }
 function AppShell({
@@ -7480,7 +8924,7 @@ function AppShell({
   return /* @__PURE__ */ jsxs("div", { className: "d-flex flex-column min-vh-100", children: [
     /* @__PURE__ */ jsx(Navigator, { lang, section }),
     /* @__PURE__ */ jsx("main", { className: "flex-grow-1", children }),
-    /* @__PURE__ */ jsx(Footer, {})
+    /* @__PURE__ */ jsx(Footer, { lang })
   ] });
 }
 function AppRoutes() {
@@ -7517,28 +8961,28 @@ function AppRoutes() {
       Route,
       {
         path: "/faq",
-        element: /* @__PURE__ */ jsx(AppShell, { lang: "en", section: "faq", children: /* @__PURE__ */ jsx(FAQ, {}) })
+        element: /* @__PURE__ */ jsx(AppShell, { lang: "en", section: "faq", children: /* @__PURE__ */ jsx(FAQ, { lang: "en" }) })
       }
     ),
     /* @__PURE__ */ jsx(
       Route,
       {
         path: "/contact",
-        element: /* @__PURE__ */ jsx(AppShell, { lang: "en", section: "contact", children: /* @__PURE__ */ jsx(Contact, {}) })
+        element: /* @__PURE__ */ jsx(AppShell, { lang: "en", section: "contact", children: /* @__PURE__ */ jsx(Contact, { lang: "en" }) })
       }
     ),
     /* @__PURE__ */ jsx(
       Route,
       {
         path: "/privacy-policy",
-        element: /* @__PURE__ */ jsx(AppShell, { lang: "en", section: "privacy-policy", children: /* @__PURE__ */ jsx(PrivacyPolicy, {}) })
+        element: /* @__PURE__ */ jsx(AppShell, { lang: "en", section: "privacy-policy", children: /* @__PURE__ */ jsx(PrivacyPolicy, { lang: "en" }) })
       }
     ),
     /* @__PURE__ */ jsx(
       Route,
       {
         path: "/terms-conditions",
-        element: /* @__PURE__ */ jsx(AppShell, { lang: "en", section: "terms-conditions", children: /* @__PURE__ */ jsx(TermsConditions, {}) })
+        element: /* @__PURE__ */ jsx(AppShell, { lang: "en", section: "terms-conditions", children: /* @__PURE__ */ jsx(TermsConditions, { lang: "en" }) })
       }
     ),
     /* @__PURE__ */ jsx(
@@ -7573,28 +9017,28 @@ function AppRoutes() {
       Route,
       {
         path: "/id/faq",
-        element: /* @__PURE__ */ jsx(AppShell, { lang: "id", section: "faq", children: /* @__PURE__ */ jsx(FAQ, {}) })
+        element: /* @__PURE__ */ jsx(AppShell, { lang: "id", section: "faq", children: /* @__PURE__ */ jsx(FAQ, { lang: "id" }) })
       }
     ),
     /* @__PURE__ */ jsx(
       Route,
       {
         path: "/id/contact",
-        element: /* @__PURE__ */ jsx(AppShell, { lang: "id", section: "contact", children: /* @__PURE__ */ jsx(Contact, {}) })
+        element: /* @__PURE__ */ jsx(AppShell, { lang: "id", section: "contact", children: /* @__PURE__ */ jsx(Contact, { lang: "id" }) })
       }
     ),
     /* @__PURE__ */ jsx(
       Route,
       {
         path: "/id/privacy-policy",
-        element: /* @__PURE__ */ jsx(AppShell, { lang: "id", section: "privacy-policy", children: /* @__PURE__ */ jsx(PrivacyPolicy, {}) })
+        element: /* @__PURE__ */ jsx(AppShell, { lang: "id", section: "privacy-policy", children: /* @__PURE__ */ jsx(PrivacyPolicy, { lang: "id" }) })
       }
     ),
     /* @__PURE__ */ jsx(
       Route,
       {
         path: "/id/terms-conditions",
-        element: /* @__PURE__ */ jsx(AppShell, { lang: "id", section: "terms-conditions", children: /* @__PURE__ */ jsx(TermsConditions, {}) })
+        element: /* @__PURE__ */ jsx(AppShell, { lang: "id", section: "terms-conditions", children: /* @__PURE__ */ jsx(TermsConditions, { lang: "id" }) })
       }
     ),
     /* @__PURE__ */ jsx(Route, { path: "*", element: /* @__PURE__ */ jsx(Navigate, { to: "/", replace: true }) })
@@ -7625,7 +9069,9 @@ function render2(url) {
   );
 }
 export {
+  SITE_URL,
   STATIC_ROUTES,
+  buildLocalizedPath,
   render2 as render,
   renderHeadHtml
 };

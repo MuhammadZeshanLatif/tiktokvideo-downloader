@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import { Downloader, type DownloaderText } from '../components/Downloader';
+import { homeFaqsId as faqs } from '../data/faqs';
 
 const t: DownloaderText = {
   cardTitle: '',
@@ -38,81 +39,6 @@ const features = [
   'Bisa digunakan di Android, iPhone, iPad, dan PC',
   'Tidak perlu APK',
   'Tidak perlu login TikTok',
-];
-
-const faqs = [
-  {
-    q: 'What is a TikTok Downloader?',
-    a: 'TikTok Downloader adalah tool online untuk menyimpan video, audio, foto, story, profile picture, atau thumbnail dari TikTok menggunakan link publik.',
-  },
-  {
-    q: 'Can I download TikTok videos without watermark?',
-    a: 'Ya, kamu bisa memilih opsi download video TikTok tanpa watermark jika tersedia. Hasilnya berupa video bersih tanpa logo TikTok yang bergerak.',
-  },
-  {
-    q: 'Can I download TikTok videos with watermark?',
-    a: 'Ya, gunakan opsi with watermark jika kamu ingin video tetap menampilkan logo TikTok dan username kreator.',
-  },
-  {
-    q: 'Does this TikTok downloader support HD quality?',
-    a: 'Tool akan mencoba mengambil kualitas terbaik yang tersedia dari link video. Hasil akhir tergantung kualitas video asli di TikTok.',
-  },
-  {
-    q: 'Is this TikTok downloader free?',
-    a: 'Ya, tool ini gratis digunakan. Tidak perlu membayar, daftar, atau login untuk download video TikTok.',
-  },
-  {
-    q: 'Do I need to install a TikTok Downloader APK?',
-    a: 'Tidak. Kamu bisa menggunakan downloader ini langsung dari browser tanpa APK, tanpa app, dan tanpa software tambahan.',
-  },
-  {
-    q: 'Is this a TikTok video download app?',
-    a: 'Ini adalah online web tool, bukan aplikasi yang harus diinstall. Kamu bisa membukanya lewat browser di Android, iPhone, iPad, atau PC.',
-  },
-  {
-    q: 'Can I download TikTok videos on PC?',
-    a: 'Ya. Buka downloader ini di browser PC atau laptop, paste link TikTok, lalu pilih format download.',
-  },
-  {
-    q: 'Can I download TikTok videos on iPhone?',
-    a: 'Ya. Gunakan Safari atau browser lain di iPhone. File biasanya tersimpan di aplikasi Files, lalu bisa kamu pindahkan jika diperlukan.',
-  },
-  {
-    q: 'Can I convert TikTok video to MP3?',
-    a: 'Ya, jika opsi MP3 tersedia, kamu bisa mengambil audio dari video TikTok dan menyimpannya sebagai file MP3.',
-  },
-  {
-    q: 'Can I download TikTok sound, audio, or music?',
-    a: 'Ya. Gunakan fitur MP3/audio untuk menyimpan sound, musik, voiceover, atau original sound dari TikTok.',
-  },
-  {
-    q: 'Can I use this as a TikTok photo downloader?',
-    a: 'Ya, jika konten TikTok berupa foto atau slideshow, kamu bisa menggunakan fitur photo downloader untuk menyimpan gambar.',
-  },
-  {
-    q: 'Can I download TikTok stories?',
-    a: 'Ya, story publik yang masih aktif bisa diproses jika link tersedia dan dapat diakses.',
-  },
-  {
-    q: 'Can I download TikTok profile picture?',
-    a: 'Ya, gunakan username atau link profil jika fitur profile picture downloader tersedia di tool.',
-  },
-  {
-    q: 'Can I download TikTok video with username?',
-    a: 'Untuk download video tertentu, link video langsung lebih akurat daripada username. Username lebih cocok untuk fitur profil, seperti profile picture.',
-  },
-  {
-    q: 'Where are downloaded TikTok videos saved?',
-    a: 'Di Android dan PC, file biasanya masuk ke folder Downloads. Di iPhone, file biasanya tersimpan di Files atau Photos, tergantung browser.',
-  },
-  {
-    q: 'Can I download private TikTok videos?',
-    a: 'Tidak. Tool ini hanya bekerja untuk konten publik yang bisa diakses melalui link. Private videos tidak dapat diproses.',
-  },
-  {
-    q: 'Is it legal to download TikTok videos?',
-    a: 'Gunakan file yang kamu download untuk kebutuhan pribadi, referensi, atau belajar. Jika ingin repost, membagikan ulang, atau memakai konten untuk bisnis, pastikan kamu punya izin dari kreator dan tetap menghormati hak cipta.',
-  },
 ];
 
 export function HomeId() {
@@ -176,7 +102,7 @@ export function HomeId() {
       {/* Without Watermark */}
       <section className="py-5 bg-light">
         <div className="container py-4">
-          <h2 className="fw-bold mb-3">Download TikTok Video Without Watermark in HD</h2>
+          <h2 className="fw-bold mb-3">Download Video TikTok Tanpa Watermark Kualitas HD</h2>
           <p className="text-muted">
             Dengan TikTok Downloader ini, kamu bisa menyimpan video TikTok tanpa watermark atau tanpa
             tanda air. Video yang diunduh terlihat lebih bersih karena logo TikTok dan username yang
@@ -194,7 +120,7 @@ export function HomeId() {
       {/* With Watermark */}
       <section className="py-5 bg-white">
         <div className="container py-4">
-          <h2 className="fw-bold mb-3">Download TikTok Video With Watermark</h2>
+          <h2 className="fw-bold mb-3">Download Video TikTok Dengan Watermark</h2>
           <p className="text-muted">
             Tidak semua pengguna ingin menghapus watermark. Beberapa orang tetap ingin menyimpan
             video dengan watermark karena ingin mempertahankan logo TikTok dan username kreator asli.
@@ -210,7 +136,7 @@ export function HomeId() {
       {/* Comparison */}
       <section className="py-5 bg-light">
         <div className="container py-4">
-          <h2 className="fw-bold mb-3">Without Watermark vs With Watermark</h2>
+          <h2 className="fw-bold mb-3">Tanpa Watermark vs Dengan Watermark</h2>
           <p className="text-muted mb-4">
             Pilih download tanpa watermark jika kamu ingin video bersih tanpa logo TikTok. Pilih
             download dengan watermark jika kamu ingin tetap menyimpan logo TikTok dan username
@@ -255,7 +181,7 @@ export function HomeId() {
       {/* MP4 HD */}
       <section className="py-5 bg-white">
         <div className="container py-4">
-          <h2 className="fw-bold mb-3">TikTok Downloader HD for MP4 Videos</h2>
+          <h2 className="fw-bold mb-3">Download Video TikTok HD Format MP4</h2>
           <p className="text-muted">
             Jika kamu ingin menyimpan video TikTok sebagai file video biasa, pilih format MP4. Format
             ini mudah diputar di hampir semua perangkat, termasuk Android, iPhone, Windows, Mac, dan
@@ -271,7 +197,7 @@ export function HomeId() {
       {/* MP3 */}
       <section className="py-5 bg-light">
         <div className="container py-4">
-          <h2 className="fw-bold mb-3">Download TikTok MP3, Sound, Audio, and Music</h2>
+          <h2 className="fw-bold mb-3">Download MP3 TikTok, Sound, Audio, dan Musik</h2>
           <p className="text-muted">
             Selain video, kamu juga bisa mengambil audio dari TikTok. Pilih opsi MP3 jika kamu hanya
             ingin menyimpan sound, musik, voiceover, atau lagu TikTok tanpa videonya.
@@ -348,7 +274,7 @@ export function HomeId() {
       {/* Photo */}
       <section className="py-5 bg-light">
         <div className="container py-4">
-          <h2 className="fw-bold mb-3">TikTok Photo Downloader</h2>
+          <h2 className="fw-bold mb-3">Download Foto TikTok</h2>
           <p className="text-muted">
             TikTok sekarang bukan hanya video. Banyak pengguna juga membagikan foto, slide, dan
             slideshow. Dengan TikTok Photo Downloader, kamu bisa menyimpan foto TikTok dari postingan
@@ -365,7 +291,7 @@ export function HomeId() {
       {/* Story */}
       <section className="py-5 bg-white">
         <div className="container py-4">
-          <h2 className="fw-bold mb-3">Download TikTok Story</h2>
+          <h2 className="fw-bold mb-3">Download Story TikTok</h2>
           <p className="text-muted">
             TikTok Story biasanya hanya tampil dalam waktu terbatas, jadi banyak pengguna ingin
             menyimpannya sebelum hilang.
@@ -380,7 +306,7 @@ export function HomeId() {
       {/* Profile Picture and Thumbnail */}
       <section className="py-5 bg-light">
         <div className="container py-4">
-          <h2 className="fw-bold mb-3">Download TikTok Profile Picture and Thumbnail</h2>
+          <h2 className="fw-bold mb-3">Download Foto Profil dan Thumbnail TikTok</h2>
           <p className="text-muted">
             Jika fitur tersedia, kamu bisa menyimpan profile picture TikTok atau thumbnail video dari
             link publik.
@@ -400,7 +326,7 @@ export function HomeId() {
       {/* Username */}
       <section className="py-5 bg-white">
         <div className="container py-4">
-          <h2 className="fw-bold mb-3">TikTok Video Download With Username</h2>
+          <h2 className="fw-bold mb-3">Download Video TikTok Lewat Username</h2>
           <p className="text-muted">
             Sebagian pengguna mencari cara download video TikTok dengan username. Namun, untuk hasil
             paling akurat, video biasanya lebih mudah diproses menggunakan link video langsung, bukan
@@ -417,7 +343,7 @@ export function HomeId() {
       {/* How To */}
       <section className="py-5 bg-light">
         <div className="container py-4">
-          <h2 className="fw-bold mb-3 text-center">How to Download TikTok Videos</h2>
+          <h2 className="fw-bold mb-3 text-center">Cara Download Video TikTok</h2>
           <p className="text-muted text-center mb-5">
             Menggunakan TikTok Downloader ini sangat mudah. Kamu tidak perlu membuat akun, login,
             atau install aplikasi tambahan.
@@ -426,7 +352,7 @@ export function HomeId() {
             <div className="col-md-6 col-lg-3">
               <div className="bg-white rounded-4 p-4 h-100 shadow-sm">
                 <div className="step-number mb-3">1</div>
-                <h3 className="h5 fw-bold">Step 1: Copy the TikTok Video Link</h3>
+                <h3 className="h5 fw-bold">Langkah 1: Salin Link Video TikTok</h3>
                 <p className="text-muted mb-0">
                   Buka aplikasi TikTok atau website TikTok. Pilih video, story, foto, atau konten
                   yang ingin kamu simpan. Tekan tombol Share, lalu pilih Copy Link.
@@ -436,7 +362,7 @@ export function HomeId() {
             <div className="col-md-6 col-lg-3">
               <div className="bg-white rounded-4 p-4 h-100 shadow-sm">
                 <div className="step-number mb-3">2</div>
-                <h3 className="h5 fw-bold">Step 2: Paste the Link in the Downloader</h3>
+                <h3 className="h5 fw-bold">Langkah 2: Tempel Link di Downloader</h3>
                 <p className="text-muted mb-0">
                   Tempel link TikTok ke kotak downloader di halaman ini. Pastikan link yang kamu
                   paste adalah link publik dan masih aktif.
@@ -446,7 +372,7 @@ export function HomeId() {
             <div className="col-md-6 col-lg-3">
               <div className="bg-white rounded-4 p-4 h-100 shadow-sm">
                 <div className="step-number mb-3">3</div>
-                <h3 className="h5 fw-bold">Step 3: Choose MP4, MP3, Photo, Story, or Watermark Option</h3>
+                <h3 className="h5 fw-bold">Langkah 3: Pilih Opsi MP4, MP3, Foto, Story, atau Watermark</h3>
                 <p className="text-muted mb-0">
                   Setelah link diproses, pilih format yang kamu butuhkan. Kamu bisa memilih video
                   without watermark, video with watermark, MP3/audio, photo, story, profile picture,
@@ -457,7 +383,7 @@ export function HomeId() {
             <div className="col-md-6 col-lg-3">
               <div className="bg-white rounded-4 p-4 h-100 shadow-sm">
                 <div className="step-number mb-3">4</div>
-                <h3 className="h5 fw-bold">Step 4: Save the File to Your Device</h3>
+                <h3 className="h5 fw-bold">Langkah 4: Simpan File ke Perangkat Kamu</h3>
                 <p className="text-muted mb-0">
                   Klik tombol download dan tunggu sampai file tersimpan. Di Android dan PC, file
                   biasanya masuk ke folder Downloads. Di iPhone, file bisa tersimpan di Files atau
@@ -472,7 +398,7 @@ export function HomeId() {
       {/* Devices */}
       <section className="py-5 bg-white">
         <div className="container py-4">
-          <h2 className="fw-bold mb-3">TikTok Downloader for Android, iPhone, and PC</h2>
+          <h2 className="fw-bold mb-3">TikTok Downloader untuk Android, iPhone, dan PC</h2>
           <p className="text-muted mb-4">
             Tool ini berjalan langsung dari browser, jadi kamu bisa menggunakannya di banyak
             perangkat tanpa install aplikasi tambahan.
@@ -480,7 +406,7 @@ export function HomeId() {
           <div className="row g-4">
             <div className="col-lg-4">
               <div className="bg-light rounded-4 p-4 h-100">
-                <h3 className="h5 fw-bold">Download TikTok Videos on Android</h3>
+                <h3 className="h5 fw-bold">Download Video TikTok di Android</h3>
                 <p className="text-muted mb-0">
                   Di Android, buka TikTok, salin link video, lalu paste link di downloader. Setelah
                   download selesai, file biasanya ada di folder Downloads atau File Manager.
@@ -489,7 +415,7 @@ export function HomeId() {
             </div>
             <div className="col-lg-4">
               <div className="bg-light rounded-4 p-4 h-100">
-                <h3 className="h5 fw-bold">Download TikTok Videos on iPhone or iPad</h3>
+                <h3 className="h5 fw-bold">Download Video TikTok di iPhone atau iPad</h3>
                 <p className="text-muted mb-0">
                   Di iPhone atau iPad, gunakan Safari atau browser lain. Setelah file diunduh, kamu
                   bisa menemukannya di aplikasi Files. Beberapa file juga bisa dipindahkan ke Photos.
@@ -498,7 +424,7 @@ export function HomeId() {
             </div>
             <div className="col-lg-4">
               <div className="bg-light rounded-4 p-4 h-100">
-                <h3 className="h5 fw-bold">Download TikTok Videos on PC or Laptop</h3>
+                <h3 className="h5 fw-bold">Download Video TikTok di PC atau Laptop</h3>
                 <p className="text-muted mb-0">
                   Di PC, kamu hanya perlu browser seperti Chrome, Edge, Firefox, atau Safari. Tidak
                   perlu software tambahan. Paste link TikTok, pilih format, lalu simpan file ke
@@ -556,7 +482,7 @@ export function HomeId() {
       {/* No APK */}
       <section className="py-5 bg-white">
         <div className="container py-4">
-          <h2 className="fw-bold mb-3">Do You Need a TikTok Downloader APK or App?</h2>
+          <h2 className="fw-bold mb-3">Apakah Perlu APK atau Aplikasi TikTok Downloader?</h2>
           <p className="text-muted">
             Tidak. Kamu tidak perlu download APK atau install TikTok video download app untuk
             menggunakan tool ini. Semuanya bisa dilakukan langsung dari browser.
@@ -581,7 +507,7 @@ export function HomeId() {
       {/* Free / No Login */}
       <section className="py-5 bg-light">
         <div className="container py-4">
-          <h2 className="fw-bold mb-3">Free TikTok Downloader With No Login</h2>
+          <h2 className="fw-bold mb-3">TikTok Downloader Gratis Tanpa Login</h2>
           <p className="text-muted">
             TikTok Downloader ini bisa digunakan gratis. Kamu tidak perlu daftar akun, tidak perlu
             login, dan tidak perlu memasukkan password TikTok.
@@ -596,7 +522,7 @@ export function HomeId() {
       {/* Safe */}
       <section className="py-5 bg-white">
         <div className="container py-4">
-          <h2 className="fw-bold mb-3">Is This TikTok Downloader Safe?</h2>
+          <h2 className="fw-bold mb-3">Apakah TikTok Downloader Ini Aman?</h2>
           <p className="text-muted">
             Tool ini tidak meminta password TikTok dan tidak membutuhkan login. Kamu hanya perlu
             menempelkan link konten TikTok yang ingin diunduh.
@@ -612,7 +538,7 @@ export function HomeId() {
       {/* Responsible Use */}
       <section className="py-5 bg-light">
         <div className="container py-4">
-          <h2 className="fw-bold mb-3">Responsible Use and Copyright</h2>
+          <h2 className="fw-bold mb-3">Penggunaan yang Bertanggung Jawab dan Hak Cipta</h2>
           <p className="text-muted">
             Gunakan file yang kamu download untuk kebutuhan pribadi, referensi, atau belajar. Jika
             ingin repost, membagikan ulang, atau memakai konten untuk bisnis, pastikan kamu punya
@@ -629,7 +555,7 @@ export function HomeId() {
       <section className="py-5 bg-white">
         <div className="container py-4">
           <div className="text-center mb-5">
-            <h2 className="fw-bold mb-3">Frequently Asked Questions</h2>
+            <h2 className="fw-bold mb-3">Pertanyaan yang Sering Diajukan</h2>
           </div>
           <div className="row justify-content-center">
             <div className="col-lg-9">
@@ -667,7 +593,7 @@ export function HomeId() {
       {/* Closing */}
       <section className="hero-gradient text-white py-5">
         <div className="container py-4 text-center">
-          <h2 className="fw-bold mb-3">Download TikTok Videos Faster and Easier</h2>
+          <h2 className="fw-bold mb-3">Download Video TikTok Lebih Cepat dan Mudah</h2>
           <p className="lead text-white-50 mb-0 mx-auto" style={{ maxWidth: '900px' }}>
             TikTok Downloader ini dibuat untuk satu hal: membantu kamu menyimpan konten TikTok dengan
             cara yang cepat, jelas, dan tidak ribet. Dari video without watermark HD, video with
@@ -681,7 +607,7 @@ export function HomeId() {
       {/* Disclaimer */}
       <section className="py-4 bg-light">
         <div className="container">
-          <h2 className="h5 fw-bold mb-2">Disclaimer</h2>
+          <h2 className="h5 fw-bold mb-2">Penafian</h2>
           <p className="text-muted small mb-0">
             This tool is not affiliated with TikTok. Please respect creator rights and use downloaded
             content responsibly.

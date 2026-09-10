@@ -2,7 +2,8 @@ import { useEffect, type ReactNode } from 'react';
 import { Navigator } from './components/Navigator';
 import { Footer } from './components/Footer';
 import type { Lang, Section } from './App';
-import { getSeoMeta } from './seo';
+import { getSeoMeta, SITE_URL } from './seo';
+import { buildJsonLd } from './schema';
 
 function ensureMeta(selector: string, attrs: Record<string, string>) {
   let element = document.head.querySelector(selector) as HTMLMetaElement | null;
@@ -62,6 +63,43 @@ function useSeo(lang: Lang, section: Section) {
       hreflang: 'x-default',
       href: seo.xDefault,
     });
+
+    ensureMeta('meta[property="og:url"]', { property: 'og:url', content: seo.canonical });
+    ensureMeta('meta[property="og:title"]', { property: 'og:title', content: seo.title });
+    ensureMeta('meta[property="og:description"]', {
+      property: 'og:description',
+      content: seo.description,
+    });
+    ensureMeta('meta[property="og:image"]', { property: 'og:image', content: seo.ogImage });
+    ensureMeta('meta[property="og:locale"]', { property: 'og:locale', content: seo.ogLocale });
+    ensureMeta('meta[name="twitter:title"]', { name: 'twitter:title', content: seo.title });
+    ensureMeta('meta[name="twitter:description"]', {
+      name: 'twitter:description',
+      content: seo.description,
+    });
+    ensureMeta('meta[name="twitter:image"]', { name: 'twitter:image', content: seo.ogImage });
+
+    // Client-side route changes must swap the JSON-LD too, otherwise an in-app
+    // navigation leaves the previous page's schema in the document.
+    let script = document.head.querySelector<HTMLScriptElement>(
+      'script[type="application/ld+json"][data-app-schema]'
+    );
+    if (!script) {
+      script = document.createElement('script');
+      script.type = 'application/ld+json';
+      script.setAttribute('data-app-schema', '');
+      document.head.appendChild(script);
+    }
+    script.textContent = JSON.stringify(
+      buildJsonLd({
+        lang,
+        section,
+        siteUrl: SITE_URL,
+        canonical: seo.canonical,
+        title: seo.title,
+        description: seo.description,
+      })
+    );
   }, [lang, section]);
 }
 
@@ -80,7 +118,7 @@ export function AppShell({
     <div className="d-flex flex-column min-vh-100">
       <Navigator lang={lang} section={section} />
       <main className="flex-grow-1">{children}</main>
-      <Footer />
+      <Footer lang={lang} />
     </div>
   );
 }

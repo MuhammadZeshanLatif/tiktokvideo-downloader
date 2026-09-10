@@ -23,6 +23,12 @@ export function Navigator({ lang, section = 'home' }: { lang: Lang; section?: Se
   const thumbnailHref = buildLocalizedPath(lang, 'thumbnail');
   const profileHref = buildLocalizedPath(lang, 'profile');
   const current = LANGUAGES.find((l) => l.code === lang) ?? LANGUAGES[0];
+  const secondaryNav = [
+    { section: 'faq', label: lang === 'id' ? 'FAQ' : 'FAQ' },
+    { section: 'contact', label: lang === 'id' ? 'Kontak' : 'Contact' },
+    { section: 'privacy-policy', label: lang === 'id' ? 'Kebijakan Privasi' : 'Privacy Policy' },
+    { section: 'terms-conditions', label: lang === 'id' ? 'Syarat' : 'Terms' },
+  ] as const;
   const pageLinks = (
     <>
       <Link
@@ -32,7 +38,7 @@ export function Navigator({ lang, section = 'home' }: { lang: Lang; section?: Se
         to={homeHref}
       >
         <FontAwesomeIcon icon={faVideo} className="small" />
-        TikTok MP4 Downloader
+        {lang === 'id' ? 'Video MP4' : 'MP4 Video'}
       </Link>
       <Link
         className={`nav-link nav-pill-link d-inline-flex align-items-center gap-2 ${
@@ -41,7 +47,7 @@ export function Navigator({ lang, section = 'home' }: { lang: Lang; section?: Se
         to={mp3Href}
       >
         <FontAwesomeIcon icon={faMusic} className="small" />
-        TikTok MP3 Downloader
+        {lang === 'id' ? 'Audio MP3' : 'MP3 Audio'}
       </Link>
       <Link
         className={`nav-link nav-pill-link d-inline-flex align-items-center gap-2 ${
@@ -50,7 +56,7 @@ export function Navigator({ lang, section = 'home' }: { lang: Lang; section?: Se
         to={thumbnailHref}
       >
         <FontAwesomeIcon icon={faImage} className="small" />
-        TikTok Thumbnail Downloader
+        {lang === 'id' ? 'Foto Cover' : 'Thumbnail'}
       </Link>
       <Link
         className={`nav-link nav-pill-link d-inline-flex align-items-center gap-2 ${
@@ -59,7 +65,7 @@ export function Navigator({ lang, section = 'home' }: { lang: Lang; section?: Se
         to={profileHref}
       >
         <FontAwesomeIcon icon={faUser} className="small" />
-        TikTok Profile Picture Downloader
+        {lang === 'id' ? 'Foto Profil' : 'Profile Picture'}
       </Link>
     </>
   );
@@ -123,26 +129,13 @@ export function Navigator({ lang, section = 'home' }: { lang: Lang; section?: Se
             <li className="nav-item d-lg-none">
               <div className="d-flex flex-column gap-2 mb-2">{pageLinks}</div>
             </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/faq">
-                FAQ
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/contact">
-                Contact
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/privacy-policy">
-                Privacy Policy
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/terms-conditions">
-                Terms
-              </Link>
-            </li>
+            {secondaryNav.map((item) => (
+              <li className="nav-item" key={item.section}>
+                <Link className="nav-link" to={buildLocalizedPath(lang, item.section)}>
+                  {item.label}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
       </div>

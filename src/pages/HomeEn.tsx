@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import { Downloader, type DownloaderText } from '../components/Downloader';
+import { homeFaqsEn as faqs } from '../data/faqs';
 
 const t: DownloaderText = {
   cardTitle: '',
@@ -40,81 +41,6 @@ const features = [
   'No TikTok login required',
 ];
 
-const faqs = [
-  {
-    q: 'What is a TikTok Downloader?',
-    a: 'A TikTok Downloader is an online tool that helps you save TikTok videos, audio, photos, stories, profile pictures, or thumbnails from public TikTok links.',
-  },
-  {
-    q: 'Can I download TikTok videos without watermark?',
-    a: 'Yes, if the option is available, you can download TikTok videos without watermark and save a cleaner MP4 file without the moving TikTok logo.',
-  },
-  {
-    q: 'Can I download TikTok videos with watermark?',
-    a: 'Yes, use the with watermark option if you want to keep the TikTok logo and creator username on the video.',
-  },
-  {
-    q: 'Can I convert TikTok videos to MP3?',
-    a: 'Yes, if MP3 is supported, you can extract audio from a TikTok video and save it as an MP3 file.',
-  },
-  {
-    q: 'Can I download TikTok sound, audio, or music?',
-    a: 'Yes, the MP3 or audio feature can help you save TikTok sounds, music, voiceovers, or original audio from public videos when available.',
-  },
-  {
-    q: 'Can I download TikTok photos or slideshows?',
-    a: 'Yes, if the TikTok post contains photos or a slideshow and the feature is supported, you can save the images from the public link.',
-  },
-  {
-    q: 'Can I download TikTok stories?',
-    a: 'Public TikTok stories may be downloaded if they are still active and the link is available. Expired or private stories may not work.',
-  },
-  {
-    q: 'Can I download TikTok profile pictures?',
-    a: 'Yes, if the profile picture feature is supported, you may be able to save a TikTok profile image using a username or profile link.',
-  },
-  {
-    q: 'Can I download TikTok thumbnails?',
-    a: 'Yes, if thumbnail download is supported, you can use a TikTok video link to save the video cover image or preview image.',
-  },
-  {
-    q: 'Does this TikTok downloader work on iPhone?',
-    a: 'Yes, it works in Safari or other mobile browsers. Downloaded files may appear in the Files app or Photos depending on your device settings.',
-  },
-  {
-    q: 'Does this TikTok downloader work on PC?',
-    a: 'Yes, you can use it on PC or laptop through a browser such as Chrome, Edge, Firefox, or Safari.',
-  },
-  {
-    q: 'Do I need to install an app?',
-    a: 'No. This is a browser-based TikTok Downloader, so you do not need to install an app, APK, software, or extension.',
-  },
-  {
-    q: 'Is this TikTok downloader free?',
-    a: 'Yes, the tool is free to use if your website offers it that way. Users can paste a public TikTok link and download available formats without payment.',
-  },
-  {
-    q: 'Is login required?',
-    a: 'No. You do not need to log in to TikTok or share your TikTok password to use the downloader.',
-  },
-  {
-    q: 'Can I download private TikTok videos?',
-    a: 'No. This tool is meant for public TikTok links only. Private videos, deleted videos, and restricted content cannot be processed.',
-  },
-  {
-    q: 'Can I download TikTok videos by username?',
-    a: 'For a specific video, a direct video link is more accurate than a username. A username may help with profile-related features, such as profile picture download, if supported.',
-  },
-  {
-    q: 'Where are downloaded TikTok videos saved?',
-    a: 'On Android and PC, files usually go to the Downloads folder. On iPhone or iPad, files may appear in the Files app or Photos depending on the browser.',
-  },
-  {
-    q: 'Is it legal to download TikTok videos?',
-    a: 'Download content only for personal use, study, backup, or reference. If you want to repost, edit, share, or use someone else’s content commercially, get permission from the creator and respect copyright rules.',
-  },
-];
-
 export function HomeEn() {
   return (
     <Downloader t={t} lockFormat="mp4">
@@ -126,20 +52,21 @@ export function HomeEn() {
               <div className="row align-items-center">
                 <div className="col-lg-6 mb-5 mb-lg-0">
                   <h1 className="display-5 fw-bold mb-4">
-                    TikTok Downloader — Download TikTok Videos{' '}
+                    TikTok Downloader — TikTok to MP4 Video Download{' '}
                     <span className="tiktok-text">Without Watermark</span>
                   </h1>
                   <p className="lead mb-3 text-white-50">
                     Save TikTok videos without watermark in a fast and simple way. Copy the TikTok
-                    video link, paste it into the downloader, then download the MP4 video you need,
-                    such as a no-watermark video, with-watermark video, photo, story, profile
-                    picture, or thumbnail if the feature is available.
+                    video link, paste it into the TikTok downloader, then convert TikTok to MP4 and
+                    download the video you need, such as a no-watermark video, with-watermark video,
+                    photo, story, profile picture, or thumbnail if the feature is available.
                   </p>
                   <p className="mb-0 text-white-50">
-                    Many people just want to save a funny clip, a tutorial, or a photo slideshow
-                    without installing another app or logging in. This TikTok
-                    Downloader is built for users on iPhone, Android, iPad, PC, and Mac who want a clean
-                    browser-based tool that works with public TikTok links.
+                    Many people search for terms like tikdownloader, TikTok video downloader,
+                    download video TikTok, Snaptik, SSSTikTok, or TikTok to MP4 when they only want
+                    to save a funny clip, a tutorial, or a photo slideshow without installing another
+                    app. This browser-based tool works with public TikTok links on iPhone, Android,
+                    iPad, PC, and Mac.
                   </p>
                 </div>
                 <div className="col-lg-6">
@@ -250,11 +177,31 @@ export function HomeEn() {
           <h2 className="fw-bold mb-3">Download TikTok MP4 Videos in the Best Available Quality</h2>
           <p className="text-muted">
             If you want to save a TikTok as a regular video file, choose MP4. MP4 works on most
-            devices, including iPhone, Android, Windows, Mac, tablets, and smart TVs.
+            devices, including iPhone, Android, Windows, Mac, tablets, and smart TVs. This is the
+            option most people mean when they search for TikTok to MP4, TikTok video download, or
+            download TikTok video.
           </p>
           <p className="text-muted mb-0">
             The tool will try to download the best available quality from the original TikTok link.
             The final result depends on the quality of the video that was uploaded to TikTok.
+          </p>
+        </div>
+      </section>
+
+      {/* TikTok to MP4 */}
+      <section className="py-5 bg-light">
+        <div className="container py-4">
+          <h2 className="fw-bold mb-3">TikTok to MP4 Converter Online</h2>
+          <p className="text-muted">
+            A TikTok to MP4 converter helps you save a public TikTok video as a standard video file.
+            You do not need to rename files, install software, or use a separate video converter.
+            Paste the TikTok URL, let the downloader process it, then save the MP4 option when it is
+            available.
+          </p>
+          <p className="text-muted mb-0">
+            MP4 is usually the best format for offline viewing because it opens easily on phones,
+            laptops, tablets, and most media players. Use it when you want a simple TikTok video
+            download that is easy to store, replay, or move between devices.
           </p>
         </div>
       </section>
@@ -402,6 +349,62 @@ export function HomeEn() {
             supported. For video downloads, copy the video link from TikTok and paste it into the
             downloader.
           </p>
+        </div>
+      </section>
+
+      {/* Related Searches */}
+      <section className="py-5 bg-light">
+        <div className="container py-4">
+          <h2 className="fw-bold mb-3">Popular TikTok Downloader Searches</h2>
+          <p className="text-muted mb-4">
+            People use different search terms for the same task: saving public TikTok videos,
+            photos, sounds, and covers. This page focuses on the main TikTok downloader intent while
+            also covering related searches such as tikdownloader, TikTok to MP4, Snaptik,
+            SSSTikTok, TikTokio, and descargar videos de TikTok.
+          </p>
+          <div className="table-responsive">
+            <table className="table table-bordered bg-white align-middle">
+              <thead className="table-dark">
+                <tr>
+                  <th>Search Term</th>
+                  <th>User Intent</th>
+                  <th>Best Matching Feature</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>tiktok to mp4</td>
+                  <td>Convert a TikTok link into a playable MP4 video file</td>
+                  <td>MP4 video download</td>
+                </tr>
+                <tr>
+                  <td>tikdownloader</td>
+                  <td>Find a quick TikTok downloader tool</td>
+                  <td>Paste link and download</td>
+                </tr>
+                <tr>
+                  <td>download video tiktok</td>
+                  <td>Save a TikTok video from a copied link</td>
+                  <td>Video downloader</td>
+                </tr>
+                <tr>
+                  <td>snaptik / ssstiktok</td>
+                  <td>Download TikTok content without extra app steps</td>
+                  <td>No-login browser downloader</td>
+                </tr>
+                <tr>
+                  <td>tiktokio / tiktok download</td>
+                  <td>Use an online TikTok download page</td>
+                  <td>Online TikTok downloader</td>
+                </tr>
+                <tr>
+                  <td>descargar videos de tiktok</td>
+                  <td>Spanish search intent for downloading TikTok videos</td>
+                  <td>Download TikTok video</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </section>
 

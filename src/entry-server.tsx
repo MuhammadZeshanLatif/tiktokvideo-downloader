@@ -3,7 +3,7 @@ import { MemoryRouter } from 'react-router-dom';
 import { AppRoutes } from './AppRoutes';
 
 export { STATIC_ROUTES } from './staticRoutes';
-export { renderHeadHtml } from './seo';
+export { renderHeadHtml, SITE_URL, buildLocalizedPath } from './seo';
 
 export function render(url: string) {
   const normalized = url === '/' ? '/' : url.replace(/\/$/, '') || '/';
