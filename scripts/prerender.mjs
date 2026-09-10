@@ -8,7 +8,7 @@ const rootDir = path.resolve(__dirname, '..');
 const distDir = path.resolve(rootDir, 'dist');
 const serverEntry = path.resolve(distDir, 'server', 'entry-server.js');
 
-function routeOutputPath(routePath: string) {
+function routeOutputPath(routePath) {
   if (routePath === '/') {
     return path.join(distDir, 'index.html');
   }
@@ -16,7 +16,7 @@ function routeOutputPath(routePath: string) {
   return path.join(distDir, routePath.slice(1), 'index.html');
 }
 
-function extractBuiltAssets(template: string) {
+function extractBuiltAssets(template) {
   const css = [...template.matchAll(/<link rel="stylesheet"[^>]+>/g)].map((match) => match[0]);
   const scripts = [...template.matchAll(/<script type="module"[^>]+><\/script>/g)].map(
     (match) => match[0]
@@ -25,15 +25,13 @@ function extractBuiltAssets(template: string) {
   return { css, scripts };
 }
 
-type StaticRoute = { path: string; lang: 'en' | 'id'; section: string };
-
 // Canonicals end in a slash, so sitemap URLs must match them exactly or the two
 // signals disagree about which URL is the real one.
-function canonicalFor(siteUrl: string, routePath: string) {
+function canonicalFor(siteUrl, routePath) {
   return `${siteUrl}${routePath === '/' ? '/' : `${routePath}/`}`;
 }
 
-function writeSitemap(routes: StaticRoute[], siteUrl: string, buildLocalizedPath: Function) {
+function writeSitemap(routes, siteUrl, buildLocalizedPath) {
   const lastmod = new Date().toISOString().slice(0, 10);
 
   const urls = routes
@@ -41,7 +39,7 @@ function writeSitemap(routes: StaticRoute[], siteUrl: string, buildLocalizedPath
       const loc = canonicalFor(siteUrl, route.path);
       // Every URL declares the full hreflang cluster, which is what Google expects
       // for a two-language site.
-      const alternates = (['en', 'id'] as const)
+      const alternates = ['en', 'id']
         .map(
           (lang) =>
             `    <xhtml:link rel="alternate" hreflang="${lang}" href="${canonicalFor(
@@ -74,7 +72,7 @@ ${urls}
   console.log(`wrote sitemap.xml (${routes.length} urls)`);
 }
 
-function writeRobots(siteUrl: string) {
+function writeRobots(siteUrl) {
   // AI answer engines are named explicitly: this is a free public tool that wants
   // to be quoted, so nothing here is worth blocking.
   const robots = `User-agent: *
